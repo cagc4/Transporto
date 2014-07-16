@@ -1,0 +1,66 @@
+	/*Propiedades del Body*/
+	Body{
+	background-color: #ffffff;
+	background-image: url("Images/FondoAplicacion.png");
+	background-repeat: no-repeat;
+	background-position: 350px 30px;
+	text-decoration:none;
+	color : Black;
+	text-align:left;	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-style:normal;
+	font-weight : bold;
+}
+
+
+.letraLogout{
+	background-color: transparent;
+	text-decoration:none;
+	color:#000000;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:20px;
+	font-style:normal;	
+	font-weight:bold;
+	text-align:center;	
+}
+	
+
+.piepagina{
+	/*background-color: #000000;*/
+	border-width:thin; 
+	margin: 50px 0 0 0; 
+	width:99%;
+	height: 20px;
+	position: absolute;
+	font-style:italic;
+	color:#3c960c;
+	top:87%;
+	z-index: 1;
+}
+
+.login{
+	margin: 40px 0 0 0;
+	border-style:ridge;
+	border-width:thin;
+	border-color:#000000;
+	width:30%;
+	height:50%;
+	position:center; 
+	text-align:left;
+	z-index: 1000;
+}
+
+.forms{
+	margin: 40px 0 0 0;
+	border-style:dotted;
+	border-width:thin;
+	border-color:#000000;
+	width:60%;
+	/*Pheight:400px;*/
+	position:center ; 
+	text-align:left;
+	z-index: 1000;
+}
+
+ 
