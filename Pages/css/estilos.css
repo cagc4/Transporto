@@ -1,7 +1,7 @@
 	/*Propiedades del Body*/
 	Body{
 	background-color: #ffffff;
-	background-image: url("Images/FondoAplicacion.png");
+	background-image: url("/Transporto/Images/FondoAplicacion.png");
 	background-repeat: no-repeat;
 	background-position: 350px 30px;
 	text-decoration:none;

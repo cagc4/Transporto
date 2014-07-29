@@ -8,13 +8,13 @@ if(session_destroy()) {
 	<p class="letraLogout"><br>
 	Usted ha cerrado su session correctamente, <br>
 	ahora puede cerrar la p&aacute;gina con confianza.<br><br>
-	<a href='/'>Volver al Inicio</a>
+	<a href='/Transporto'>Volver al Inicio</a>
 	</p>
-	
-	<?php	
-}	
+
+	<?php
+}
 else {
-?>	
+?>
 	<p class="letraLogout"><br>
 	No se ha podido cerrar la session de forma segura
 	</p>
