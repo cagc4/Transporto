@@ -37,7 +37,7 @@ class Utilities
 		}
 		return $innerarray;
 	}
-	
+
 	function fillDropDownVew($dropDownField, $selected)
 	{
 		$this->result = $this->db->Execute("SELECT CC_DESCRIPCION_FLD, CC_VALOR_FLD FROM CC_VALORES_TBL WHERE CC_CAMPO_FLD = '" . $dropDownField . "' AND CC_ESTADO_FLD = 'A'");
@@ -71,14 +71,14 @@ class Utilities
 		}
 		return $innerarray;
 	}
-	
+
 	function fillDropDownStateVew($selected)
 	{
 		$this->result = $this->db->Execute("SELECT CC_CODIGODEPT_FLD, CC_DESCRIPC_FLD FROM CC_DEPARTAMENTO_TBL");
 		$innerarray = array();
 		if($selected == '') {
 			array_push($innerarray, array ('value' => '','label' => ' - Seleccione - ','disabled' => false,'selected' => true,));
-		}		
+		}
 		else {
 			array_push($innerarray, array ('value' => '','label' => ' - Seleccione - ','disabled' => false,));
 		}
@@ -110,7 +110,7 @@ class Utilities
 		}
 		return $innerarray;
 	}
-	
+
 	function fillDropDownCityVew($state, $selected)
 	{
 		if($state != '') {
@@ -137,7 +137,7 @@ class Utilities
 		}
 		return $innerarray;
 	}
-	
+
 	function fillDropDownModel()
 	{
 		$i = 0;
@@ -152,7 +152,7 @@ class Utilities
 		}
 		return $innerarray;
 	}
-	
+
 	function fillDropDownModelVew($selected)
 	{
 		$i = 0;
@@ -174,7 +174,7 @@ class Utilities
 		}
 		return $innerarray;
 	}
-	
+
 	function fillDropDownValue()
 	{
 		$this->result = $this->db->Execute("SELECT CC_CAMPO_FLD, CC_DESCRIPCION_FLD FROM CC_FIELDS_TBL");
@@ -186,14 +186,14 @@ class Utilities
 		}
 		return $innerarray;
 	}
-	
+
 	function fillDropDownValueVew($selected)
 	{
 		$this->result = $this->db->Execute("SELECT CC_CAMPO_FLD, CC_DESCRIPCION_FLD FROM CC_FIELDS_TBL");
 		$innerarray = array();
 		if($selected == '') {
 			array_push($innerarray, array ('value' => '','label' => ' - Seleccione - ','disabled' => false,'selected' => true,));
-		}		
+		}
 		else {
 			array_push($innerarray, array ('value' => '','label' => ' - Seleccione - ','disabled' => false,));
 		}
@@ -210,14 +210,14 @@ class Utilities
 	}
 
 	function findMenu($page) {
-		
+
 		$this->menu= $this->db->Execute("SELECT A.CC_TYPE_FLD, A.CC_URL_FLD ,B.CC_NOMBRE_FLD FROM  CC_NAVEGACION_TBL A , CC_IMAGENES_TBL B WHERE   A.CC_TYPE_FLD  = B.CC_IDENTIFICADOR_FLD AND  A.CC_PAGE_FLD ='$page' ORDER BY B.CC_PRIORIDAD_FLD");
-	
-		return $this->menu; 
+
+		return $this->menu;
 	}
-	
+
 	function sessionStart($login,$password)	{
-			
+
 		$this->db=$this->cx->conectar();
 		$this->result = $this->db->Execute("SELECT CC_ROLE_FLD AS role, CC_ESTADO_FLD AS state FROM CC_USER_TBL WHERE CC_USER_ID_FLD='$login' AND CC_PSSWRD_FLD='$password'");
 		$this->cx->desconectar();
@@ -237,13 +237,13 @@ class Utilities
 		$grid["resizable"] = true;
 		$grid["rowNum"] = 30;
 		$grid["autowidth"] = false;
-	    //$grid["sortname"] = 'Numero_Documento'; 
+	    //$grid["sortname"] = 'Numero_Documento';
 	    $grid["sortorder"] = "desc";  // ASC or DESC
 	    $grid["width"] = "1200";
 	    $grid["height"] = "250";
 		$describeTable =' DESCRIBE '.$tableName;
-		$this->campos = $this->db->Execute($describeTable);		
-		$i=1;		
+		$this->campos = $this->db->Execute($describeTable);
+		$i=1;
 		while ($row = $this->campos->FetchRow())
 		{
 			$col = array();
@@ -254,40 +254,40 @@ class Utilities
 			switch($gridName) {
 				case 'Clientes':
 					if ($i == 2) {
-						$col["link"] = "/Pages/PassThrough.php?Page=Customer_srch&Numero_Documento={Numero_Documento}&Tipo_Identificacion={Tipo_Identificacion}";
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Customer_srch&Numero_Documento={Numero_Documento}&Tipo_Identificacion={Tipo_Identificacion}";
 					}
 					break;
 				case 'Propietarios & Conductores':
 					if ($i == 2)
-						$col["link"] = "/Pages/PassThrough.php?Page=Transporter_srch&Numero_Documento={Numero_Documento}&Tipo_Identificacion={Tipo_Identificacion}";
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Transporter_srch&Numero_Documento={Numero_Documento}&Tipo_Identificacion={Tipo_Identificacion}";
 					break;
 				case 'Vehiculos':
 					if ($i == 1)
-						$col["link"] = "/Pages/PassThrough.php?Page=Vehicle_srch&Placa={Placa}";
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Vehicle_srch&Placa={Placa}";
 					break;
 				case 'Documentos':
 					if ($i == 4)
-						$col["link"] = "/Pages/PassThrough.php?Page=Document_srch&Numero={Numero}&Placa={Placa}&Documento={Documento}";
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Document_srch&Numero={Numero}&Placa={Placa}&Documento={Documento}";
 					break;
 				case 'Viajes Ocacionales':
 					if ($i == 1)
-						$col["link"] = "/Pages/PassThrough.php?Page=CasualTravel_srch&Consecutivo={Consecutivo}";
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=CasualTravel_srch&Consecutivo={Consecutivo}";
 					break;
 				case 'Extracto Contratos':
 					if ($i == 1)
-						$col["link"] = "/Pages/PassThrough.php?Page=ContractExtract_srch&Consecutivo={Consecutivo}";
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=ContractExtract_srch&Consecutivo={Consecutivo}";
 					break;
 				case 'Usuarios':
 					if ($i == 1)
-						$col["link"] = "/Pages/PassThrough.php?Page=User_srch&Usuario={Usuario}";
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=User_srch&Usuario={Usuario}";
 					break;
 				case 'Valores':
 					if ($i == 1)
-						$col["link"] = "/Pages/PassThrough.php?Page=Value_srch&Campo={Campo}&Valor={Valor}";
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Value_srch&Campo={Campo}&Valor={Valor}";
 					break;
 				case 'Contrato':
 					if ($i == 1)
-						$col["link"] = "/Pages/PassThrough.php?Page=Contract_srch&Consecutivo={Consecutivo}";
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Contract_srch&Consecutivo={Consecutivo}";
 					break;
 			}
 			$col["width"] = "15";
@@ -295,12 +295,12 @@ class Utilities
 			$col["align"] = "center";
 			$cols[] = $col;
 			$i=$i+1;
-		}	
-		
+		}
+
 		$g->select_command = $query;
 		$g->set_columns($cols);
-		
-		
+
+
 		$g->set_options($grid);
 
 
@@ -316,22 +316,22 @@ class Utilities
 					);
 
 		//$g->table = $tableName;
-		
+
 		return $g->render("list1");
 	}
 
-	function convertirMonto($monto) 
+	function convertirMonto($monto)
 	{
 	    $maximo = pow(10,9);
 		$unidad            = array(1=>"uno", 2=>"dos", 3=>"tres", 4=>"cuatro", 5=>"cinco", 6=>"seis", 7=>"siete", 8=>"ocho", 9=>"nueve");
 		$decena            = array(10=>"diez", 11=>"once", 12=>"doce", 13=>"trece", 14=>"catorce", 15=>"quince", 20=>"veinte", 30=>"treinta", 40=>"cuarenta", 50=>"cincuenta", 60=>"sesenta", 70=>"setenta", 80=>"ochenta", 90=>"noventa");
 		$prefijo_decena    = array(10=>"dieci", 20=>"veinti", 30=>"treinta y ", 40=>"cuarenta y ", 50=>"cincuenta y ", 60=>"sesenta y ", 70=>"setenta y ", 80=>"ochenta y ", 90=>"noventa y ");
-		$centena           = array(100=>"cien", 200=>"doscientos", 300=>"trescientos", 400=>"cuantrocientos", 500=>"quinientos", 600=>"seiscientos", 700=>"setecientos", 800=>"ochocientos", 900=>"novecientos");	
+		$centena           = array(100=>"cien", 200=>"doscientos", 300=>"trescientos", 400=>"cuantrocientos", 500=>"quinientos", 600=>"seiscientos", 700=>"setecientos", 800=>"ochocientos", 900=>"novecientos");
 		$prefijo_centena   = array(100=>"ciento ", 200=>"doscientos ", 300=>"trescientos ", 400=>"cuantrocientos ", 500=>"quinientos ", 600=>"seiscientos ", 700=>"setecientos ", 800=>"ochocientos ", 900=>"novecientos ");
 		$sufijo_miles      = "mil";
 		$sufijo_millon     = "un millon";
 		$sufijo_millones   = "millones";
-	    
+
 		$base         = strlen(strval($monto));
 		$pren         = intval(floor($monto/pow(10,$base-1)));
 		$prencentena  = intval(floor($monto/pow(10,3)));
@@ -339,11 +339,11 @@ class Utilities
 		$resto        = $monto%pow(10,$base-1);
 		$restocentena = $monto%pow(10,3);
 		$restomillar  = $monto%pow(10,6);
-		
+
 		if (!$monto) return "";
-		
-	    if ($monto>0 && $monto < abs($maximo)) 
-	    {            
+
+	    if ($monto>0 && $monto < abs($maximo))
+	    {
 			switch ($base) {
 				case 1: return $unidad[$monto];
 				case 2: return array_key_exists($monto, $decena)  ? $decena[$monto]  : $prefijo_decena[$pren*10]   . $this->convertirMonto($resto);
@@ -360,7 +360,7 @@ class Utilities
     function SeparFechas($fecha)
     {
     	preg_match("/(\d{4})-(\d{2})-(\d{2})/", $fecha, $fechaArray);
-		
+
 		return $fechaArray;
     }
 
@@ -372,35 +372,35 @@ class Utilities
 	    $num_limpio = $num >= 1 && $num <= 12 ? intval($num) : 0;
 	    return $meses[$num_limpio];
 	}
-	
+
 	function fechaATexto($fecha, $formato = 'c') {
- 
+
 	    if (preg_match("/(\d{4})-(\d{2})-(\d{2})/", $fecha, $partes)) {
 
-	        $mes = ' de ' .  $this->mes($partes[2]) . ' de '; 
+	        $mes = ' de ' .  $this->mes($partes[2]) . ' de ';
 	        if ($formato == 'u') {
 	            $mes = strtoupper($mes);
 	        } elseif ($formato == 'l') {
 	            $mes = strtolower($mes);
 	        }
 	        return $partes[3] . $mes . $partes[1];
-	 
-	    } 
+
+	    }
 	    else {
 	        return 'Formato Incorrecto de Fecha';
 	    }
 	}
- 
+
 
 	function timestampATexto($timestamp, $formato = 'c') {
-	 
-	    
+
+
 	    if (strpos($timestamp, " ") === false){
 	        return false;
 	    }
-	 
+
 	    $timestamp = explode(" ", $timestamp);
-	 
+
 	    if ( $this->fechaATexto($timestamp[0])) {
 	        $conjuncion = ' a las ';
 	        if ($formato == 'u') {
