@@ -142,10 +142,10 @@ class Utilities
 	{
 		$i = 0;
 		date_default_timezone_set('UTC');
-		$date = date('Y');
+		$date = date('Y')+20;
 		$innerarray = array();
 		array_push($innerarray, array ('value' => '','label' => ' - Seleccione - ','disabled' => false,'selected' => true,));
-		while ($i <= 50)
+		while ($i <= 100)
 		{
 			array_push($innerarray, array ('value' => ($date - $i), 'label' => ($date - $i),));
 			$i++;
@@ -157,12 +157,12 @@ class Utilities
 	{
 		$i = 0;
 		date_default_timezone_set('UTC');
-		$date = date('Y');
+		$date = date('Y')+20;
 		$innerarray = array();
 		if($selected == '') {
 			array_push($innerarray, array ('value' => '','label' => ' - Seleccione - ','disabled' => false,'selected' => true,));
 		}
-		while ($i <= 50)
+		while ($i <= 100)
 		{
 			if(($date - $i) == $selected) {
 				array_push($innerarray, array ('value' => ($date - $i), 'label' => ($date - $i), 'selected' => true));
@@ -254,40 +254,40 @@ class Utilities
 			switch($gridName) {
 				case 'Clientes':
 					if ($i == 2) {
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Customer_srch&Numero_Documento={Numero_Documento}&Tipo_Identificacion={Tipo_Identificacion}";
+						$col["link"] = "/Pages/PassThrough.php?Page=Customer_srch&Numero_Documento={Numero_Documento}&Tipo_Identificacion={Tipo_Identificacion}";
 					}
 					break;
 				case 'Propietarios & Conductores':
 					if ($i == 2)
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Transporter_srch&Numero_Documento={Numero_Documento}&Tipo_Identificacion={Tipo_Identificacion}";
+						$col["link"] = "/Pages/PassThrough.php?Page=Transporter_srch&Numero_Documento={Numero_Documento}&Tipo_Identificacion={Tipo_Identificacion}";
 					break;
 				case 'Vehiculos':
 					if ($i == 1)
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Vehicle_srch&Placa={Placa}";
+						$col["link"] = "/Pages/PassThrough.php?Page=Vehicle_srch&Placa={Placa}";
 					break;
 				case 'Documentos':
 					if ($i == 4)
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Document_srch&Numero={Numero}&Placa={Placa}&Documento={Documento}";
+						$col["link"] = "/Pages/PassThrough.php?Page=Document_srch&Numero={Numero}&Placa={Placa}&Documento={Documento}";
 					break;
 				case 'Viajes Ocacionales':
 					if ($i == 1)
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=CasualTravel_srch&Consecutivo={Consecutivo}";
+						$col["link"] = "/Pages/PassThrough.php?Page=CasualTravel_srch&Consecutivo={Consecutivo}";
 					break;
 				case 'Extracto Contratos':
 					if ($i == 1)
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=ContractExtract_srch&Consecutivo={Consecutivo}";
+						$col["link"] = "/Pages/PassThrough.php?Page=ContractExtract_srch&Consecutivo={Consecutivo}";
 					break;
 				case 'Usuarios':
 					if ($i == 1)
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=User_srch&Usuario={Usuario}";
+						$col["link"] = "/Pages/PassThrough.php?Page=User_srch&Usuario={Usuario}";
 					break;
 				case 'Valores':
 					if ($i == 1)
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Value_srch&Campo={Campo}&Valor={Valor}";
+						$col["link"] = "/Pages/PassThrough.php?Page=Value_srch&Campo={Campo}&Valor={Valor}";
 					break;
 				case 'Contrato':
 					if ($i == 1)
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Contract_srch&Consecutivo={Consecutivo}";
+						$col["link"] = "/Pages/PassThrough.php?Page=Contract_srch&Consecutivo={Consecutivo}";
 					break;
 			}
 			$col["width"] = "15";

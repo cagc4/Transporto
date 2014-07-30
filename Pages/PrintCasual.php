@@ -12,8 +12,8 @@ $template->navigateBar('PrintCasual');
 	<center>
 	<table>
 		<tr>
-			<td width =250><center><a href="" onclick="window.open('/Pages/CasualTravel_pri.php');"><img src='../Images/Icons/pdf.png' width="150" height="150" ></a></center></td>
-			<td width =250><center><a href="" onclick="window.open('/Pages/ServiceOrder_pri.php');"><img src='../Images/Icons/pdf2.png' width="150" height="150" ></a></center></td>
+			<td width =250><center><a href="" onclick="window.open('/Transporto/Pages/CasualTravel_pri.php');"><img src='../Images/Icons/pdf.png' width="150" height="150" ></a></center></td>
+			<td width =250><center><a href="" onclick="window.open('/Transporto/Pages/ServiceOrder_pri.php');"><img src='../Images/Icons/pdf2.png' width="150" height="150" ></a></center></td>
 		</tr>
 		<tr>
 			<td align ='center'>Imprimir Planilla <?php echo $_SESSION['number'].'-P';?></td>

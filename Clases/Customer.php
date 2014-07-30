@@ -60,7 +60,7 @@ class Customer
 		return $respCode;
 	}
 	
-	function getCustomer($docNum, $docType) {
+	function getCustomer($docNum) {
 		$this->result = $this->util->db->Execute("SELECT P.CC_TIPO_DOC_FLD AS docType,
 														 P.CC_NUME_DOC_FLD AS docNum,
 														 P.CC_FNOMBRE_FLD AS name,
@@ -78,15 +78,15 @@ class Customer
 														 D.CC_CODIGODEPT_FLD AS state,
 														 D.CC_CODCIUDAD_FLD AS city
 												  FROM (CC_PERSON_TBL P INNER JOIN CC_CUSTOMER_TBL C ON P.CC_TIPO_DOC_FLD = C.CC_TIPO_DOC_FLD AND P.CC_NUME_DOC_FLD = C.CC_NUME_DOC_FLD) INNER JOIN CC_ADDRESS_TBL D ON P.CC_TIPO_DOC_FLD = D.CC_TIPO_DOC_FLD AND P.CC_NUME_DOC_FLD = D.CC_NUME_DOC_FLD
-												  WHERE P.CC_NUME_DOC_FLD = '".$docNum."' AND P.CC_TIPO_DOC_FLD = (SELECT CC_VALOR_FLD FROM CC_VALORES_TBL WHERE CC_DESCRIPCION_FLD = '".$docType."' AND CC_CAMPO_FLD = 'cc_tipo_doc_fld')");
+												  WHERE P.CC_NUME_DOC_FLD = '".$docNum."'");
 	}
 	
-	function modifyCustomer($customerData, $custId, $docType) {
+	function modifyCustomer($customerData, $custId) {
 		$respCode = 0;
 		$customerCommentsData = $customerData->customerFormCommentsData->customerFormComments;
-		$this->util->db->Execute("DELETE FROM CC_ADDRESS_TBL WHERE CC_NUME_DOC_FLD = '".$custId."' AND CC_TIPO_DOC_FLD = (SELECT CC_VALOR_FLD FROM CC_VALORES_TBL WHERE CC_DESCRIPCION_FLD = '".$docType."' AND CC_CAMPO_FLD = 'cc_tipo_doc_fld')");
-		$this->util->db->Execute("DELETE FROM CC_CUSTOMER_TBL WHERE CC_NUME_DOC_FLD = '".$custId."' AND CC_TIPO_DOC_FLD = (SELECT CC_VALOR_FLD FROM CC_VALORES_TBL WHERE CC_DESCRIPCION_FLD = '".$docType."' AND CC_CAMPO_FLD = 'cc_tipo_doc_fld')");
-		$this->util->db->Execute("DELETE FROM CC_PERSON_TBL WHERE CC_NUME_DOC_FLD = '".$custId."' AND CC_TIPO_DOC_FLD = (SELECT CC_VALOR_FLD FROM CC_VALORES_TBL WHERE CC_DESCRIPCION_FLD = '".$docType."' AND CC_CAMPO_FLD = 'cc_tipo_doc_fld')");
+		$this->util->db->Execute("DELETE FROM CC_ADDRESS_TBL WHERE CC_NUME_DOC_FLD = '".$custId."'");
+		$this->util->db->Execute("DELETE FROM CC_CUSTOMER_TBL WHERE CC_NUME_DOC_FLD = '".$custId."'");
+		$this->util->db->Execute("DELETE FROM CC_PERSON_TBL WHERE CC_NUME_DOC_FLD = '".$custId."'");
 		$respCode = $this->addCustomer($customerData);
 		return $respCode;
 	}
