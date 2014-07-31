@@ -11,11 +11,8 @@ Body{
 	font-weight : bold;
 }
 
-table {
-    border-collapse: collapse;
-}
-
-table, th, td {
+.borde{
     border: 1px solid black;
+    border-collapse: collapse;
 }
  
