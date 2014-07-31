@@ -259,35 +259,35 @@ class Utilities
 					break;
 				case 'Propietarios & Conductores':
 					if ($i == 2)
-						$col["link"] = "/Pages/PassThrough.php?Page=Transporter_srch&Numero_Documento={Numero_Documento}&Tipo_Identificacion={Tipo_Identificacion}";
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Transporter_srch&Numero_Documento={Numero_Documento}&Tipo_Identificacion={Tipo_Identificacion}";
 					break;
 				case 'Vehiculos':
 					if ($i == 1)
-						$col["link"] = "/Pages/PassThrough.php?Page=Vehicle_srch&Placa={Placa}";
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Vehicle_srch&Placa={Placa}";
 					break;
 				case 'Documentos':
 					if ($i == 4)
-						$col["link"] = "/Pages/PassThrough.php?Page=Document_srch&Numero={Numero}&Placa={Placa}&Documento={Documento}";
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Document_srch&Numero={Numero}&Placa={Placa}&Documento={Documento}";
 					break;
 				case 'Viajes Ocacionales':
 					if ($i == 1)
-						$col["link"] = "/Pages/PassThrough.php?Page=CasualTravel_srch&Consecutivo={Consecutivo}";
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=CasualTravel_srch&Consecutivo={Consecutivo}";
 					break;
 				case 'Extracto Contratos':
 					if ($i == 1)
-						$col["link"] = "/Pages/PassThrough.php?Page=ContractExtract_srch&Consecutivo={Consecutivo}";
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=ContractExtract_srch&Consecutivo={Consecutivo}";
 					break;
 				case 'Usuarios':
 					if ($i == 1)
-						$col["link"] = "/Pages/PassThrough.php?Page=User_srch&Usuario={Usuario}";
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=User_srch&Usuario={Usuario}";
 					break;
 				case 'Valores':
 					if ($i == 1)
-						$col["link"] = "/Pages/PassThrough.php?Page=Value_srch&Campo={Campo}&Valor={Valor}";
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Value_srch&Campo={Campo}&Valor={Valor}";
 					break;
 				case 'Contrato':
 					if ($i == 1)
-						$col["link"] = "/Pages/PassThrough.php?Page=Contract_srch&Consecutivo={Consecutivo}";
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Contract_srch&Consecutivo={Consecutivo}";
 					break;
 			}
 			$col["width"] = "15";
