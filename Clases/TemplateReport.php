@@ -833,360 +833,390 @@ EOD;
 
 		$html = <<<EOD
 
-		<br><br><br><br>
-			<table align="center" width="100%">
-				<tbody>
-					<tr>
-						<td border="1" width="100%" colspan="12" rowspan="1" valign="middle">
-							<strong>
-								<font face="Arial" size="10">
-									FICHA TECNICA DEL FORMATO &#218;NICO DEL EXTRACTO DEL CONTRATO "FUEC"
-								</font>
-							</strong>
-						</td>
-					</tr>
-					<tr>
-						<td border="1"  style="text-align:center"  >
-								sdsd
-								<!--<img width="200" height="50" src="../Images/mintransporte.png">-->
-						</td>
-						<td border="1" colspan="6" width='50%'>
-							sdsd
-							<div valign="middle">
-								<!--<img width="200" height="50" src="../Images/Logo.png" >-->
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td  width="100%" colspan="12" rowspan="1" valign="bottom">
-							<p  border="1" align="center"><br>
-								<strong>
-									<font face="Arial" size="10">
-										FORMATO UNICO DE EXTRACTO DEL CONTRATO DEL SERVICIO P&#218;BLICO DE TRANSPORTE TERRESTRE AUTOMOTOR ESPECIAL N.3760092002014
-									</font>
-								</strong>
-							</p>
-						</td>
-					</tr>
-					<tr>
-					<td  border="1" width="25%" nowrap="0" colspan="1" rowspan="1">
-					<p>&nbsp;RAZ&#211;N SOCIAL:</p>
-					</td>
-					<td  border="1" width="25%" nowrap="0" colspan="4" rowspan="1">
-					<p>&nbsp;TRANSCORVALLE S.A.S.</p>
-					</td>
-					<td  border="1" width="25%" nowrap="0" colspan="4" rowspan="1">
-					<p>&nbsp;NIT</p>
-					</td>
-					<td  border="1" width="25%" nowrap="0" colspan="4" rowspan="1">
-					<p>&nbsp;821.002.227-2</p>
-					</td>
-					</tr>
-					<tr>
-					<td  width="25%" nowrap="" colspan="1" valign="bottom">
-					<p>&nbsp;CONTRATO N.</p>
-					</td>
-					<td  width="75%" nowrap="" colspan="11" valign="bottom"></td>
-					</tr>
-					<tr >
-					<td  width="25%" nowrap="" colspan="1" valign="bottom">
-					<p>&nbsp;CONTRATANTE :</p>
-					</td>
-					<td  width="25%" nowrap="" colspan="4" valign="bottom"></td>
-					<td  width="25%" nowrap="" colspan="4" valign="bottom">
-					<p>&nbsp;NIT</p>
-					</td>
-					<td  width="25%" nowrap="" colspan="4" valign="bottom"></td>
-					</tr>
-					<tr  >
-					<td  width="100%" nowrap="" colspan="12" rowspan="1" valign="top">
-					<p>&nbsp;OBJETO DEL CONTRATO:</p>
-					</td>
-					</tr>
-					<tr >
-					<td  width="100%" nowrap="" colspan="12" rowspan="1" valign="top">
-					<p>&nbsp;RECORRIDO:</p>
-					</td>
-					</tr>
-					<tr  >
-					<td   width="25%" nowrap="" colspan="1" valign="bottom">
-					<p>&nbsp;CONVENIO CONSORCIO UNION TEMPORAL CON:</p>
-					</td>
-					<td   width="75%" nowrap="" colspan="11" valign="bottom"></td>
-					</tr>
-					<tr  >
-					<td   width="100%" colspan="12" valign="bottom">
-					<p align="center"><strong>VIGENCIA DEL CONTRATO</strong></p>
-					</td>
-					</tr>
-					<tr>
-					<td   width="25%" colspan="1" nowrap="" valign="bottom">
-					<p>&nbsp;FECHA INICIAL:</p>
-					</td>
-					<td   width="25%" colspan="4" nowrap=""  valign="bottom">
-					<p>&nbsp;DIA:</p>
-					</td>
-					<td   width="25%" colspan="4" nowrap=""  valign="bottom">
-					<p>&nbsp;MES:</p>
-					</td>
-					<td   width="25%" colspan="4" nowrap=""  valign="bottom">
-					<p>&nbsp;A&#209;O:</p>
-					</td>
-					</tr>
-					<tr  >
-					<td   width="25%" colspan="1" nowrap=""  valign="bottom">
-					<p>&nbsp;FECHA VENCIMIENTO</p>
-					</td>
-					<td   width="25%" colspan="4" nowrap=""  valign="bottom">
-					<p>&nbsp;DIA:</p>
-					</td>
-					<td   width="25%" colspan="4" nowrap=""  valign="bottom">
-					<p>&nbsp;MES:</p>
-					</td>
-					<td   width="25%" colspan="4" nowrap=""  valign="bottom">
-					<p>&nbsp;A&#209;O:</p>
-					</td>
-					</tr>
-					<tr  >
-					<td   width="100%" nowrap="" colspan="12" rowspan="1" valign="top">
-					<p align="center"><strong>CARACTERISTICAS DEL VEH&#205;CULO</strong></p>
-					</td>
-					</tr>
-					<tr   >
-					<td   width="25%" colspan="1" nowrap=""  valign="bottom">
-					<p align="center"><strong>&nbsp;PLACA</strong></p>
-					</td>
-					<td   width="25%" colspan="4" nowrap=""  valign="bottom">
-					<p align="center"><strong>&nbsp;MODELO</strong></p>
-					</td>
-					<td   width="25%" colspan="4" nowrap=""  valign="bottom">
-					<p align="center"><strong>&nbsp;MARCA</strong></p>
-					</td>
-					<td   width="25%" colspan="4" nowrap=""  valign="bottom">
-					<p align="center"><strong>&nbsp;CLASE</strong></p>
-					</td>
-					</tr>
-					<tr  >
-					<td   width="25%" colspan="1" nowrap=""  valign="bottom">&nbsp;</td>
-					<td   width="25%" colspan="4" nowrap=""  valign="bottom">&nbsp;</td>
-					<td   width="25%" colspan="4" nowrap=""  valign="bottom">&nbsp;</td>
-					<td   width="25%" colspan="4" nowrap=""  valign="bottom">&nbsp;</td>
-					</tr>
-					<tr  >
-					<td   width="50%" nowrap="" colspan="4" valign="bottom">
-					<p align="center"><strong>NUMERO INTERNO</strong></p>
-					</td>
-					<td   width="50%" nowrap="" colspan="8" valign="bottom">
-					<p align="center"><strong>NUMERO DE TARJETA DE OPERACI&#211;N</strong></p>
-					</td>
-					</tr>
-					<tr  >
-					<td   width="50%" colspan="4" nowrap=""  valign="bottom">&nbsp;</td>
-					<td   width="50%" colspan="8" nowrap=""  valign="bottom">&nbsp;</td>
-					</tr>
-					<tr  >
-					<td   width="25%" colspan="1" rowspan="1" valign="top">
-					<p>&nbsp;CONDUCTOR 1:</p>
-					</td>
-					<td   width="25%" nowrap="" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;N. Licencia Conducci&#243;n:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;Vigencia:</p>
-					</td>
-					</tr>
-					<tr  >
-					<td   width="25%" colspan="1" rowspan="1" valign="top">
-					<p>&nbsp;CONDUCTOR 2:</p>
-					</td>
-					<td   width="25%" nowrap="" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;N. Licencia Conducci&#243;n:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;Vigencia:</p>
-					</td>
-					</tr>
-					<tr  >
-					<td   width="25%" colspan="1" rowspan="1" valign="top">
-					<p>&nbsp;RESPONSABLE DEL CONTRATANTE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;TELEFONO:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;DIRECCI&#211;N:</p>
-					</td>
-					</tr>
-					<tr  >
-					<td   width="100%" nowrap="" colspan="12" valign="bottom">
-					<p align="center"><strong>OCUPANTES GRUPO ESPECIFICO DE USUARIOS.</strong></p>
-					</td>
-					</tr>
-					<tr  >
-					<td   width="25%" colspan="1" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					</tr>
-					<tr  >
-					<td   width="25%" colspan="1" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					</tr>
-					<tr  >
-					<td   width="25%" colspan="1" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					</tr>
-					<tr  >
-					<td   width="25%" colspan="1" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					</tr>
-					<tr  >
-					<td   width="25%" colspan="1" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					</tr>
-					<tr  >
-					<td   width="25%" colspan="1" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					</tr>
-					<tr  >
-					<td   width="25%" colspan="1" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					</tr>
-					<tr  >
-					<td   width="25%" colspan="1" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					</tr>
-					<tr  >
-					<td   width="25%" colspan="1" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					</tr>
-					<tr  >
-					<td   width="25%" colspan="1" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;NOMBRE:</p>
-					</td>
-					<td   width="25%" colspan="4" rowspan="1" valign="top">
-					<p>&nbsp;C.C.:</p>
-					</td>
-					</tr>
-					<tr  >
-					<td   width="50%" nowrap="" colspan="4" rowspan="1" valign="top">
-					<p align='center'><strong><em><br>&nbsp;Calle 27 # 32-47 Tulu&#225;, Valle
-					<br>&nbsp;Tel: (57 2) 225 3308
-					<br>&nbsp;Cel.: (57) 310-420 1819
-					<br>&nbsp;Transcorvalle@hotmail.es
-					</em>
-					</strong>
-					</p>
-					</td>
-					<td   width="50%" nowrap="" colspan="8" rowspan="1" valign="bottom">
-					<p align="center">FIRMA Y SELLO</p>
-					</td>
-					</tr>
-			</tbody>
-		</table>
+		<br><br>
+		<table width="100%">
+			<tr>
+				<td border="1" width="100%">
+						<font style="font-size:12 font-weight: bold; text-align:center">
+							FICHA TECNICA DEL FORMATO &#218;NICO DEL EXTRACTO DEL CONTRATO "FUEC"
+						</font>
+				</td>
+			</tr>
+			<tr>
+				<td  border="1" width="50%" >
+					<br>
+					<div valign="middle" align="center">
+						<img width="200" height="60" src="../Images/mintransporte.png"/>
+					</div>
+				</td>
+				<td  border="1" width="50%">
+					<br>
+					<div valign="middle" align="center">
+						<img width="200" height="60" src="../Images/Logo.png"/>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td  border="1" width="100%" valign="middle" align="center">
+					<font style="font-size:10 font-weight:bold;" >
+						<br>
+						FORMATO UNICO DE EXTRACTO DEL CONTRATO DEL SERVICIO P&#218;BLICO DE TRANSPORTE TERRESTRE AUTOMOTOR
+						ESPECIAL N.3760092002014
+					</font>
+				</td>
+			</tr>
+			<tr>
+				<td  border="1" width="35%" align="center">
+					<font style="font-size:10" >
+						RAZ&#211;N SOCIAL:
+					</font>
+				</td>
+				<td border="1" width="35%"  align="center">
+					<font style="font-size:10" >
+						TRANSCORVALLE S.A.S.
+					</font>
+				</td>
+				<td border="1" width="10%"  align="center">
+					<font style="font-size:10" >
+						NIT
+					</font>
+				</td>
+				<td border="1" width="20%"  align="center">
+					<font style="font-size:10" >
+						821.002.227-2
+					</font>
+				</td>
+			</tr>
+			<tr>
+				<td border="1" width="35%" align="center">
+					<font style="font-size:10" >
+						CONTRATO N.
+					</font>
+				</td>
+				<td border="1" width="65%" align="center">
+					<font style="font-size:10" >
+						&nbsp;
+					</font>
+				</td>
+			</tr>
+			<tr>
+				<td border="1" width="35%" align="center">
+					<font style="font-size:10" >
+					CONTRATANTE:
+					</font>
+				</td>
+				<td border="1" width="35%" align="center">
+					<font style="font-size:10" >
+						&nbsp;
+					</font>
+				</td>
+				<td border="1" width="10%" align="center">
+					<font style="font-size:10" >
+						NIT
+					</font>
+				</td>
+				<td border="1" width="20%" align="center">
+					<font style="font-size:10" >
+						&nbsp;
+					</font>
+				</td>
+			</tr>
+			<tr>
+				<td border="1" width="100%" align="left">
+					<font style="font-size:10" >
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						OBJETO DEL CONTRATO:
+					</font>
+				</td>
+			</tr>
+			<tr>
+				<td border="1" width="100%" align="left">
+					<font style="font-size:10" >
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						RECORRIDO:
+					</font>
+				</td>
+			</tr>
+<tr  >
+<td   width="25%" nowrap="" colspan="1" valign="bottom">
+<p>&nbsp;CONVENIO CONSORCIO UNION TEMPORAL CON:</p>
+</td>
+<td   width="75%" nowrap="" colspan="11" valign="bottom"></td>
+</tr>
+<tr  >
+<td   width="100%" colspan="12" valign="bottom">
+<p align="center"><strong>VIGENCIA DEL CONTRATO</strong></p>
+</td>
+</tr>
+<tr>
+<td   width="25%" colspan="1" nowrap="" valign="bottom">
+<p>&nbsp;FECHA INICIAL:</p>
+</td>
+<td   width="25%" colspan="4" nowrap=""  valign="bottom">
+<p>&nbsp;DIA:</p>
+</td>
+<td   width="25%" colspan="4" nowrap=""  valign="bottom">
+<p>&nbsp;MES:</p>
+</td>
+<td   width="25%" colspan="4" nowrap=""  valign="bottom">
+<p>&nbsp;A&#209;O:</p>
+</td>
+</tr>
+<tr  >
+<td   width="25%" colspan="1" nowrap=""  valign="bottom">
+<p>&nbsp;FECHA VENCIMIENTO</p>
+</td>
+<td   width="25%" colspan="4" nowrap=""  valign="bottom">
+<p>&nbsp;DIA:</p>
+</td>
+<td   width="25%" colspan="4" nowrap=""  valign="bottom">
+<p>&nbsp;MES:</p>
+</td>
+<td   width="25%" colspan="4" nowrap=""  valign="bottom">
+<p>&nbsp;A&#209;O:</p>
+</td>
+</tr>
+<tr  >
+<td   width="100%" nowrap="" colspan="12" rowspan="1" valign="top">
+<p align="center"><strong>CARACTERISTICAS DEL VEH&#205;CULO</strong></p>
+</td>
+</tr>
+<tr   >
+<td   width="25%" colspan="1" nowrap=""  valign="bottom">
+<p align="center"><strong>&nbsp;PLACA</strong></p>
+</td>
+<td   width="25%" colspan="4" nowrap=""  valign="bottom">
+<p align="center"><strong>&nbsp;MODELO</strong></p>
+</td>
+<td   width="25%" colspan="4" nowrap=""  valign="bottom">
+<p align="center"><strong>&nbsp;MARCA</strong></p>
+</td>
+<td   width="25%" colspan="4" nowrap=""  valign="bottom">
+<p align="center"><strong>&nbsp;CLASE</strong></p>
+</td>
+</tr>
+<tr  >
+<td   width="25%" colspan="1" nowrap=""  valign="bottom">&nbsp;</td>
+<td   width="25%" colspan="4" nowrap=""  valign="bottom">&nbsp;</td>
+<td   width="25%" colspan="4" nowrap=""  valign="bottom">&nbsp;</td>
+<td   width="25%" colspan="4" nowrap=""  valign="bottom">&nbsp;</td>
+</tr>
+<tr  >
+<td   width="50%" nowrap="" colspan="4" valign="bottom">
+<p align="center"><strong>NUMERO INTERNO</strong></p>
+</td>
+<td   width="50%" nowrap="" colspan="8" valign="bottom">
+<p align="center"><strong>NUMERO DE TARJETA DE OPERACI&#211;N</strong></p>
+</td>
+</tr>
+<tr  >
+<td   width="50%" colspan="4" nowrap=""  valign="bottom">&nbsp;</td>
+<td   width="50%" colspan="8" nowrap=""  valign="bottom">&nbsp;</td>
+</tr>
+<tr  >
+<td   width="25%" colspan="1" rowspan="1" valign="top">
+<p>&nbsp;CONDUCTOR 1:</p>
+</td>
+<td   width="25%" nowrap="" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;N. Licencia Conducci&#243;n:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;Vigencia:</p>
+</td>
+</tr>
+<tr  >
+<td   width="25%" colspan="1" rowspan="1" valign="top">
+<p>&nbsp;CONDUCTOR 2:</p>
+</td>
+<td   width="25%" nowrap="" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;N. Licencia Conducci&#243;n:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;Vigencia:</p>
+</td>
+</tr>
+<tr  >
+<td   width="25%" colspan="1" rowspan="1" valign="top">
+<p>&nbsp;RESPONSABLE DEL CONTRATANTE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;TELEFONO:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;DIRECCI&#211;N:</p>
+</td>
+</tr>
+<tr  >
+<td   width="100%" nowrap="" colspan="12" valign="bottom">
+<p align="center"><strong>OCUPANTES GRUPO ESPECIFICO DE USUARIOS.</strong></p>
+</td>
+</tr>
+<tr  >
+<td   width="25%" colspan="1" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+</tr>
+<tr  >
+<td   width="25%" colspan="1" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+</tr>
+<tr  >
+<td   width="25%" colspan="1" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+</tr>
+<tr  >
+<td   width="25%" colspan="1" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+</tr>
+<tr  >
+<td   width="25%" colspan="1" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+</tr>
+<tr  >
+<td   width="25%" colspan="1" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+</tr>
+<tr  >
+<td   width="25%" colspan="1" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+</tr>
+<tr  >
+<td   width="25%" colspan="1" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+</tr>
+<tr  >
+<td   width="25%" colspan="1" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+</tr>
+<tr  >
+<td   width="25%" colspan="1" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;NOMBRE:</p>
+</td>
+<td   width="25%" colspan="4" rowspan="1" valign="top">
+<p>&nbsp;C.C.:</p>
+</td>
+</tr>
+<tr  >
+<td   width="50%" nowrap="" colspan="4" rowspan="1" valign="top">
+<p align='center'><strong><em><br>&nbsp;Calle 27 # 32-47 Tulu&#225;, Valle
+<br>&nbsp;Tel: (57 2) 225 3308
+<br>&nbsp;Cel.: (57) 310-420 1819
+<br>&nbsp;Transcorvalle@hotmail.es
+</em>
+</strong>
+</p>
+</td>
+<td   width="50%" nowrap="" colspan="8" rowspan="1" valign="bottom">
+<p align="center">FIRMA Y SELLO</p>
+</td>
+</tr>
+	</table>
 EOD;
 		$this->pdf->writeHTML($html, true, false, true, false, '');
 	}
