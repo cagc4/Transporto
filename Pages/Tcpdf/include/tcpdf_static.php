@@ -476,9 +476,45 @@ class TCPDF_STATIC {
 	 * @public static
 	 */
 	public static function getPageSizeFromFormat($format) {
+		
+		/*INICIO CAGC
+		 
+		 * Ejemplo para A4 
+		 
+		 X				Y	
+		
+		21				29,7	cm
+		10				10	
+		210				297	mm
+		0,039370079		0,039370079	
+		8,27			11,69	in
+		72				72	
+		595,276			841,890	
+		 
+		 * Conversion para CAGC1  -->  Orden de Servicio Transcorvalle
+		 
+		  
+		X				Y	
+		
+		21,59			13,94	cm
+		10				10	
+		215,9			139,4	mm
+		0,039370079		0,039370079	
+		8,50			5,49	in
+		72				72	
+		612,000			395,150	
+		 
+		 FIN CAGC 
+		 */
+		
+		
+		
 		// Paper cordinates are calculated in this way: (inches * 72) where (1 inch = 25.4 mm)
 		switch (strtoupper($format)) {
 			// ISO 216 A Series + 2 SIS 014711 extensions
+			//INICIO CAGC
+			case 'CAGC1' : {$pf = array( 612, 395.150); break;}
+			//FIN CAGC
 			case 'A0' : {$pf = array( 2383.937, 3370.394); break;}
 			case 'A1' : {$pf = array( 1683.780, 2383.937); break;}
 			case 'A2' : {$pf = array( 1190.551, 1683.780); break;}
