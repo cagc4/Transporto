@@ -7,8 +7,8 @@ $reporte='FUEC';
 
 $consecutivo='376009200201400010001';
 
-$objTemplate = new TemplateReport($reporte,'P','Legal',false,'empleado');
-$objTemplate->setupForm($reporte,false,false,false,false,true);
+$objTemplate = new TemplateReport($reporte,'P','LEGAL',false,'empleado');
+$objTemplate->setupForm($reporte,false,false,false,false,false);
 
 $objTemplate->fuec($consecutivo);
 $objTemplate->exportarPdf($consecutivo);

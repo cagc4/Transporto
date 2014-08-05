@@ -91,6 +91,21 @@ class TemplateReport
 		$this->pdf->SetAutoPageBreak($auto_page_break, $bMargin);
 	}
 
+	function codigoBarraEstilo()
+	{
+		$style = array(
+			'border' => 2,
+			'vpadding' => 'auto',
+			'hpadding' => 'auto',
+			'fgcolor' => array(0,0,0),
+			'bgcolor' => false, //array(255,255,255)
+			'module_width' => 1, // width of a single module in points
+			'module_height' => 1 // height of a single module in points
+		);
+
+		return $style;
+	}
+
 	function exportarPdf($id){
 		$this->pdf->Output($id.'pdf', 'I');
 	}
@@ -833,7 +848,6 @@ EOD;
 
 		$html = <<<EOD
 
-		<br><br><br><br><br>
 		<table width="100%">
 			<tr>
 				<td border="1" width="100%" align="center">
@@ -1344,7 +1358,7 @@ EOD;
 	</tr>
 	<tr>
 		<td border="1" width="50%" align="center">
-			<font style="font-size:12">
+			<font style="font-size:10">
 				<strong>
 					<em>
 						<br>&nbsp;Calle 27 # 32-47 Tulu&#225;, Valle
@@ -1356,8 +1370,8 @@ EOD;
 			</p>
 	</td>
 		<td border="1" width="50%" align="center" valign='bottom' >
-			<font style="font-size:12">
-				<br><br><br><br>
+			<font style="font-size:10">
+				<br><br><br>
 				<strong>
 					FIRMA Y SELLO
 				</strong>
@@ -1367,17 +1381,595 @@ EOD;
 	</table>
 EOD;
 
-		$style = array(
-		    'border' => 2,
-		    'vpadding' => 'auto',
-		    'hpadding' => 'auto',
-		    'fgcolor' => array(0,0,0),
-		    'bgcolor' => false, //array(255,255,255)
-		    'module_width' => 1, // width of a single module in points
-		    'module_height' => 1 // height of a single module in points
-		);
+
+		$style=$this->codigoBarraEstilo();
+		$this->pdf->write2DBarcode('www.trasnscorvalle.com.co/?codigo=123456', 'QRCODE,L', 10, 10, 25,25, $style, 'N');
 		$this->pdf->writeHTML($html, true, false, true, false, '');
-		$this->pdf->write2DBarcode('www.trasnscorvalle.com.co/?codigo=123456', 'QRCODE,L', 90, 280, 30,30, $style, 'N');
+
+		$this->pdf->AddPage();
+
+		$html = <<<EOD
+
+			<table width="100%">
+				<tr>
+					<td border="1"  width="100%" align="center">
+						<font style="font-size:10">
+							<strong>OCUPANTES GRUPO ESPECIFICO DE USUARIOS.</strong>
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+				</tr>
+					<tr>
+						<td border="1"  width="30%">
+							<font style="font-size:10">
+								NOMBRE:
+							</font>
+						</td>
+						<td border="1"  width="20%">
+							<font style="font-size:10">
+								C.C.:
+							</font>
+						</td>
+						<td border="1"  width="30%">
+							<font style="font-size:10">
+								NOMBRE:
+							</font>
+						</td>
+						<td border="1"  width="20%">
+							<font style="font-size:10">
+								C.C.:
+							</font>
+						</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:10">
+							NOMBRE:
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:10">
+							C.C.:
+						</font>
+					</td>
+				</tr>
+			</table>
+
+			<br><br>
+			<table width="100%">
+				<tr>
+					<td width="11%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+					<td width="11%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+					<td width="11%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+					<td width="10%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+				</tr>
+				<tr>
+					<td  width="11%"><font style="font-size:7"><br>SALIDA DE EMERGENCIA</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+					<td  width="11%" align="center" ><font style="font-size:7"><br>LLANTA RPTO</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+					<td  width="11%"align="center"  ><font style="font-size:7"><br>EMBLEMAS</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+					<td  width="10%" align="center"><font style="font-size:7"><br>LAMINAS Y PINTURA</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+				</tr>
+				<br>
+				<tr>
+					<td width="11%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+					<td width="11%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+					<td width="11%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+					<td width="10%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+				</tr>
+				<tr>
+					<td  width="11%"><font style="font-size:7"><br>GUARDA POLVO</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+					<td  width="11%" align="center" ><font style="font-size:7"><br>SILLETERIAS</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+					<td  width="11%"align="center"  ><font style="font-size:7"><br>PITO</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+					<td  width="10%" align="center"><font style="font-size:7"><br>VENTANILLAS</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+				</tr>
+				<br>
+				<tr>
+					<td width="11%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+					<td width="11%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+					<td width="11%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+				</tr>
+				<tr>
+					<td  width="11%"><font style="font-size:7"><br>LIMPIA BRISAS</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+					<td  width="11%" align="center" ><font style="font-size:7"><br>VISIBILIDAD</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+					<td  width="11%"align="center"  ><font style="font-size:7"><br>ESPEJO RETROVISOR</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+				</tr>
+				<br>
+				<tr>
+					<td width="100%" align="center">
+						<font style="font-size:10">
+							<strong>HERRAMIENTAS</strong>
+						</font>
+					</td>
+				</tr>
+				<br>
+				<tr>
+					<td width="11%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+					<td width="11%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+					<td width="11%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+					<td width="10%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+				</tr>
+				<tr>
+					<td  width="11%"><font style="font-size:7"><br>LLAVES PERNO</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+					<td  width="11%" align="center" ><font style="font-size:7"><br>EXTINTOR</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+					<td  width="11%"align="center"  ><font style="font-size:7"><br>B<br>ANDEROLAS</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+					<td  width="10%" align="center"><font style="font-size:7"><br>B<br>OTIQUIN</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+				</tr>
+				<br>
+				<tr>
+					<td width="100%" align="center">
+						<font style="font-size:10">
+							<strong>CONVENCIONALES</strong>
+						</font>
+					</td>
+				</tr>
+				<br>
+				<tr>
+					<td width="11%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+					<td width="11%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+					<td width="11%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+					<td width="10%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+				</tr>
+				<tr>
+					<td  width="11%"><font style="font-size:7"><br>LUCES ALTA</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+					<td  width="11%" align="center" ><font style="font-size:7"><br>LUCES BAJA</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+					<td  width="11%"align="center"  ><font style="font-size:7"><br>LUCES MEDIA</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+					<td  width="10%" align="center"><font style="font-size:7"><br>ESTACIONARIAS</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+				</tr>
+				<br>
+				<tr>
+					<td width="11%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+					<td width="11%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+					<td width="11%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+					<td width="10%"></td>
+					<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+					<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+				</tr>
+				<tr>
+					<td  width="11%"><font style="font-size:7"><br>FRENOS</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+					<td  width="11%" align="center" ><font style="font-size:7"><br>LUZ REVERSA</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+					<td  width="11%"align="center"  ><font style="font-size:7"><br>DIRECCIONALES</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+					<td  width="10%" align="center"><font style="font-size:7"><br>LAMPARAS</font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+					<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+			</tr>
+			<BR>
+			<tr>
+				<td width="11%"></td>
+				<td width="7%" align="center"><font style="font-size:10">BUENO</font></td>
+				<td width="7%" align="center"><font style="font-size:10">MALO</font></td>
+				<td width="75%"></td>
+			</tr>
+			<tr>
+				<td  width="11%"><font style="font-size:7"><br>TACOS</font></td>
+				<td  width="7%" border="1" align="center"><font style="font-size:10"><br>B<br></font></td>
+				<td  width="7%" border="1" align="center"><font style="font-size:10"><br>M<br></font></td>
+				<td width="75%" >
+					<br><br>
+					<font style="font-size:10">
+						&nbsp;ESTADO DE LOS ELEMENTOS: &nbsp; BUENO _______&nbsp;REGULAR ____ &nbsp;MALO _____
+					</font>
+				</td>
+			</tr>
+			<br>
+			<tr>
+				<td width="100%">
+					<div style="text-align:justify">
+					<font style="font-size:10"><strong>NOTA:</strong><br>La presente es fiel copia de la revisi&#243;n t&#233;cnico mec&#225;nica, efectuada por un centro de diagn&#243;stico automotor
+						autorizado por el ministerio para efectuar dicha revisi&#243;n TRANSCORVALLE S.A.S, basada en el certificado de movilizaci&#243;n el cual es el responsable
+						de la revisi&#243;n t&#233;cnico mec&#225;nica de un veh&#237;culo automotor (seg&#250;n c&#243;digo nacional de Transporte).
+					</font>
+					</div>
+				</td>
+			</tr>
+		</table>
+EOD;
+
+		$this->pdf->writeHTML($html, true, false, true, false, '');
 
 	}
 }
