@@ -26,17 +26,18 @@ Body{
 }
 	
 
-.piepagina{
+footer{
 	/*background-color: #000000;*/
 	border-width:thin; 
 	margin: 50px 0 0 0; 
 	width:99%;
 	height: 20px;
-	position: absolute;
+	position: center;
 	font-style:italic;
 	color:#3c960c;
 	top:87%;
 	z-index: 1;
+	text-align:center;
 }
 
 .login{
