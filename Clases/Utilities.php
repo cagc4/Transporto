@@ -277,6 +277,10 @@ class Utilities
 					if ($i == 1)
 						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=ContractExtract_srch&Consecutivo={Consecutivo}";
 					break;
+				case 'Consulta Extracto Contratos':
+					if ($i == 1)
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Fuec_add&Consecutivo={Consecutivo}";
+					break;
 				case 'Usuarios':
 					if ($i == 1)
 						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=User_srch&Usuario={Usuario}";
@@ -288,6 +292,10 @@ class Utilities
 				case 'Contrato':
 					if ($i == 1)
 						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Contract_srch&Consecutivo={Consecutivo}";
+					break;
+				case 'FUEC':
+					if ($i == 2)
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=PrintFuec&Numero_FUEC={Numero_FUEC}";
 					break;
 			}
 			$col["width"] = "15";

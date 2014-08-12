@@ -10,60 +10,36 @@ class Fuec
 		$this->util = new Utilities();
 	}
 
-	function addContract($contractData)
+	function addFuec($fuecData, $numFuec, $numContract)
 	{
-		$respCode = 0;
-		
-		$contractBasicData = $contractData->contractFormBasicData->contractFormBasic;
-		$contractLocationData = $contractData->contractFormLocationData->contractFormLocation;
-		$contractScheduleData = $contractData->contractFormScheduleData->contractFormSchedule;
-		$contractConditionData = $contractData->contractFormConditionData->contractFormCondition;
-		if($contractBasicData->plate != '') {
-			$this->result = $this->util->db->Execute("SELECT CC_CAPACIDAD_FLD AS size FROM CC_VEHICLE_TBL WHERE CC_PLACA_FLD = '".$contractBasicData->plate."'");
-			if(!$this->result) {
-				$respCode = 2;
-			}
-			else {
-				$result = $this->result->FetchRow();
-				if($casualTravelBasicData->numPassengers > $result['size']) {
-					$respCode = 3;
+		$respCode = 0;		
+		$fuecBasicData = $fuecData->fuecFormBasicData->fuecFormBasic;
+		$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_TBL VALUES (0, '" . $numFuec . "', " . $numContract . ")");
+		if($this->result) {
+			foreach($fuecBasicData as $fuec) {
+				$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_OCUPANTES_TBL VALUES (0, '" . $numFuec . "', '" . $fuec->docNum . "', '" . $fuec->name . "')");
+				if(!$this->result) {
+					$this->util->db->Execute("DELETE FROM CC_FUEC_TBL WHERE CC_NUMERO_FUEC_FLD = ".$numFuec);
+					$this->util->db->Execute("DELETE FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = ".$numFuec);
+					$respCode = 2;
+					break;
 				}
 			}
 		}
-		if($respCode == 0) {
-			$this->getNextConsecutive();
-			$result = $this->result->FetchRow();
-			$this->result = $this->util->db->Execute("INSERT INTO CC_CONTRACT_TBL VALUES('".$result['number']."',
-																					 '".$contractBasicData->object."',
-																					 '".$contractBasicData->number."',
-																					 '".$contractBasicData->plate."',
-																					 '".$contractBasicData->totalBuses."',
-																					 '".$contractBasicData->numPassengers."',
-																					 STR_TO_DATE('".$contractScheduleData->outputDate->month."/".$contractScheduleData->outputDate->day."/".$contractScheduleData->outputDate->year."','%m/%d/%Y'),
-																					 STR_TO_DATE('".$contractScheduleData->returnDate->month."/".$contractScheduleData->returnDate->day."/".$contractScheduleData->returnDate->year."','%m/%d/%Y'),
-																					 '".$contractScheduleData->outputTime."',
-																					 '".$contractScheduleData->returnTime."',
-																					 '".$contractLocationData->provenience."',
-																					 '".$contractLocationData->destination."',
-																					 '".$contractLocationData->outputAddress."',
-																					 STR_TO_DATE('".$contractConditionData->contractFirm->month."/".$contractConditionData->contractFirm->day."/".$contractConditionData->contractFirm->year."','%m/%d/%Y'),
-																					 '".$contractConditionData->contractCost."',
-																					 '".$contractConditionData->advance."')");
-			if(!$this->result) {
-				$this->util->db->Execute("DELETE FROM CC_CONTRACT_TBL WHERE CC_ID_FLD = '".$result['number']."'");
-				$respCode = 1;
-			}
+		else {
+			$this->util->db->Execute("DELETE FROM CC_FUEC_TBL WHERE CC_NUMERO_FUEC_FLD = ".$numFuec);
+			$respCode = 1;
 		}
 		return $respCode;
 	}
 	
 	function getNextConsecutive() {
-		$this->result = $this->util->db->Execute("SHOW TABLE STATUS LIKE 'CC_CONTRACT_TBL'");
+		$this->result = $this->util->db->Execute("SHOW TABLE STATUS LIKE 'CC_FUEC_TBL'");
 		$result = $this->result->FetchRow();
-		$this->result = $this->util->db->Execute("SELECT LPAD(".$result['Auto_increment'].", 11, 0) AS number FROM DUAL");
+		$this->result = $this->util->db->Execute("SELECT LPAD(".$result['Auto_increment'].", 4, 0) AS number FROM DUAL");
 	}
 	
-	function getContract($number) {
+	function getFuec($number) {
 		$this->result = $this->util->db->Execute("SELECT CC_ID_FLD AS consecutivo,
 														 CC_OBJETOCONT_FLD AS objetoS,
 														 CC_NUME_DOC_FLD AS numeroDoc,

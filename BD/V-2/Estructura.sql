@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version: 5.5.8)
-# Date: 2014-08-08 22:54:43
+# Date: 2014-08-11 23:24:48
 # Generator: MySQL-Front 5.3  (Build 4.121)
 
 /*!40101 SET NAMES utf8 */;
@@ -111,7 +111,7 @@ CREATE TABLE `cc_fields_tbl` (
 #
 
 CREATE TABLE `cc_formcontract_tbl` (
-  `cc_id_fld` bigint(11) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `cc_id_fld` bigint(11) unsigned NOT NULL AUTO_INCREMENT,
   `cc_objetoCont_fld` varchar(255) DEFAULT NULL,
   `cc_nume_doc_fld` varchar(255) DEFAULT NULL,
   `cc_placa_fld` varchar(255) DEFAULT NULL,
@@ -126,7 +126,7 @@ CREATE TABLE `cc_formcontract_tbl` (
   `cc_dirSalida_fld` varchar(255) DEFAULT NULL,
   `cc_escolar_fld` int(1) DEFAULT '0',
   PRIMARY KEY (`cc_id_fld`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 #
 # Structure for table "cc_formocacional_tbl"
@@ -162,7 +162,7 @@ CREATE TABLE `cc_fuec_ocupantes_tbl` (
   `cc_num_id_fld` varchar(20) DEFAULT NULL,
   `cc_nombre_fld` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`cc_id_fld`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 #
 # Structure for table "cc_fuec_tbl"
@@ -170,10 +170,10 @@ CREATE TABLE `cc_fuec_ocupantes_tbl` (
 
 CREATE TABLE `cc_fuec_tbl` (
   `cc_id_fld` int(11) NOT NULL AUTO_INCREMENT,
-  `cc_num_fuec_fld` varchar(50) DEFAULT NULL,
+  `cc_numero_fuec_fld` varchar(50) DEFAULT NULL,
   `cc_num_contrato_tbl` int(11) DEFAULT NULL,
   PRIMARY KEY (`cc_id_fld`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 #
 # Structure for table "cc_imagenes_tbl"
@@ -304,13 +304,13 @@ CREATE VIEW `cc_documentos_vw` AS
   select (case when ((to_days(`a`.`cc_fecha_ven_fld`) - to_days(curdate())) < 0) then concat((to_days(`a`.`cc_fecha_ven_fld`) - to_days(curdate())),' dias - Vencido') when (((to_days(`a`.`cc_fecha_ven_fld`) - to_days(curdate())) >= 1) and ((to_days(`a`.`cc_fecha_ven_fld`) - to_days(curdate())) <= 30)) then concat((to_days(`a`.`cc_fecha_ven_fld`) - to_days(curdate())),' dias - Por vencer') else concat((to_days(`a`.`cc_fecha_ven_fld`) - to_days(curdate())),' dias - Vigente') end) AS `Estado`,(select `cc_valores_tbl`.`cc_descripcion_fld` from `cc_valores_tbl` where ((`cc_valores_tbl`.`cc_campo_fld` = 'cc_tipo_docum_fld') and (`cc_valores_tbl`.`cc_valor_fld` = `a`.`cc_tipo_docum_fld`))) AS `Documento`,`a`.`cc_identificador_fld` AS `Numero`,`a`.`cc_placa_fld` AS `Placa`,(select `cc_valores_tbl`.`cc_descripcion_fld` from `cc_valores_tbl` where ((`cc_valores_tbl`.`cc_campo_fld` = 'cc_tipo_doc_fld') and (`cc_valores_tbl`.`cc_valor_fld` = `c`.`cc_tipo_doc_fld`))) AS `Tipo_Identificacion`,`c`.`cc_nume_doc_fld` AS `Numero_Documento`,(select `cc_valores_tbl`.`cc_descripcion_fld` from `cc_valores_tbl` where ((`cc_valores_tbl`.`cc_campo_fld` = 'cc_type_pc_fld') and (`cc_valores_tbl`.`cc_valor_fld` = `c`.`cc_type_pc_fld`))) AS `Tipo_Persona`,`a`.`cc_fecha_exp_fld` AS `Fecha_Expedicion`,`a`.`cc_fecha_ven_fld` AS `Fecha_Vencimiento`,`a`.`cc_cobertura_fld` AS `Cobertura`,`a`.`cc_org_tran_fld` AS `Organismo_Transito`,`a`.`cc_observaciones_fld` AS `Observaciones` from (((`cc_documento_tbl` `a` join `cc_per_veh_tbl` `b`) join `cc_propcond_tbl` `c`) join `cc_person_tbl` `d`) where ((`a`.`cc_placa_fld` = `b`.`cc_placa_fld`) and (`b`.`cc_tipo_doc_fld` = `c`.`cc_tipo_doc_fld`) and (`b`.`cc_nume_doc_fld` = `c`.`cc_nume_doc_fld`) and (`c`.`cc_tipo_doc_fld` = `d`.`cc_tipo_doc_fld`) and (`c`.`cc_nume_doc_fld` = `d`.`cc_nume_doc_fld`) and (`c`.`cc_type_pc_fld` = 1)) order by 1;
 
 CREATE VIEW `cc_formcontract_vw` AS 
-  select `cc_formcontract_tbl`.`cc_id_fld` AS `Consecutivo`,`cc_formcontract_tbl`.`cc_objetoCont_fld` AS `Objeto_Contrato`,`cc_formcontract_tbl`.`cc_nume_doc_fld` AS `Numero_Documento`,`cc_formcontract_tbl`.`cc_placa_fld` AS `Placa`,`cc_formcontract_tbl`.`cc_numbuses_fld` AS `Numero_Buses`,`cc_formcontract_tbl`.`cc_fechaSali_fld` AS `Fecha_Salida`,`cc_formcontract_tbl`.`cc_fechaRegr_fld` AS `Fecha_Regreso`,`cc_formcontract_tbl`.`cc_horaSali_fld` AS `Hora_Salida`,`cc_formcontract_tbl`.`cc_horaRegr_fld` AS `Hora_Regreso`,`cc_formcontract_tbl`.`cc_origen_fld` AS `Origen`,`cc_formcontract_tbl`.`cc_destino_fld` AS `Destino`,`cc_formcontract_tbl`.`cc_dirSalida_fld` AS `Direccion_Salida` from `cc_formcontract_tbl`;
+  select lpad(`cc_formcontract_tbl`.`cc_id_fld`,4,0) AS `Consecutivo`,`cc_formcontract_tbl`.`cc_objetoCont_fld` AS `Objeto_Contrato`,`cc_formcontract_tbl`.`cc_nume_doc_fld` AS `Numero_Documento`,`cc_formcontract_tbl`.`cc_placa_fld` AS `Placa`,`cc_formcontract_tbl`.`cc_numbuses_fld` AS `Numero_Buses`,`cc_formcontract_tbl`.`cc_fechaSali_fld` AS `Fecha_Salida`,`cc_formcontract_tbl`.`cc_fechaRegr_fld` AS `Fecha_Regreso`,`cc_formcontract_tbl`.`cc_horaSali_fld` AS `Hora_Salida`,`cc_formcontract_tbl`.`cc_horaRegr_fld` AS `Hora_Regreso`,`cc_formcontract_tbl`.`cc_origen_fld` AS `Origen`,`cc_formcontract_tbl`.`cc_destino_fld` AS `Destino`,`cc_formcontract_tbl`.`cc_dirSalida_fld` AS `Direccion_Salida` from `cc_formcontract_tbl`;
 
 CREATE VIEW `cc_formocacional_vw` AS 
   select `cc_formocacional_tbl`.`cc_id_fld` AS `Consecutivo`,`cc_formocacional_tbl`.`cc_objetoCont_fld` AS `Objeto_Contrato`,`cc_formocacional_tbl`.`cc_nume_doc_fld` AS `Numero_Documento`,`cc_formocacional_tbl`.`cc_placa_fld` AS `Placa`,`cc_formocacional_tbl`.`cc_numbuses_fld` AS `Numero_Buses`,`cc_formocacional_tbl`.`cc_fechaSali_fld` AS `Fecha_Salida`,`cc_formocacional_tbl`.`cc_fechaRegr_fld` AS `Fecha_Regreso`,`cc_formocacional_tbl`.`cc_horaSali_fld` AS `Hora_Salida`,`cc_formocacional_tbl`.`cc_horaRegr_fld` AS `Hora_Regreso`,`cc_formocacional_tbl`.`cc_origen_fld` AS `Origen`,`cc_formocacional_tbl`.`cc_destino_fld` AS `Destino`,`cc_formocacional_tbl`.`cc_dirSalida_fld` AS `Direccion_Salida` from `cc_formocacional_tbl`;
 
 CREATE VIEW `cc_fuec_vw` AS 
-  select `fc`.`cc_id_fld` AS `Consecutivo_FUEC`,`fc`.`cc_num_fuec_fld` AS `Numero_FUEC`,`fr`.`cc_id_fld` AS `Numero_Contrato`,`fr`.`cc_objetoCont_fld` AS `Objeto_Contrato`,`fr`.`cc_placa_fld` AS `Placa`,`fr`.`cc_numbuses_fld` AS `Numero_Buses`,`fr`.`cc_fechaSali_fld` AS `Fecha_Salida`,`fr`.`cc_destino_fld` AS `Destino` from (`cc_fuec_tbl` `fc` join `cc_formcontract_tbl` `fr` on((`fc`.`cc_num_contrato_tbl` = `fr`.`cc_id_fld`)));
+  select `fc`.`cc_id_fld` AS `Consecutivo_FUEC`,`fc`.`cc_numero_fuec_fld` AS `Numero_FUEC`,`fr`.`cc_id_fld` AS `Numero_Contrato`,`fr`.`cc_objetoCont_fld` AS `Objeto_Contrato`,`fr`.`cc_placa_fld` AS `Placa`,`fr`.`cc_numbuses_fld` AS `Numero_Buses`,`fr`.`cc_fechaSali_fld` AS `Fecha_Salida`,`fr`.`cc_destino_fld` AS `Destino` from (`cc_fuec_tbl` `fc` join `cc_formcontract_tbl` `fr` on((`fc`.`cc_num_contrato_tbl` = `fr`.`cc_id_fld`)));
 
 CREATE VIEW `cc_prodcon_vw` AS 
   select (select `cc_valores_tbl`.`cc_descripcion_fld` from `cc_valores_tbl` where ((`cc_valores_tbl`.`cc_campo_fld` = 'cc_tipo_doc_fld') and (`cc_valores_tbl`.`cc_valor_fld` = `per`.`cc_tipo_doc_fld`))) AS `Tipo_Identificacion`,`per`.`cc_nume_doc_fld` AS `Numero_Documento`,`per`.`cc_Fnombre_fld` AS `Nombre`,`per`.`cc_fechaNac_fld` AS `Fecha_Nacimiento`,(select `cc_valores_tbl`.`cc_descripcion_fld` from `cc_valores_tbl` where ((`cc_valores_tbl`.`cc_campo_fld` = 'cc_type_pc_fld') and (`cc_valores_tbl`.`cc_valor_fld` = `pp`.`cc_type_pc_fld`))) AS `Tipo`,(select `cc_valores_tbl`.`cc_descripcion_fld` from `cc_valores_tbl` where ((`cc_valores_tbl`.`cc_campo_fld` = 'cc_banco_fld') and (`cc_valores_tbl`.`cc_valor_fld` = `pp`.`cc_banco_fld`))) AS `Banco`,(select `cc_valores_tbl`.`cc_descripcion_fld` from `cc_valores_tbl` where ((`cc_valores_tbl`.`cc_campo_fld` = 'cc_tipoCuenta_fld') and (`cc_valores_tbl`.`cc_valor_fld` = `pp`.`cc_tipoCuenta_fld`))) AS `Tipo_Cuenta`,`pp`.`cc_numcuenta_fld` AS `Numero_de_Cuenta`,`adr`.`cc_direccion_fld` AS `Direccion`,`adr`.`cc_telefono_fld` AS `Telefono`,`adr`.`cc_celular_fld` AS `Celular`,`adr`.`cc_email_fld` AS `Email`,`dep`.`cc_descripc_fld` AS `Departamento`,`cit`.`cc_descripc_fld` AS `Ciudad` from ((`cc_propcond_tbl` `pp` join `cc_person_tbl` `per`) left join ((`cc_address_tbl` `adr` join `cc_departamento_tbl` `dep`) join `cc_ciudad_tbl` `cit`) on(((`per`.`cc_tipo_doc_fld` = `adr`.`cc_tipo_doc_fld`) and (`per`.`cc_nume_doc_fld` = `adr`.`cc_nume_doc_fld`) and (`adr`.`cc_codigoDept_fld` = `dep`.`cc_codigoDept_fld`) and (`adr`.`cc_codigoDept_fld` = `cit`.`cc_codigoDept_fld`) and (`adr`.`cc_codCiudad_fld` = `cit`.`cc_codCiudad_fld`)))) where ((`pp`.`cc_tipo_doc_fld` = `per`.`cc_tipo_doc_fld`) and (`pp`.`cc_nume_doc_fld` = `per`.`cc_nume_doc_fld`));

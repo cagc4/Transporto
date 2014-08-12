@@ -52,6 +52,14 @@ switch($_GET["Page"]) {
 		$_SESSION['value'] = $_GET["Valor"];
 		$location = 'location:Value_vw.php';
 		break;
+	case 'Fuec_add':
+		$_SESSION['number'] = $_GET["Consecutivo"];
+		$location = 'location:Fuec_add.php';
+		break;
+	case 'PrintFuec':
+		$_SESSION['number'] = $_GET["Numero_FUEC"];
+		$location = 'location:PrintFuec.php';
+		break;
 }
 header($location);
 ?>
