@@ -218,6 +218,8 @@ class Utilities
 
 	function sessionStart($login,$password)	{
 
+
+		$password=md5($password);
 		$this->db=$this->cx->conectar();
 		$this->result = $this->db->Execute("SELECT CC_ROLE_FLD AS role, CC_ESTADO_FLD AS state FROM CC_USER_TBL WHERE CC_USER_ID_FLD='$login' AND CC_PSSWRD_FLD='$password'");
 		$this->cx->desconectar();

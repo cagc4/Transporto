@@ -1,6 +1,6 @@
-﻿# Host: localhost  (Version: 5.5.8)
-# Date: 2014-08-11 23:24:36
-# Generator: MySQL-Front 5.3  (Build 4.121)
+﻿# Host: localhost  (Version: 5.6.16)
+# Date: 2014-08-20 13:58:54
+# Generator: MySQL-Front 5.3  (Build 4.133)
 
 /*!40101 SET NAMES utf8 */;
 
@@ -57,13 +57,12 @@ INSERT INTO `cc_formcontract_tbl` (`cc_id_fld`,`cc_objetoCont_fld`,`cc_nume_doc_
 # Data for table "cc_fuec_ocupantes_tbl"
 #
 
-INSERT INTO `cc_fuec_ocupantes_tbl` (`cc_id_fld`,`cc_numero_fuec_fld`,`cc_num_id_fld`,`cc_nombre_fld`) VALUES (4,'376009200201400180006','123456','hjkhjk'),(5,'376009200201400180006','456789','hjkhkjhjk'),(6,'376009200201400180007','987654','abcgetru'),(7,'376009200201400180007','123456','klsjlksad  skadlaskdj'),(8,'376009200201400180007','654987321','dsfdsfndfl'),(9,'376009200201400180007','987321654','sadsdsad');
 
 #
 # Data for table "cc_fuec_tbl"
 #
 
-INSERT INTO `cc_fuec_tbl` (`cc_id_fld`,`cc_numero_fuec_fld`,`cc_num_contrato_tbl`) VALUES (6,'376009200201400180006',18),(7,'376009200201400180007',18);
+INSERT INTO `cc_fuec_tbl` (`cc_id_fld`,`cc_numero_fuec_fld`,`cc_num_contrato_tbl`) VALUES (6,'376009200201400180006',18),(7,'376009200201400180007',18),(8,'376009200201400180008',18),(9,'376009200201400180009',18);
 
 #
 # Data for table "cc_imagenes_tbl"
@@ -101,7 +100,7 @@ INSERT INTO `cc_navegacion_tbl` (`cc_page_fld`,`cc_type_fld`,`cc_url_fld`) VALUE
 # Data for table "cc_user_tbl"
 #
 
-INSERT INTO `cc_user_tbl` (`CC_USER_ID_FLD`,`CC_PSSWRD_FLD`,`cc_role_fld`,`cc_estado_fld`) VALUES ('admin','1234','01','A'),('empleado','1234','02','A');
+INSERT INTO `cc_user_tbl` (`CC_USER_ID_FLD`,`CC_PSSWRD_FLD`,`cc_role_fld`,`cc_estado_fld`) VALUES ('admin','81dc9bdb52d04dc20036dbd8313ed055','01','A'),('empleado','81dc9bdb52d04dc20036dbd8313ed055','02','A');
 
 #
 # Data for table "cc_valores_tbl"
