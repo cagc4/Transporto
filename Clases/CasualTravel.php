@@ -96,7 +96,7 @@ class CasualTravel
 	function getNextConsecutive() {
 		$this->result = $this->util->db->Execute("SHOW TABLE STATUS LIKE 'CC_FORMOCACIONAL_TBL'");
 		$result = $this->result->FetchRow();
-		$this->result = $this->util->db->Execute("SELECT LPAD(".$result['Auto_increment'].", 11, 0) AS number FROM DUAL");
+		$this->result = $this->util->db->Execute("SELECT LPAD(".$result['Auto_increment'].", 4, 0) AS number FROM DUAL");
 	}
 	
 	function getCasualTravel($number) {

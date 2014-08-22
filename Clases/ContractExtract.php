@@ -19,12 +19,9 @@ class ContractExtract
 		$contractExtractScheduleData = $contractExtractData->contractExtractFormScheduleData->contractExtractFormSchedule;
 		if($contractExtractBasicData->plate != '') {
 			$this->result = $this->util->db->Execute("SELECT CC_CAPACIDAD_FLD AS size FROM CC_VEHICLE_TBL WHERE CC_PLACA_FLD = '".$contractExtractBasicData->plate."'");
-			if(!$this->result) {
-				$respCode = 2;
-			}
-			else {
-				$result = $this->result->FetchRow();
-				if($casualTravelBasicData->numPassengers > $result['size']) {
+			$result = $this->result->FetchRow();
+			if($result != null) {
+				if($contractExtractBasicData->numPassengers > $result['size']) {
 					$respCode = 3;
 				}
 			}
@@ -57,7 +54,7 @@ class ContractExtract
 	function getNextConsecutive() {
 		$this->result = $this->util->db->Execute("SHOW TABLE STATUS LIKE 'CC_FORMCONTRACT_TBL'");
 		$result = $this->result->FetchRow();
-		$this->result = $this->util->db->Execute("SELECT LPAD(".$result['Auto_increment'].", 11, 0) AS number FROM DUAL");
+		$this->result = $this->util->db->Execute("SELECT LPAD(".$result['Auto_increment'].", 4, 0) AS number FROM DUAL");
 	}
 	
 	function getContractExtract($number) {
