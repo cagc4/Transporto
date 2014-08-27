@@ -279,10 +279,6 @@ class Utilities
 					if ($i == 1)
 						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=ContractExtract_srch&Consecutivo={Consecutivo}";
 					break;
-				case 'Consulta Contratos':
-					if ($i == 1)
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Fuec_add&Consecutivo={Consecutivo}";
-					break;
 				case 'Usuarios':
 					if ($i == 1)
 						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=User_srch&Usuario={Usuario}";
