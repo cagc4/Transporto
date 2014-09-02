@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version: 5.5.8)
-# Date: 2014-08-26 23:19:17
+# Date: 2014-09-01 23:35:44
 # Generator: MySQL-Front 5.3  (Build 4.121)
 
 /*!40101 SET NAMES utf8 */;
@@ -20,7 +20,7 @@ INSERT INTO `cc_ciudad_tbl` (`cc_codigoDept_fld`,`cc_codCiudad_fld`,`cc_descripc
 # Data for table "cc_contract_tbl"
 #
 
-INSERT INTO `cc_contract_tbl` (`cc_id_fld`,`cc_objetoCont_fld`,`cc_nume_doc_fld`,`cc_placa_fld`,`cc_numbuses_fld`,`cc_numPasajeros_fld`,`cc_fechaSali_fld`,`cc_fechaRegr_fld`,`cc_horaSali_fld`,`cc_horaRegr_fld`,`cc_origen_fld`,`cc_destino_fld`,`cc_dirSalida_fld`,`cc_fechaFirma_fld`,`cc_costoContrato_fld`,`cc_abono_fld`) VALUES (6,'213',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,'343',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(8,'423',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(9,'SJL','14795805','MHN625',1,15,'2014-08-21','2014-08-23','12','12','SD','ERF','JKL','2014-08-21',10000,12),(10,'SD','123456789','MHN625',1,15,NULL,NULL,'','','','','',NULL,0,0),(11,'','','MHN625',1,14,NULL,NULL,'','','','','',NULL,0,0),(12,'','','MHN625',0,15,NULL,NULL,'','','','','',NULL,0,0),(13,'','','MHN625',0,15,NULL,NULL,'','','','','',NULL,0,0),(14,'','','MHJ658',0,0,NULL,NULL,'','','','','',NULL,0,0),(15,'','','MJKI689',0,0,NULL,NULL,'','','','','',NULL,0,0),(16,'','','MHN658',0,0,NULL,NULL,'','','','','',NULL,0,0),(17,'','','MHN629',0,15,NULL,NULL,'','','','','',NULL,0,0);
+INSERT INTO `cc_contract_tbl` (`cc_id_fld`,`cc_objetoCont_fld`,`cc_nume_doc_fld`,`cc_placa_fld`,`cc_numbuses_fld`,`cc_numPasajeros_fld`,`cc_fechaSali_fld`,`cc_fechaRegr_fld`,`cc_horaSali_fld`,`cc_horaRegr_fld`,`cc_origen_fld`,`cc_destino_fld`,`cc_dirSalida_fld`,`cc_fechaFirma_fld`,`cc_costoContrato_fld`,`cc_abono_fld`) VALUES (6,'213',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,'343',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(8,'423',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(9,'SJL','14795805','MHN625',1,15,'2014-08-21','2014-08-23','12','12','SD','ERF','JKL','2014-08-21',10000,12),(10,'SD','123456789','MHN625',1,15,NULL,NULL,'','','','','',NULL,0,0),(11,'','','MHN625',1,14,NULL,NULL,'','','','','',NULL,0,0),(12,'','','MHN625',0,15,NULL,NULL,'','','','','',NULL,0,0),(13,'','','MHN625',0,15,NULL,NULL,'','','','','',NULL,0,0),(14,'','','MHJ658',0,0,NULL,NULL,'','','','','',NULL,0,0),(15,'','','MJKI689',0,0,NULL,NULL,'','','','','',NULL,0,0),(16,'','','MHN658',0,0,NULL,NULL,'','','','','',NULL,0,0),(17,'','','MHN629',0,15,NULL,NULL,'','','','','',NULL,0,0),(18,'','','MHN625',1,10,NULL,NULL,'','','','','',NULL,0,0),(19,'','','MHN625,ABC123',2,25,NULL,NULL,'','','','','',NULL,0,0),(20,'','','MHN625,ABC123',2,30,NULL,NULL,'','','','','',NULL,0,0),(21,'','','MHN625,ABC123',2,30,NULL,NULL,'','','','','',NULL,0,0),(22,'','','MHN625,ABC123',2,25,NULL,NULL,'','','','','',NULL,0,0),(23,'','','MHN625',1,10,NULL,NULL,'','','','','',NULL,0,0),(24,'','','MHN625,ABC123',2,25,NULL,NULL,'','','','','',NULL,0,0),(25,'','','MHN625,ABC123',2,25,NULL,NULL,'','','','','',NULL,0,0);
 
 #
 # Data for table "cc_customer_tbl"
@@ -59,13 +59,13 @@ INSERT INTO `cc_formcontract_tbl` (`cc_id_fld`,`cc_objetoCont_fld`,`cc_nume_doc_
 # Data for table "cc_fuec_ocupantes_tbl"
 #
 
-INSERT INTO `cc_fuec_ocupantes_tbl` (`cc_id_fld`,`cc_numero_fuec_fld`,`cc_tipo_doc_fld`,`cc_num_id_fld`,`cc_nombre_fld`) VALUES (10,'376009200201400170010','cc','14965236','ff'),(11,'376009200201400170010','cc','45678956','kk'),(12,'376009200201400170011','','',''),(13,'376009200201400170011','','',''),(14,'376009200201400170011','','','');
+INSERT INTO `cc_fuec_ocupantes_tbl` (`cc_id_fld`,`cc_numero_fuec_fld`,`cc_tipo_doc_fld`,`cc_num_id_fld`,`cc_nombre_fld`) VALUES (10,'376009200201400170010','cc','14965236','ff'),(11,'376009200201400170010','cc','45678956','kk'),(12,'376009200201400170011','','',''),(13,'376009200201400170011','','',''),(14,'376009200201400170011','','',''),(15,'','cc','14795805','hjk'),(16,'','cc','5648979','lkjhigjk'),(17,'','cc','123465789','poipouuyuituyrty'),(18,'376009200201400180027','cc','123456789','jklhfdggf'),(19,'376009200201400180027','cc','32165498789','vjbkb'),(20,'376009200201400180027','cc','2315','hkhjfdtg');
 
 #
 # Data for table "cc_fuec_tbl"
 #
 
-INSERT INTO `cc_fuec_tbl` (`cc_id_fld`,`cc_numero_fuec_fld`,`cc_num_contrato_tbl`,`cc_placa_fld`,`cc_tipo_doc_conductor1_fld`,`cc_num_doc_coductor2_fld`,`cc_tipo_doc_conductor2_fld`,`cc_num_doc_conductor1_fld`) VALUES (6,'376009200201400180006',18,NULL,NULL,NULL,NULL,NULL),(7,'376009200201400180007',18,NULL,NULL,NULL,NULL,NULL),(8,'376009200201400180008',18,NULL,NULL,NULL,NULL,NULL),(9,'376009200201400180009',18,NULL,NULL,NULL,NULL,NULL),(10,'376009200201400170010',17,NULL,NULL,NULL,NULL,NULL),(11,'376009200201400170011',17,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `cc_fuec_tbl` (`cc_id_fld`,`cc_numero_fuec_fld`,`cc_num_contrato_tbl`,`cc_placa_fld`,`cc_convenio_fld`,`cc_tipo_doc_responsable_fld`,`cc_num_doc_responsable_fld`,`cc_tel_responsable_fld`,`cc_dir_responsable_fld`,`cc_tipo_doc_conductor1_fld`,`cc_num_doc_coductor2_fld`,`cc_tipo_doc_conductor2_fld`,`cc_num_doc_conductor1_fld`) VALUES (6,'376009200201400180006',18,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,'376009200201400180007',18,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(8,'376009200201400180008',18,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(9,'376009200201400180009',18,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(10,'376009200201400170010',17,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(11,'376009200201400170011',17,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(12,'37600920020140123',123,'sad','','','','','','cc','123213','',''),(13,'376009200201400180013',18,'MHN625','','','','','','cc','14795805','',''),(14,'376009200201400250014',25,'ABC123','','','','','','cc','123','',''),(15,'376009200201400250015',25,'ABC123','','','','','','cc','123','',''),(16,'376009200201400250016',25,'MHN625','','','','','','cc','123','',''),(17,'376009200201400180017',18,'','','','','','','cc','14795805','',''),(18,'376009200201400180018',18,'','','','','','','cc','14795805','',''),(19,'376009200201400180019',18,'MHN625','','','','','','cc','14795805','',''),(20,'376009200201400180020',18,'MHN625','','','','','','cc','14795805','',''),(21,'376009200201400180021',18,'MHN624','','','','','','cc','14795805','',''),(22,'376009200201400180022',18,'MHN624','','','','','','cc','14795805','',''),(23,'376009200201400180023',18,'MHN624','','','','','','cc','14795805','',''),(24,'376009200201400180024',18,'MHN624','','','','','','cc','14795805','',''),(25,'376009200201400180025',18,'MHN625','','','','','','cc','14795805','',''),(26,'376009200201400180026',18,'MHN625','','','','','','cc','14795805','',''),(27,'376009200201400180027',18,'MHN625','','','','','','cc','14795805','','');
 
 #
 # Data for table "cc_imagenes_tbl"
@@ -88,7 +88,7 @@ INSERT INTO `cc_navegacion_tbl` (`cc_page_fld`,`cc_type_fld`,`cc_url_fld`) VALUE
 # Data for table "cc_per_veh_tbl"
 #
 
-INSERT INTO `cc_per_veh_tbl` (`cc_tipo_doc_fld`,`cc_nume_doc_fld`,`cc_placa_fld`) VALUES ('cc','123456789','MHN625'),('cc','14795805','MHN625');
+INSERT INTO `cc_per_veh_tbl` (`cc_tipo_doc_fld`,`cc_nume_doc_fld`,`cc_placa_fld`) VALUES ('cc','123456789','MHN625'),('cc','14795805','ABC123'),('cc','14795805','MHN625');
 
 #
 # Data for table "cc_person_tbl"
@@ -118,4 +118,4 @@ INSERT INTO `cc_valores_tbl` (`cc_campo_fld`,`cc_valor_fld`,`cc_descripcion_fld`
 # Data for table "cc_vehicle_tbl"
 #
 
-INSERT INTO `cc_vehicle_tbl` (`cc_placa_fld`,`cc_codigoInterno_fld`,`cc_marca_fld`,`cc_modelo_fld`,`cc_clase_fld`,`cc_tipo_fld`,`cc_capacidad_fld`,`cc_num_motor_fld`,`cc_num_chasis_fld`,`cc_lin_cilindr_fld`,`cc_color_fld`,`cc_detalles_fld`) VALUES ('MHN625','123','01','2034','01','','10','123','456','789','','');
+INSERT INTO `cc_vehicle_tbl` (`cc_placa_fld`,`cc_codigoInterno_fld`,`cc_marca_fld`,`cc_modelo_fld`,`cc_clase_fld`,`cc_tipo_fld`,`cc_capacidad_fld`,`cc_num_motor_fld`,`cc_num_chasis_fld`,`cc_lin_cilindr_fld`,`cc_color_fld`,`cc_detalles_fld`) VALUES ('ABC123','456','01','1999','','','15','987','456','789','',''),('MHN625','123','01','2034','01','','10','123','456','789','','');

@@ -18,11 +18,65 @@ class Contract
 		$contractLocationData = $contractData->contractFormLocationData->contractFormLocation;
 		$contractScheduleData = $contractData->contractFormScheduleData->contractFormSchedule;
 		$contractConditionData = $contractData->contractFormConditionData->contractFormCondition;
-		if($contractBasicData->plate != '') {			
+		/*if($contractBasicData->plate != '') {
 			$this->result = $this->util->db->Execute("SELECT CC_CAPACIDAD_FLD AS size FROM CC_VEHICLE_TBL WHERE CC_PLACA_FLD = '".$contractBasicData->plate."'");
 			$result = $this->result->FetchRow();
 			if($result != null) {
 				if($contractBasicData->numPassengers > $result['size']) {
+					$respCode = 3;
+				}
+			}
+		}*/
+		$separators = array(' ','-');
+		$plates = strtoupper(str_replace($separators, '', $contractBasicData->plate));
+		if(strlen($plates) > 0) {
+			$capacidad = 0;
+			if(strlen($plates) > 6) {
+				if(strpos($plates, ',') > 0) {
+					if($contractBasicData->totalBuses != '') {
+						if($contractBasicData->totalBuses == (substr_count($plates, ',') + 1)) {
+							$plates = explode(',', $plates);
+							foreach($auxPlates as $plate) {
+								$this->result = $this->util->db->Execute("SELECT CC_CAPACIDAD_FLD AS size FROM CC_VEHICLE_TBL WHERE CC_PLACA_FLD = '".str_replace($separators, '', $auxPlates)."'");
+								$result = $this->result->FetchRow();
+								if($result != null) {
+									$capacidad = $capacidad + $result['size'];
+								}
+								else {
+									$respCode = 2;
+									break;
+								}
+							}							
+						}
+						else {
+							$respCode = 5;
+						}
+					}
+					else {
+						$respCode = 4;
+					}
+				}
+				else {
+					$respCode = 1;
+				}
+			}
+			else {
+				if($contractBasicData->totalBuses == 1) {
+					$this->result = $this->util->db->Execute("SELECT CC_CAPACIDAD_FLD AS size FROM CC_VEHICLE_TBL WHERE CC_PLACA_FLD = '".$plates."'");
+					$result = $this->result->FetchRow();
+					if($result != null) {
+						$capacidad = $result['size'];
+					}
+					else {
+						$respCode = 2;
+					}
+				}
+				else {
+					$respCode = 5;
+				}
+			}
+			if($respCode == 0) {
+				if($contractBasicData->numPassengers > $capacidad) {
 					$respCode = 3;
 				}
 			}
@@ -33,7 +87,7 @@ class Contract
 			$this->result = $this->util->db->Execute("INSERT INTO CC_CONTRACT_TBL VALUES('".$result['number']."',
 																					 '".$contractBasicData->object."',
 																					 '".$contractBasicData->number."',
-																					 '".$contractBasicData->plate."',
+																					 '".$plates."',
 																					 '".$contractBasicData->totalBuses."',
 																					 '".$contractBasicData->numPassengers."',
 																					 STR_TO_DATE('".$contractScheduleData->outputDate->month."/".$contractScheduleData->outputDate->day."/".$contractScheduleData->outputDate->year."','%m/%d/%Y'),
@@ -48,7 +102,7 @@ class Contract
 																					 '".$contractConditionData->advance."')");
 			if(!$this->result) {
 				$this->util->db->Execute("DELETE FROM CC_CONTRACT_TBL WHERE CC_ID_FLD = '".$result['number']."'");
-				$respCode = 1;
+				$respCode = 6;
 			}
 		}
 		return $respCode;

@@ -10,25 +10,85 @@ class Fuec
 		$this->util = new Utilities();
 	}
 
-	function addFuec($fuecData, $numFuec, $numContract)
+	function addFuec($fuecData)
 	{
 		$respCode = 0;		
-		$fuecBasicData = $fuecData->fuecFormBasicData->fuecFormBasic;
-		$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_TBL VALUES (0, '" . $numFuec . "', " . $numContract . ")");
-		if($this->result) {
-			foreach($fuecBasicData as $fuec) {
-				$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_OCUPANTES_TBL VALUES (0, '" . $numFuec . "', '" . $fuec->docType . "', '" . $fuec->docNum . "', '" . $fuec->name . "')");
-				if(!$this->result) {
-					$this->util->db->Execute("DELETE FROM CC_FUEC_TBL WHERE CC_NUMERO_FUEC_FLD = ".$numFuec);
-					$this->util->db->Execute("DELETE FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = ".$numFuec);
-					$respCode = 2;
-					break;
-				}
+		$fuecGeneralData = $fuecData->fuecFormGeneralData->fuecFormGeneral;
+		$fuecResponsibleData = $fuecData->fuecFormResponsibleData->fuecFormResponsible;
+		$fuecDriver1Data = $fuecData->fuecFormDriver1Data->fuecFormDriver1;
+		$fuecDriver2Data = $fuecData->fuecFormDriver2Data->fuecFormDriver2;
+		
+		$this->result = $this->util->db->Execute("SELECT CC_PLACA_FLD AS plate FROM CC_CONTRACT_TBL WHERE CC_ID_FLD = " . $fuecGeneralData->contractNumber);
+		$result = $this->result->FetchRow();
+		$separators = array(' ','-');
+		$plate = strtoupper(str_replace($separators, '', $fuecGeneralData->plate));
+		if($result) {
+			if(strpos($result['plate'], $plate) === false) {
+				$respCode = 2;
 			}
 		}
 		else {
-			$this->util->db->Execute("DELETE FROM CC_FUEC_TBL WHERE CC_NUMERO_FUEC_FLD = ".$numFuec);
 			$respCode = 1;
+		}
+		if($respCode == 0) {
+			$this->result = $this->util->db->Execute("SELECT * FROM CC_PROPCOND_TBL WHERE CC_TIPO_DOC_FLD = '" . $fuecDriver1Data->docTypeDriver1 . "' AND
+																						  CC_NUME_DOC_FLD = '" . $fuecDriver1Data->docNumDriver1 . "' AND
+																						  CC_TYPE_PC_FLD = '02'");
+			$result = $this->result->FetchRow();
+			if($result) {
+				if($fuecDriver2Data->docTypeDriver2 != '' && $fuecDriver2Data->docTypeDriver2 != '') {
+					$this->result = $this->util->db->Execute("SELECT * FROM CC_PROPCOND_TBL WHERE CC_TIPO_DOC_FLD = '" . $fuecDriver2Data->docTypeDriver2 . "' AND
+																								  CC_NUME_DOC_FLD = '" . $fuecDriver2Data->docNumDriver2 . "' AND
+																								  CC_TYPE_PC_FLD = '02'");
+					$result = $this->result->FetchRow();
+					if(!$result) {
+						$respCode = 3;
+					}
+				}
+			}
+			else {
+				$respCode = 3;
+			}
+		}
+		if($respCode == 0) {
+			$this->getNextConsecutive();
+			$result = $this->result->FetchRow();
+			$numFuec = '376009200' . date('Y') . str_pad($fuecGeneralData->contractNumber, 4, "0", STR_PAD_LEFT) . $result['number'];
+			
+			$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_TBL VALUES (0, '" . $numFuec . "',
+																						  " . $fuecGeneralData->contractNumber . ",
+																						 '" . $plate . "',
+																						 '" . $fuecGeneralData->agreement . "',
+																						 '" . $fuecResponsibleData->docTypeResponsible . "',
+																						 '" . $fuecResponsibleData->docNumResponsible . "',
+																						 '" . $fuecResponsibleData->phoneResponsible . "',
+																						 '" . $fuecResponsibleData->addressResponsible . "',
+																						 '" . $fuecDriver1Data->docTypeDriver1 . "',
+																						 '" . $fuecDriver1Data->docNumDriver1 . "',
+																						 '" . $fuecDriver2Data->docTypeDriver2 . "',
+																						 '" . $fuecDriver2Data->docNumDriver2 . "')");
+			if(!$this->result) {
+				$this->util->db->Execute("DELETE FROM CC_FUEC_TBL WHERE CC_NUMERO_FUEC_FLD = ".$numFuec);
+				$respCode = 99;
+			}
+			else {
+				$_SESSION['number'] = $numFuec;
+			}
+		}
+		return $respCode;
+	}
+	
+	function addFuecPassenger($fuecPassengerData, $numFuec)
+	{
+		$respCode = 0;
+		$fuecBasicData = $fuecPassengerData->fuecFormBasicData->fuecFormBasic;
+		foreach($fuecBasicData as $fuec) {
+			$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_OCUPANTES_TBL VALUES (0, '" . $numFuec . "', '" . $fuec->docType . "', '" . $fuec->docNum . "', '" . $fuec->name . "')");
+			if(!$this->result) {
+				$this->util->db->Execute("DELETE FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = ".$numFuec);
+				$respCode = 99;
+				break;
+			}
 		}
 		return $respCode;
 	}

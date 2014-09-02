@@ -1383,7 +1383,7 @@ EOD;
 
 
 		$style=$this->codigoBarraEstilo();
-		$this->pdf->write2DBarcode('www.trasnscorvalle.com.co/?codigo=123456', 'QRCODE,L', 10, 10, 25,25, $style, 'N');
+		$this->pdf->write2DBarcode('www.trasnscorvalle.com.co/?codigo=' . $numerofuec, 'QRCODE,L', 10, 10, 25,25, $style, 'N');
 		$this->pdf->writeHTML($html, true, false, true, false, '');
 
 		$this->pdf->AddPage();

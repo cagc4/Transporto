@@ -292,7 +292,7 @@ class Utilities
 						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Contract_srch&Consecutivo={Consecutivo}";
 					break;
 				case 'FUEC':
-					if ($i == 2)
+					if ($i == 1)
 						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=PrintFuec&Numero_FUEC={Numero_FUEC}";
 					break;
 			}

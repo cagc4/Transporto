@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version: 5.5.8)
-# Date: 2014-08-26 23:19:01
+# Date: 2014-09-01 23:35:30
 # Generator: MySQL-Front 5.3  (Build 4.121)
 
 /*!40101 SET NAMES utf8 */;
@@ -56,7 +56,7 @@ CREATE TABLE `cc_contract_tbl` (
   `cc_costoContrato_fld` decimal(10,0) DEFAULT NULL,
   `cc_abono_fld` decimal(10,0) DEFAULT NULL,
   PRIMARY KEY (`cc_id_fld`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 #
 # Structure for table "cc_customer_tbl"
@@ -185,12 +185,17 @@ CREATE TABLE `cc_fuec_tbl` (
   `cc_numero_fuec_fld` varchar(50) DEFAULT NULL,
   `cc_num_contrato_tbl` int(11) DEFAULT NULL,
   `cc_placa_fld` varchar(255) DEFAULT NULL,
+  `cc_convenio_fld` varchar(255) DEFAULT NULL,
+  `cc_tipo_doc_responsable_fld` varchar(255) DEFAULT NULL,
+  `cc_num_doc_responsable_fld` varchar(255) DEFAULT NULL,
+  `cc_tel_responsable_fld` varchar(255) DEFAULT NULL,
+  `cc_dir_responsable_fld` varchar(255) DEFAULT NULL,
   `cc_tipo_doc_conductor1_fld` varchar(255) DEFAULT NULL,
   `cc_num_doc_coductor2_fld` varchar(255) DEFAULT NULL,
   `cc_tipo_doc_conductor2_fld` varchar(255) DEFAULT NULL,
   `cc_num_doc_conductor1_fld` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`cc_id_fld`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 #
 # Structure for table "cc_imagenes_tbl"
@@ -342,7 +347,7 @@ CREATE VIEW `cc_formocacional_vw` AS
 
 DROP VIEW IF EXISTS `cc_fuec_vw`;
 CREATE VIEW `cc_fuec_vw` AS 
-  select `fc`.`cc_id_fld` AS `Consecutivo_FUEC`,`fc`.`cc_numero_fuec_fld` AS `Numero_FUEC`,`fr`.`cc_id_fld` AS `Numero_Contrato`,`fr`.`cc_objetoCont_fld` AS `Objeto_Contrato`,`fr`.`cc_placa_fld` AS `Placa`,`fr`.`cc_numbuses_fld` AS `Numero_Buses`,`fr`.`cc_fechaSali_fld` AS `Fecha_Salida`,`fr`.`cc_destino_fld` AS `Destino` from (`cc_fuec_tbl` `fc` join `cc_formcontract_tbl` `fr` on((`fc`.`cc_num_contrato_tbl` = `fr`.`cc_id_fld`)));
+  select `fc`.`cc_numero_fuec_fld` AS `Numero_FUEC`,`fr`.`cc_id_fld` AS `Numero_Contrato`,`fr`.`cc_objetoCont_fld` AS `Objeto_Contrato`,`fr`.`cc_placa_fld` AS `Placa`,`fr`.`cc_fechaSali_fld` AS `Fecha_Salida`,`fr`.`cc_destino_fld` AS `Destino` from (`cc_fuec_tbl` `fc` join `cc_formcontract_tbl` `fr` on((`fc`.`cc_num_contrato_tbl` = `fr`.`cc_id_fld`)));
 
 DROP VIEW IF EXISTS `cc_prodcon_vw`;
 CREATE VIEW `cc_prodcon_vw` AS 
