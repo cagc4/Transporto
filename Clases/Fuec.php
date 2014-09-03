@@ -42,7 +42,7 @@ class Fuec
 																								  CC_TYPE_PC_FLD = '02'");
 					$result = $this->result->FetchRow();
 					if(!$result) {
-						$respCode = 3;
+						$respCode = 4;
 					}
 				}
 			}
@@ -82,12 +82,31 @@ class Fuec
 	{
 		$respCode = 0;
 		$fuecBasicData = $fuecPassengerData->fuecFormBasicData->fuecFormBasic;
-		foreach($fuecBasicData as $fuec) {
-			$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_OCUPANTES_TBL VALUES (0, '" . $numFuec . "', '" . $fuec->docType . "', '" . $fuec->docNum . "', '" . $fuec->name . "')");
-			if(!$this->result) {
-				$this->util->db->Execute("DELETE FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = ".$numFuec);
-				$respCode = 99;
-				break;
+		$this->result = $this->util->db->Execute("SELECT (V.CC_CAPACIDAD_FLD - (SELECT COUNT(*) FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '" . $numFuec . "')) AS size 
+											FROM CC_FUEC_TBL F INNER JOIN CC_VEHICLE_TBL V ON F.CC_PLACA_FLD = V.CC_PLACA_FLD WHERE F.CC_NUMERO_FUEC_FLD = '" . $numFuec . "'");
+		$result = $this->result->FetchRow();
+		if($result['size'] > 1) {
+			foreach($fuecBasicData as $fuec) {
+				$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_OCUPANTES_TBL VALUES (0, '" . $numFuec . "', '" . $fuec->docType . "', '" . $fuec->docNum . "', '" . $fuec->name . "')");
+				if(!$this->result) {
+					$this->util->db->Execute("DELETE FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = ".$numFuec);
+					$respCode = 99;
+					break;
+				}
+			}
+		}
+		else {
+			if($result['size'] == 1) {
+				$fuec = $fuecBasicData;
+				$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_OCUPANTES_TBL VALUES (0, '" . $numFuec . "', '" . $fuec->docType . "', '" . $fuec->docNum . "', '" . $fuec->name . "')");
+				if(!$this->result) {
+					$this->util->db->Execute("DELETE FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = ".$numFuec);
+					$respCode = 99;
+					break;
+				}
+			}
+			else {
+				$respCode = 1;
 			}
 		}
 		return $respCode;
@@ -97,6 +116,17 @@ class Fuec
 		$this->result = $this->util->db->Execute("SHOW TABLE STATUS LIKE 'CC_FUEC_TBL'");
 		$result = $this->result->FetchRow();
 		$this->result = $this->util->db->Execute("SELECT LPAD(".$result['Auto_increment'].", 4, 0) AS number FROM DUAL");
+	}
+	
+	function getPassengersFuec($number) {
+		$this->result = $this->util->db->Execute("SELECT CC_TIPO_DOC_FLD AS docType,
+														 CC_NUM_ID_FLD AS docNum,
+														 CC_NOMBRE_FLD AS name
+												  FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '" . $number . "'");
+	}
+	
+	function modifyFuecPassenger($fuecPassengerData, $numFuec) {
+		return 99;
 	}
 	
 	function getFuec($number) {

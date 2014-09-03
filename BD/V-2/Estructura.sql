@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version: 5.5.8)
-# Date: 2014-09-01 23:35:30
+# Date: 2014-09-02 23:07:07
 # Generator: MySQL-Front 5.3  (Build 4.121)
 
 /*!40101 SET NAMES utf8 */;
@@ -173,7 +173,7 @@ CREATE TABLE `cc_fuec_ocupantes_tbl` (
   `cc_num_id_fld` varchar(20) DEFAULT NULL,
   `cc_nombre_fld` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`cc_id_fld`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 #
 # Structure for table "cc_fuec_tbl"
@@ -195,7 +195,7 @@ CREATE TABLE `cc_fuec_tbl` (
   `cc_tipo_doc_conductor2_fld` varchar(255) DEFAULT NULL,
   `cc_num_doc_conductor1_fld` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`cc_id_fld`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 #
 # Structure for table "cc_imagenes_tbl"
