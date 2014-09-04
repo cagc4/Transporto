@@ -41,6 +41,11 @@ class TemplatePage
 		<head>
 			<title><?php echo $title; ?></title>
 			<link href="css/estilos.css" rel=stylesheet type=text/css>
+
+			<script type='text/javascript' src='js/jquery.js'></script>
+			<script type='text/javascript' src='js/jquery.simplemodal.js'></script>
+			<script type='text/javascript' src='js/osx.js'></script>
+
 			<table width="100%"  border="0">
 				<tr>
 					<td colspan="1"><?php echo $this->logoCabecera(); ?></td>
@@ -139,13 +144,18 @@ class TemplatePage
 				$tipo = $row["CC_TYPE_FLD"];
 				$image = $row["CC_NOMBRE_FLD"];
 
+				$icono = "<img src='$image' border=0 >";
+
 				if ($tipo =='hel')
 					$enlace = "<a href='$direccion' target='_blank'>";
-				else{
-					$enlace = "<a href='$direccion'>";
-				}
-
-				$icono = "<img src='$image' border=0 >";
+				else
+					if ($tipo == 'war')
+					{
+						$enlace = "<a href='$direccion' class='osx'>";
+					}
+					else{
+						$enlace = "<a href='$direccion'>";
+					}
 
 				echo "<td>".$enlace." ".$icono."</a></td>";
 			}
@@ -188,8 +198,11 @@ class TemplatePage
 
     function tail() {
 		?>
+
+				<br><br><br><br>
 				<footer>
-						<p>Transcorvalle SAS Direcci&#243;n: Calle 27 # 32-47 ,Tel&#233;fono: (2) 2253308,Tulu&#225;, Valle del Cauca, Colombia 2013
+						<p>Transcorvalle SAS Direcci&#243;n: Calle 27 # 32-47 ,Tel&#233;fono: (2) 2253308,Tulu&#225;, Valle del Cauca, Colombia 2014<br>
+						<a href='http://www.transcorvalle.com.co' style="background-color:transaparent" class='enlace'>www.transcorvalle.com.co</a>
 				</footer>
 			</body>
 		</html>

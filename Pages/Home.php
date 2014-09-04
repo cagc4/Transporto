@@ -25,6 +25,17 @@ $template->navigateBar('Home');
 		</tr>
 	</table>
 	</center>
+
+	<div id="osx-modal-content">
+		<div id="osx-modal-title">Centro de Notificaciones Transcorvalle</div>
+		<div class="close"><a href="#" class="simplemodal-close">x</a></div>
+		<div id="osx-modal-data">
+			<h2>Documentos vencidos</h2>
+			<p>Aca se desplegaran todo tipo de alertas referentes al sistemas de información</p>
+			<p><button class="simplemodal-close">Cerrar</button> <span>(o presione ESC or click para cerrar)</span></p>
+		</div>
+	</div>
+
 <?php
 $template->tail();
 ?>

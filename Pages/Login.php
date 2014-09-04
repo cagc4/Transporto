@@ -6,6 +6,7 @@ session_start();
 
 $template = new TemplatePage(true, false, '');
 $template->headerForms('Login de Usuario');
+$template->navigateBar('Login');
 
 $loginForm = new JFormer('loginForm', array('title' => '<div align="center"><h2>Ingreso al Sistema</h2></div>','submitButtonText' => 'Login', 'requiredText' => ' (Requerido)'));
 
