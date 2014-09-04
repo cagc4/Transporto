@@ -146,7 +146,7 @@ class TemplatePage
 
 				$icono = "<img src='$image' border=0 >";
 
-				if ($tipo =='hel')
+				if ($tipo =='hel' or $tipo =='web')
 					$enlace = "<a href='$direccion' target='_blank'>";
 				else
 					if ($tipo == 'war')
