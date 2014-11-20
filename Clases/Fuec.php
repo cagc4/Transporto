@@ -78,20 +78,32 @@ class Fuec
 		return $respCode;
 	}
 	
-	function addFuecPassenger($fuecPassengerData, $numFuec)
-	{
+	function addFuecPassenger($fuecPassengerData, $numFuec)	{
 		$respCode = 0;
 		$fuecBasicData = $fuecPassengerData->fuecFormBasicData->fuecFormBasic;
-		$this->result = $this->util->db->Execute("SELECT (V.CC_CAPACIDAD_FLD - (SELECT COUNT(*) FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '" . $numFuec . "')) AS size 
-											FROM CC_FUEC_TBL F INNER JOIN CC_VEHICLE_TBL V ON F.CC_PLACA_FLD = V.CC_PLACA_FLD WHERE F.CC_NUMERO_FUEC_FLD = '" . $numFuec . "'");
+		$this->getCapacityAvailable($numFuec);
+		/*$this->result = $this->util->db->Execute("SELECT (V.CC_CAPACIDAD_FLD - (SELECT COUNT(*) FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '" . $numFuec . "')) AS size 
+											FROM CC_FUEC_TBL F INNER JOIN CC_VEHICLE_TBL V ON F.CC_PLACA_FLD = V.CC_PLACA_FLD WHERE F.CC_NUMERO_FUEC_FLD = '" . $numFuec . "'");*/
 		$result = $this->result->FetchRow();
 		if($result['size'] > 1) {
-			foreach($fuecBasicData as $fuec) {
-				$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_OCUPANTES_TBL VALUES (0, '" . $numFuec . "', '" . $fuec->docType . "', '" . $fuec->docNum . "', '" . $fuec->name . "')");
-				if(!$this->result) {
-					$this->util->db->Execute("DELETE FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '".$numFuec."'");
-					$respCode = 99;
-					break;
+			if(is_array($fuecBasicData)) {
+				foreach($fuecBasicData as $fuec) {
+					$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_OCUPANTES_TBL VALUES (0, '" . $numFuec . "', '" . $fuec->docType . "', '" . $fuec->docNum . "', '" . $fuec->name . "')");
+					if(!$this->result) {
+						$this->util->db->Execute("DELETE FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '".$numFuec."'");
+						$respCode = 99;
+						break;
+					}
+				}
+			}
+			else {
+				if($fuecBasicData->docType != '' && $fuecBasicData->docNum != '' && $fuecBasicData->name != '') {
+					$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_OCUPANTES_TBL VALUES (0, '" . $numFuec . "', '" . $fuecBasicData->docType . "', '" . $fuecBasicData->docNum . "', '" . $fuecBasicData->name . "')");
+					if(!$this->result) {
+						$this->util->db->Execute("DELETE FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '".$numFuec."'");
+						$respCode = 99;
+						break;
+					}
 				}
 			}
 		}
