@@ -104,6 +104,7 @@ class TemplatePage
 	function headerSearch($title, $gridName, $tableName, $query) {
 		include "Datagrid/inc/jqgrid_dist.php";
 		$util = new Utilities();
+
 		$render = $util->getDataGrid($gridName, $tableName, $query);
 		?>
 		<!DOCTYPE html>
@@ -195,6 +196,11 @@ class TemplatePage
 			</center>
 		<?php
 	}
+
+   function warnings(){
+   		$util = new Utilities();
+		$util->imprimirWarnings();
+   }
 
     function tail() {
 		?>

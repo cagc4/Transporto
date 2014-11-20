@@ -7,6 +7,7 @@ class Utilities
 	var	$result;
 	var	$db;
 	var $innerarray;
+	var $warnings;
 
 	function Utilities()
 	{
@@ -416,6 +417,35 @@ class Utilities
 	    }
 	}
 
+	function imprimirWarnings(){
+
+		$this->warnings= $this->db->Execute("select * from cc_warnings_vw");
+
+		echo "<table cellspacing=1 border=0 style='font-size:13px;background-color:white;'>";
+		echo "<tr style='background-color:#46871e;' >";
+		print "<td>Estado</td>
+		<td>Documento</td>
+		<td>Numero</td>
+		<td>Placa</td>
+		<td>Identificacion</td>
+		<td>Vencimiento</td>
+		";
+		echo "</tr>";
+
+		while ($row = $this->warnings->FetchRow()){
+
+			echo '<tr>';
+				echo '<td>'.$row["Estado"].'</td>';
+				echo '<td>'.$row["Documento"].'</td>';
+				echo '<td>'.$row["Numero"].'</td>';
+				echo '<td>'.$row["Placa"].'</td>';
+				echo '<td>'.$row["Identificacion"].'</td>';
+				echo '<td>'.$row["Vencimiento"].'</td>';
+			echo '</tr>';
+
+		}
+		print "</table>";
+	}
 
 }
 ?>
