@@ -82,8 +82,6 @@ class Fuec
 		$respCode = 0;
 		$fuecBasicData = $fuecPassengerData->fuecFormBasicData->fuecFormBasic;
 		$this->getCapacityAvailable($numFuec);
-		/*$this->result = $this->util->db->Execute("SELECT (V.CC_CAPACIDAD_FLD - (SELECT COUNT(*) FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '" . $numFuec . "')) AS size 
-											FROM CC_FUEC_TBL F INNER JOIN CC_VEHICLE_TBL V ON F.CC_PLACA_FLD = V.CC_PLACA_FLD WHERE F.CC_NUMERO_FUEC_FLD = '" . $numFuec . "'");*/
 		$result = $this->result->FetchRow();
 		if($result['size'] > 1) {
 			if(is_array($fuecBasicData)) {
@@ -97,7 +95,7 @@ class Fuec
 				}
 			}
 			else {
-				if($fuecBasicData->docType != '' && $fuecBasicData->docNum != '' && $fuecBasicData->name != '') {
+				if($fuecBasicData->docNum != '') {
 					$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_OCUPANTES_TBL VALUES (0, '" . $numFuec . "', '" . $fuecBasicData->docType . "', '" . $fuecBasicData->docNum . "', '" . $fuecBasicData->name . "')");
 					if(!$this->result) {
 						$this->util->db->Execute("DELETE FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '".$numFuec."'");
@@ -137,44 +135,30 @@ class Fuec
 												  FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '" . $number . "'");
 	}
 	
+	function getPassengerFuec($number, $numberId) {
+		$this->result = $this->util->db->Execute("SELECT CC_TIPO_DOC_FLD AS docType,
+														 CC_NUM_ID_FLD AS docNum,
+														 CC_NOMBRE_FLD AS name
+												  FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '" . $number . "' AND CC_NUM_ID_FLD = '" . $numberId . "'");
+	}
+	
 	function getCapacityAvailable($numFuec) {
 		$this->result = $this->util->db->Execute("SELECT (V.CC_CAPACIDAD_FLD - (SELECT COUNT(*) FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '" . $numFuec . "')) AS size 
 							FROM CC_FUEC_TBL F INNER JOIN CC_VEHICLE_TBL V ON F.CC_PLACA_FLD = V.CC_PLACA_FLD WHERE F.CC_NUMERO_FUEC_FLD = '" . $numFuec . "'");
 	}
 	
-	function modifyFuecPassenger($fuecPassengerData, $numFuec) {
-		$this->getCapacityAvailable($numFuec);
-		$result1 = $this->result->FetchRow();
-		$this->getPassengersFuec($numFuec);
-		$result2 = $this->result;
-		//$this->util->db->Execute("DELETE FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '".$numFuec."'");
-		$i = 1;
-		//while($passenger = $this->result2->FetchRow()) {
-		$data = $fuecPassengerData->fuecFormModifyData->getData();
-		foreach($data as $ocupante) {
-			$i++;
+	function modifyFuecPassenger($fuecPassengerData, $numFuec, $numberId) {
+		$respCode = 0;
+		$fuecModifyData = $fuecPassengerData->fuecFormModifyData->fuecFormModify;
+		if($fuecModifyData->docNum != '') {
+			$this->result = $this->util->db->Execute("UPDATE CC_FUEC_OCUPANTES_TBL SET 
+															 CC_TIPO_DOC_FLD = '" . $fuecModifyData->docType . "',
+															 CC_NUM_ID_FLD = '" . $fuecModifyData->docNum . "',
+															 CC_NOMBRE_FLD = '" . $fuecModifyData->name . "'
+													  WHERE CC_NUMERO_FUEC_FLD = '".$numFuec."' AND CC_NUM_ID_FLD = '" . $numberId . "'");
 		}
-		$respcode = $i;
-		/*foreach($data as $fuecModifyData) {
-			
-			$respcode = $fuecModifyData->docNum;
-			if(!empty($fuecModifyData->delete)) {
-				$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_OCUPANTES_TBL VALUES (0, '" . $numFuec . "', '" . $fuecModifyData->docType . "', '" . $fuecModifyData->docNum . "', '" . $fuecModifyData->name . "')");
-				if(!$this->result) {
-					$this->util->db->Execute("DELETE FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = ".$numFuec);
-					$respCode = 99;
-					break;
-				}
-			}
-			$i++;
-		}*/
-		if($respcode == 0) {
-			if($result1['size'] > 1) {
-			}
-			else {
-				if($result1['size'] == 1) {
-				}
-			}
+		else {
+			$this->util->db->Execute("DELETE FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '".$numFuec."' AND CC_NUM_ID_FLD = '" . $numberId . "'");
 		}
 		return $respcode;
 	}

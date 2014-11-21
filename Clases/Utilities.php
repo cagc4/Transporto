@@ -296,8 +296,15 @@ class Utilities
 					if ($i == 1)
 						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=PrintFuec&Numero_FUEC={Numero_FUEC}";
 					break;
+				case 'Ocupantes del FUEC':
+					if ($i == 1) {
+						$col["width"] = "0";
+					}
+					if ($i == 3)
+						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=FuecPassenger_srch&Numero_Identificacion={Numero_Identificacion}";
+					break;
 			}
-			$col["width"] = "15";
+			//$col["width"] = "15";
 			$col["editable"] = false;
 			$col["align"] = "center";
 			$cols[] = $col;

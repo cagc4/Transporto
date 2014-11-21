@@ -56,6 +56,10 @@ switch($_GET["Page"]) {
 		$_SESSION['number'] = $_GET["Numero_FUEC"];
 		$location = 'location:PrintFuec.php';
 		break;
+	case 'FuecPassenger_srch':
+		$_SESSION['numberId'] = $_GET["Numero_Identificacion"];
+		$location = 'location:FuecPassenger_mdfy.php';
+		break;
 }
 header($location);
 ?>
