@@ -30,7 +30,7 @@ $template->navigateBar('Home');
 		<div id="osx-modal-title">Centro de Notificaciones Transcorvalle</div>
 		<div class="close"><a href="#" class="simplemodal-close">x</a></div>
 		<div id="osx-modal-data">
-			<h2>Documentos vencidos</h2>
+			<h2>Documentos</h2>
 			<?php $template->warnings(); ?>
 			<p><button class="simplemodal-close">Cerrar</button> <span>(o presione ESC or click para cerrar)</span></p>
 		</div>
