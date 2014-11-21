@@ -2,12 +2,14 @@
 
 require_once('Tcpdf/tcpdf_include.php');
 include "../Clases/TemplatePage.php";
+include "../Clases/Fuec.php";
 
 class TemplateReport
 {
 	var $pdf;
 	var $util;
 	var $result;
+
 
 	function TemplateReport($reporte,$orientacion,$tamano, $validateSession, $role)
 	{
@@ -846,6 +848,11 @@ EOD;
 	function fuec($numerofuec)
 	{
 
+		$objFuec = new Fuec();
+		$objFuec->getFuec($numerofuec);
+		$result = $objFuec->result->FetchRow();
+
+
 		$html = <<<EOD
 
 		<table width="100%">
@@ -878,7 +885,7 @@ EOD;
 						<br>
 						<strong>
 						FORMATO UNICO DE EXTRACTO DEL CONTRATO DEL SERVICIO P&#218;BLICO DE TRANSPORTE TERRESTRE AUTOMOTOR
-						ESPECIAL N.3760092002014
+						ESPECIAL N. $numerofuec
 						</strong>
 					</font>
 				</td>
@@ -913,7 +920,7 @@ EOD;
 				</td>
 				<td border="1" width="65%" align="center">
 					<font style="font-size:10" >
-						&nbsp;
+						$result[0]
 					</font>
 				</td>
 			</tr>
@@ -925,7 +932,7 @@ EOD;
 				</td>
 				<td border="1" width="35%" align="center">
 					<font style="font-size:10" >
-						&nbsp;
+						$result[1]
 					</font>
 				</td>
 				<td border="1" width="10%" align="center">
@@ -935,7 +942,7 @@ EOD;
 				</td>
 				<td border="1" width="20%" align="center">
 					<font style="font-size:10" >
-						&nbsp;
+						$result[1]
 					</font>
 				</td>
 			</tr>
@@ -1037,7 +1044,7 @@ EOD;
 		</td>
 		<td border="1" width="25%" align="center">
 			<font style="font-size:12">
-				<strong>&nbsp;MARCA</strong>
+				<strong>&nbsp;CLASE</strong>
 			</font>
 		</td>
 	</tr>
@@ -1383,7 +1390,7 @@ EOD;
 
 
 		$style=$this->codigoBarraEstilo();
-		$this->pdf->write2DBarcode('www.trasnscorvalle.com.co/?codigo=' . $numerofuec, 'QRCODE,L', 10, 10, 25,25, $style, 'N');
+		$this->pdf->write2DBarcode($numerofuec, 'QRCODE,L', 10, 10, 25,25, $style, 'N');
 		$this->pdf->writeHTML($html, true, false, true, false, '');
 
 		$this->pdf->AddPage();
