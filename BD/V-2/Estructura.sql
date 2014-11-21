@@ -1,6 +1,6 @@
-﻿# Host: localhost  (Version: 5.5.8)
-# Date: 2014-11-20 21:42:21
-# Generator: MySQL-Front 5.3  (Build 4.121)
+﻿# Host: localhost  (Version: 5.6.16)
+# Date: 2014-11-21 11:35:20
+# Generator: MySQL-Front 5.3  (Build 4.133)
 
 /*!40101 SET NAMES utf8 */;
 
@@ -173,7 +173,7 @@ CREATE TABLE `cc_fuec_ocupantes_tbl` (
   `cc_num_id_fld` varchar(20) DEFAULT NULL,
   `cc_nombre_fld` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`cc_id_fld`)
-) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=108 DEFAULT CHARSET=latin1;
 
 #
 # Structure for table "cc_fuec_tbl"
@@ -195,7 +195,7 @@ CREATE TABLE `cc_fuec_tbl` (
   `cc_tipo_doc_conductor2_fld` varchar(255) DEFAULT NULL,
   `cc_num_doc_conductor1_fld` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`cc_id_fld`)
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
 #
 # Structure for table "cc_imagenes_tbl"
@@ -219,6 +219,18 @@ CREATE TABLE `cc_navegacion_tbl` (
   `cc_type_fld` varchar(255) NOT NULL DEFAULT '',
   `cc_url_fld` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`cc_page_fld`,`cc_type_fld`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+#
+# Structure for table "cc_parametros_tbl"
+#
+
+DROP TABLE IF EXISTS `cc_parametros_tbl`;
+CREATE TABLE `cc_parametros_tbl` (
+  `cc_idparametro_fld` int(11) NOT NULL AUTO_INCREMENT,
+  `cc_descripcion_fld` varchar(255) DEFAULT NULL,
+  `cc_valor_fld` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`cc_idparametro_fld`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 #
@@ -391,7 +403,7 @@ CREATE TABLE `cc_wp_options` (
   `autoload` varchar(20) NOT NULL DEFAULT 'yes',
   PRIMARY KEY (`option_id`),
   UNIQUE KEY `option_name` (`option_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=219 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=230 DEFAULT CHARSET=utf8;
 
 #
 # Structure for table "cc_wp_postmeta"
