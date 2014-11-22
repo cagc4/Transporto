@@ -38,7 +38,7 @@ class User
 		$respCode = 0;
 		$userBasicData = $userData->userFormBasicData->userFormBasic;
 		if($userBasicData->state == 'C') {
-			$this->result = $this->util->db->Execute("UPDATE CC_USER_TBL SET CC_PSSWRD_FLD = '".$userBasicData->user."',
+			$this->result = $this->util->db->Execute("UPDATE CC_USER_TBL SET CC_PSSWRD_FLD = '".md5($userBasicData->user)."',
 																			 CC_ROLE_FLD = '".$userBasicData->role."',
 																			 CC_ESTADO_FLD = '".$userBasicData->state."'
 													  WHERE CC_USER_ID_FLD = '".$userBasicData->user."'");
