@@ -84,7 +84,7 @@ class Fuec
 		$fuecBasicData = $fuecPassengerData->fuecFormBasicData->fuecFormBasic;
 		if(is_array($fuecBasicData)) {
 			foreach($fuecBasicData as $fuec) {
-				if($fuec->docNum != '') {					
+				if($fuec->docNum != '') {
 					$this->getNextConsecutivePassenger($numFuec);
 					$result = $this->result->FetchRow();
 					$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_OCUPANTES_TBL VALUES (0, " . ($result['number'] + 1)	 . ", '" . $numFuec . "', '" . $fuec->docType . "', '" . $fuec->docNum . "', '" . $fuec->name . "')");
@@ -116,7 +116,7 @@ class Fuec
 		$result = $this->result->FetchRow();
 		$this->result = $this->util->db->Execute("SELECT LPAD(".$result['Auto_increment'].", 4, 0) AS number FROM DUAL");
 	}
-	
+
 	function getNextConsecutivePassenger($number) {
 		$this->result = $this->util->db->Execute("SELECT IFNULL(MAX(CC_ID_OCUPANTE_FLD), 0) AS number FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '" . $number . "'");
 	}
@@ -134,7 +134,7 @@ class Fuec
 														 CC_NOMBRE_FLD AS name
 												  FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '" . $number . "' AND CC_ID_OCUPANTE_FLD = '" . $numberId . "'");
 	}
-	
+
 	function getPassengerFuecView($number, $numberId) {
 		$this->result = $this->util->db->Execute("SELECT CC_TIPO_DOC_FLD AS docType,
 														 CC_NUM_ID_FLD AS docNum,
@@ -181,11 +181,11 @@ class Fuec
 															, A.CC_NUM_DOC_CODUCTOR2_FLD
 															,(SELECT X.CC_NUMLICENCIA_FLD FROM CC_PROPCOND_TBL X WHERE X.CC_TIPO_DOC_FLD = A.CC_TIPO_DOC_CONDUCTOR2_FLD AND X.CC_NUME_DOC_FLD=A.CC_NUM_DOC_CODUCTOR2_FLD)
 															,(SELECT DATE_FORMAT(X.CC_FCHVENCLICENCIA_FLD,'%d/%m/%Y') FROM CC_PROPCOND_TBL X WHERE X.CC_TIPO_DOC_FLD = A.CC_TIPO_DOC_CONDUCTOR2_FLD AND X.CC_NUME_DOC_FLD=A.CC_NUM_DOC_CODUCTOR2_FLD)
-												  			,'Nombre Responsable'
+												  			,A.CC_NOMBRE_RESPONSABLE_FLD
 															,A.CC_NUM_DOC_RESPONSABLE_FLD
 															,A.CC_TEL_RESPONSABLE_FLD
         													,A.CC_DIR_RESPONSABLE_FLD
-												  FROM    	CC_FUEC_TBL A, CC_CONTRACT_TBL B , CC_PERSON_TBL C , CC_VEHICLE_TBL D
+        										  FROM    	CC_FUEC_TBL A, CC_CONTRACT_TBL B , CC_PERSON_TBL C , CC_VEHICLE_TBL D
 												  WHERE		A.CC_NUM_CONTRATO_TBL = B.CC_ID_FLD
 												  AND     	B.CC_NUME_DOC_FLD = C.CC_NUME_DOC_FLD
 												  AND     	A.CC_PLACA_FLD = D.CC_PLACA_FLD
