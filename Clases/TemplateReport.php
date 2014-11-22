@@ -2,12 +2,14 @@
 
 require_once('Tcpdf/tcpdf_include.php');
 include "../Clases/TemplatePage.php";
+include "../Clases/Fuec.php";
 
 class TemplateReport
 {
 	var $pdf;
 	var $util;
 	var $result;
+
 
 	function TemplateReport($reporte,$orientacion,$tamano, $validateSession, $role)
 	{
@@ -846,6 +848,116 @@ EOD;
 	function fuec($numerofuec)
 	{
 
+		$objFuec = new Fuec();
+		$objFuec->getFuec($numerofuec);
+		$result = $objFuec->result->FetchRow();
+
+		$objFuec->getPassengerFuec($numerofuec,1);
+		$resultPas1 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,2);
+		$resultPas2 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,3);
+		$resultPas3 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,4);
+		$resultPas4 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,5);
+		$resultPas5 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,6);
+		$resultPas6 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,7);
+		$resultPas7 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,8);
+		$resultPas8 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,9);
+		$resultPas9 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,10);
+		$resultPas10 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,11);
+		$resultPas11 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,12);
+		$resultPas12 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,13);
+		$resultPas13 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,14);
+		$resultPas14 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,15);
+		$resultPas15 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,16);
+		$resultPas16 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,17);
+		$resultPas17 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,18);
+		$resultPas18 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,19);
+		$resultPas19 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,20);
+		$resultPas20 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,21);
+		$resultPas21 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,22);
+		$resultPas22 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,23);
+		$resultPas23 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,24);
+		$resultPas24 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,25);
+		$resultPas25 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,26);
+		$resultPas26 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,27);
+		$resultPas27 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,28);
+		$resultPas28 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,29);
+		$resultPas29 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,30);
+		$resultPas30 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,31);
+		$resultPas31 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,32);
+		$resultPas32 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,33);
+		$resultPas33 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,34);
+		$resultPas34 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,35);
+		$resultPas35 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,36);
+		$resultPas36 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,37);
+		$resultPas37 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,38);
+		$resultPas38 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,39);
+		$resultPas39 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,40);
+		$resultPas40 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,41);
+		$resultPas41 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,42);
+		$resultPas42 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,43);
+		$resultPas43 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,44);
+		$resultPas44 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,45);
+		$resultPas45 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,46);
+		$resultPas46 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,47);
+		$resultPas47 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,48);
+		$resultPas48 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,49);
+		$resultPas49 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,50);
+		$resultPas50 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,51);
+		$resultPas51 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,52);
+		$resultPas52 = $objFuec->result->FetchRow();
+
+
 		$html = <<<EOD
 
 		<table width="100%">
@@ -878,7 +990,7 @@ EOD;
 						<br>
 						<strong>
 						FORMATO UNICO DE EXTRACTO DEL CONTRATO DEL SERVICIO P&#218;BLICO DE TRANSPORTE TERRESTRE AUTOMOTOR
-						ESPECIAL N.3760092002014
+						ESPECIAL N. $numerofuec
 						</strong>
 					</font>
 				</td>
@@ -913,7 +1025,7 @@ EOD;
 				</td>
 				<td border="1" width="65%" align="center">
 					<font style="font-size:10" >
-						&nbsp;
+						$result[0]
 					</font>
 				</td>
 			</tr>
@@ -925,7 +1037,7 @@ EOD;
 				</td>
 				<td border="1" width="35%" align="center">
 					<font style="font-size:10" >
-						&nbsp;
+						$result[1]
 					</font>
 				</td>
 				<td border="1" width="10%" align="center">
@@ -935,21 +1047,21 @@ EOD;
 				</td>
 				<td border="1" width="20%" align="center">
 					<font style="font-size:10" >
-						&nbsp;
+						$result[2]
 					</font>
 				</td>
 			</tr>
 			<tr>
 				<td border="1" width="100%">
 					<font style="font-size:10" >
-						OBJETO DEL CONTRATO:
+						OBJETO DEL CONTRATO:&nbsp;&nbsp;$result[3]
 					</font>
 				</td>
 			</tr>
 			<tr>
 				<td border="1" width="100%" align="left">
 					<font style="font-size:10" >
-						RECORRIDO:
+						RECORRIDO:&nbsp;&nbsp;$result[4]
 					</font>
 				</td>
 			</tr>
@@ -959,7 +1071,11 @@ EOD;
 					CONVENIO CONSORCIO UNION TEMPORAL CON:
 					</font>
 				</td>
-				<td  border="1" width="50%"></td>
+				<td  border="1" width="50%">
+					<font style="font-size:10" >
+					&nbsp;&nbsp;$result[5]
+					</font>
+				</td>
 			</tr>
 			<tr>
 				<td border="1" width="100%">
@@ -976,17 +1092,17 @@ EOD;
 		</td>
 		<td border="1" width="25%">
 			<font style="font-size:10">
-				DIA:
+				DIA:&nbsp;&nbsp;$result[6]
 			</font>
 		</td>
 		<td border="1" width="20%" >
 			<font style="font-size:10">
-				MES:
+				MES:&nbsp;&nbsp;$result[7]
 			</font>
 		</td>
 		<td border="1" width="20%">
 			<font style="font-size:10">
-				A&#209;O:
+				A&#209;O:&nbsp;&nbsp;$result[8]
 			</font>
 		</td>
 	</tr>
@@ -998,17 +1114,17 @@ EOD;
 		</td>
 		<td border="1" width="25%">
 			<font style="font-size:10">
-				DIA:
+				DIA:&nbsp;&nbsp;$result[9]
 			</font>
 		</td>
 		<td border="1" width="20%">
 			<font style="font-size:10">
-				MES:
+				MES:&nbsp;&nbsp;$result[10]
 			</font>
 		</td>
 		<td border="1" width="20%">
 			<font style="font-size:10">
-				A&#209;O:
+				A&#209;O:&nbsp;&nbsp;$result[11]
 			</font>
 		</td>
 	</tr>
@@ -1037,15 +1153,15 @@ EOD;
 		</td>
 		<td border="1" width="25%" align="center">
 			<font style="font-size:12">
-				<strong>&nbsp;MARCA</strong>
+				<strong>&nbsp;CLASE</strong>
 			</font>
 		</td>
 	</tr>
 	<tr>
-		<td border="1" width="25%" align="center">&nbsp;</td>
-		<td border="1" width="25%" align="center">&nbsp;</td>
-		<td border="1" width="25%" align="center">&nbsp;</td>
-		<td border="1" width="25%" align="center">&nbsp;</td>
+		<td border="1" width="25%" align="center"><font style="font-size:10">&nbsp;&nbsp;$result[12]</font></td>
+		<td border="1" width="25%" align="center"><font style="font-size:10">&nbsp;&nbsp;$result[13]</font></td>
+		<td border="1" width="25%" align="center"><font style="font-size:10">&nbsp;&nbsp;$result[14]</font></td>
+		<td border="1" width="25%" align="center"><font style="font-size:10">&nbsp;&nbsp;$result[15]</font></td>
 	</tr>
 	<tr>
 		<td border="1" width="50%" align="center">
@@ -1060,72 +1176,72 @@ EOD;
 		</td>
 	</tr>
 	<tr>
-		<td border="1" width="50%" align="center">&nbsp;</td>
-		<td border="1" width="50%" align="center">&nbsp;</td>
+		<td border="1" width="50%" align="center"><font style="font-size:10">&nbsp;&nbsp;$result[16]</font></td>
+		<td border="1" width="50%" align="center"><font style="font-size:10">&nbsp;&nbsp;$result[17]</font></td>
 	</tr>
 	<tr>
 		<td border="1" width="35%" height="30">
 			<font style="font-size:10">
-				CONDUCTOR 1:
+				CONDUCTOR 1:<br>&nbsp;&nbsp;$result[18]
 			</font>
 		</td>
 		<td border="1" width="15%" >
 			<font style="font-size:10">
-				C.C.:
+				C.C.:$resultPas1[1]<br>&nbsp;&nbsp;$result[19]
 			</font>
 		</td>
 		<td border="1" width="35%" >
 			<font style="font-size:10">
-				N. LICENCIA CONDUCCION:
+				N. LICENCIA CONDUCCION:<br>&nbsp;&nbsp;$result[20]
 			</font>
 		</td>
 		<td border="1" width="15%" >
 			<font style="font-size:10">
-				Vigencia:
-			</font>
-		</td>
-	</tr>
-	<tr>
-		<td border="1" width="35%" height="30">
-			<font style="font-size:10">
-				CONDUCTOR 2:
-			</font>
-		</td>
-		<td border="1" width="15%" >
-			<font style="font-size:10">
-				C.C.:
-			</font>
-		</td>
-		<td border="1" width="35%" >
-			<font style="font-size:10">
-				N. LICENCIA CONDUCCION:
-			</font>
-		</td>
-		<td border="1" width="15%" >
-			<font style="font-size:10">
-				Vigencia:
+				Vigencia:<br>&nbsp;&nbsp;$result[21]
 			</font>
 		</td>
 	</tr>
 	<tr>
 		<td border="1" width="35%" height="30">
 			<font style="font-size:10">
-				RESPONSABLE DEL CONTRATANTE:
+				CONDUCTOR 2:<br>&nbsp;&nbsp;$result[22]
 			</font>
 		</td>
 		<td border="1" width="15%" >
 			<font style="font-size:10">
-				C.C.:
+				C.C.:$resultPas1[1]<br>&nbsp;&nbsp;$result[23]
 			</font>
 		</td>
 		<td border="1" width="35%" >
 			<font style="font-size:10">
-				TELEFONO:
+				N. LICENCIA CONDUCCION:<br>&nbsp;&nbsp;$result[24]
 			</font>
 		</td>
 		<td border="1" width="15%" >
 			<font style="font-size:10">
-				DIRECCI&#211;N:
+				Vigencia:<br>&nbsp;&nbsp;$result[25]
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td border="1" width="35%" height="30">
+			<font style="font-size:10">
+				RESPONSABLE DEL CONTRATANTE:<br>&nbsp;&nbsp;$result[26]
+			</font>
+		</td>
+		<td border="1" width="15%" >
+			<font style="font-size:10">
+				C.C.:$resultPas1[1]<br>&nbsp;&nbsp;$result[27]
+			</font>
+		</td>
+		<td border="1" width="35%" >
+			<font style="font-size:10">
+				TELEFONO:<br>&nbsp;&nbsp;$result[28]
+			</font>
+		</td>
+		<td border="1" width="15%" >
+			<font style="font-size:10">
+				DIRECCI&#211;N:<br>&nbsp;&nbsp;$result[29]
 			</font>
 		</td>
 	</tr>
@@ -1138,221 +1254,221 @@ EOD;
 	</tr>
 	<tr>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas1[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.$resultPas1[1]
 			</font>
 		</td>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas2[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.:$resultPas2[1]
 			</font>
 		</td>
 	</tr>
 	<tr>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas3[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.:$resultPas3[1]
 			</font>
 		</td>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas4[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.:$resultPas4[1]
 			</font>
 		</td>
 	</tr>
 	<tr>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas5[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.:$resultPas5[1]
 			</font>
 		</td>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas6[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.:$resultPas6[1]
 			</font>
 		</td>
 	</tr>
 	<tr>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas7[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.:$resultPas7[1]
 			</font>
 		</td>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas8[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.:$resultPas8[1]
 			</font>
 		</td>
 	</tr>
 	<tr>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas9[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.:$resultPas9[1]
 			</font>
 		</td>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas10[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.:$resultPas10[1]
 			</font>
 		</td>
 	</tr>
 	<tr>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas11[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.:$resultPas11[1]
 			</font>
 		</td>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas12[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.:$resultPas12[1]
 			</font>
 		</td>
 	</tr>
 	<tr>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas13[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.:$resultPas13[1]
 			</font>
 		</td>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas14[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.:$resultPas14[1]
 			</font>
 		</td>
 	</tr>
 	<tr>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas15[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.:$resultPas15[1]
 			</font>
 		</td>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas16[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.:$resultPas16[1]
 			</font>
 		</td>
 	</tr>
 	<tr>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas17[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.:$resultPas17[1]
 			</font>
 		</td>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas18[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.:$resultPas18[1]
 			</font>
 		</td>
 	</tr>
 	<tr>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas19[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.:$resultPas19[1]
 			</font>
 		</td>
 		<td border="1" width="30%">
-			<font style="font-size:12">
-				NOMBRE:
+			<font style="font-size:9">
+				NOMBRE:$resultPas20[2]
 			</font>
 		</td>
 		<td border="1" width="20%">
-			<font style="font-size:12">
-				C.C.:
+			<font style="font-size:9">
+				C.C.:$resultPas20[1]
 			</font>
 		</td>
 	</tr>
@@ -1383,7 +1499,7 @@ EOD;
 
 
 		$style=$this->codigoBarraEstilo();
-		$this->pdf->write2DBarcode('www.trasnscorvalle.com.co/?codigo=' . $numerofuec, 'QRCODE,L', 10, 10, 25,25, $style, 'N');
+		$this->pdf->write2DBarcode($numerofuec, 'QRCODE,L', 10, 10, 25,25, $style, 'N');
 		$this->pdf->writeHTML($html, true, false, true, false, '');
 
 		$this->pdf->AddPage();
@@ -1400,353 +1516,353 @@ EOD;
 				</tr>
 				<tr>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas21[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas21[1]
 						</font>
 					</td>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas22[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas22[1]
 						</font>
 					</td>
 				</tr>
 				<tr>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas23[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas23[1]
 						</font>
 					</td>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas24[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas24[1]
 						</font>
 					</td>
 				</tr>
 				<tr>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas25[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas25[1]
 						</font>
 					</td>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas26[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas26[1]
 						</font>
 					</td>
 				</tr>
 					<tr>
 						<td border="1"  width="30%">
-							<font style="font-size:10">
-								NOMBRE:
+							<font style="font-size:9">
+								NOMBRE:$resultPas27[2]
 							</font>
 						</td>
 						<td border="1"  width="20%">
-							<font style="font-size:10">
-								C.C.:
+							<font style="font-size:9">
+								C.C.:$resultPas27[1]
 							</font>
 						</td>
 						<td border="1"  width="30%">
-							<font style="font-size:10">
-								NOMBRE:
+							<font style="font-size:9">
+								NOMBRE:$resultPas28[2]
 							</font>
 						</td>
 						<td border="1"  width="20%">
-							<font style="font-size:10">
-								C.C.:
+							<font style="font-size:9">
+								C.C.:$resultPas28[1]
 							</font>
 						</td>
 				</tr>
 				<tr>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas29[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas29[1]
 						</font>
 					</td>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas30[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas30[1]
 						</font>
 					</td>
 				</tr>
 				<tr>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas31[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas31[1]
 						</font>
 					</td>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas32[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas32[1]
 						</font>
 					</td>
 				</tr>
 				<tr>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas33[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas33[1]
 						</font>
 					</td>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas34[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas34[1]
 						</font>
 					</td>
 				</tr>
 				<tr>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas35[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas35[1]
 						</font>
 					</td>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas36[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas36[1]
 						</font>
 					</td>
 				</tr>
 				<tr>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas37[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas37[1]
 						</font>
 					</td>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas38[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas38[1]
 						</font>
 					</td>
 				</tr>
 				<tr>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas39[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas39[1]
 						</font>
 					</td>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas40[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas40[1]
 						</font>
 					</td>
 				</tr>
 				<tr>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas41[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas41[1]
 						</font>
 					</td>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas42[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas42[1]
 						</font>
 					</td>
 				</tr>
 				<tr>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas43[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas43[1]
 						</font>
 					</td>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas44[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas44[1]
 						</font>
 					</td>
 				</tr>
 				<tr>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas45[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas45[1]
 						</font>
 					</td>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas46[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas46[1]
 						</font>
 					</td>
 				</tr>
 				<tr>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas47[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas47[1]
 						</font>
 					</td>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas48[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas48[1]
 						</font>
 					</td>
 				</tr>
 				<tr>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
-						</font>
+						<font style="font-size:9">
+							NOMBRE:$resultPas49[2]
+						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas48[1]
 						</font>
 					</td>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas50[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas50[1]
 						</font>
 					</td>
 				</tr>
 				<tr>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas51[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas51[1]
 						</font>
 					</td>
 					<td border="1"  width="30%">
-						<font style="font-size:10">
-							NOMBRE:
+						<font style="font-size:9">
+							NOMBRE:$resultPas52[2]
 						</font>
 					</td>
 					<td border="1"  width="20%">
-						<font style="font-size:10">
-							C.C.:
+						<font style="font-size:9">
+							C.C.:$resultPas52[1]
 						</font>
 					</td>
 				</tr>
