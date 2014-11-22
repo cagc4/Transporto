@@ -61,6 +61,7 @@ class Fuec
 																						 '" . $fuecGeneralData->agreement . "',
 																						 '" . $fuecResponsibleData->docTypeResponsible . "',
 																						 '" . $fuecResponsibleData->docNumResponsible . "',
+																						 '" . $fuecResponsibleData->nameResponsible . "',
 																						 '" . $fuecResponsibleData->phoneResponsible . "',
 																						 '" . $fuecResponsibleData->addressResponsible . "',
 																						 '" . $fuecDriver1Data->docTypeDriver1 . "',
@@ -81,22 +82,12 @@ class Fuec
 	function addFuecPassenger($fuecPassengerData, $numFuec)	{
 		$respCode = 0;
 		$fuecBasicData = $fuecPassengerData->fuecFormBasicData->fuecFormBasic;
-		$this->getCapacityAvailable($numFuec);
-		$result = $this->result->FetchRow();
-		if($result['size'] > 1) {
-			if(is_array($fuecBasicData)) {
-				foreach($fuecBasicData as $fuec) {
-					$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_OCUPANTES_TBL VALUES (0, '" . $numFuec . "', '" . $fuec->docType . "', '" . $fuec->docNum . "', '" . $fuec->name . "')");
-					if(!$this->result) {
-						$this->util->db->Execute("DELETE FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '".$numFuec."'");
-						$respCode = 99;
-						break;
-					}
-				}
-			}
-			else {
-				if($fuecBasicData->docNum != '') {
-					$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_OCUPANTES_TBL VALUES (0, '" . $numFuec . "', '" . $fuecBasicData->docType . "', '" . $fuecBasicData->docNum . "', '" . $fuecBasicData->name . "')");
+		if(is_array($fuecBasicData)) {
+			foreach($fuecBasicData as $fuec) {
+				if($fuec->docNum != '') {					
+					$this->getNextConsecutivePassenger($numFuec);
+					$result = $this->result->FetchRow();
+					$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_OCUPANTES_TBL VALUES (0, " . ($result['number'] + 1)	 . ", '" . $numFuec . "', '" . $fuec->docType . "', '" . $fuec->docNum . "', '" . $fuec->name . "')");
 					if(!$this->result) {
 						$this->util->db->Execute("DELETE FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '".$numFuec."'");
 						$respCode = 99;
@@ -106,17 +97,15 @@ class Fuec
 			}
 		}
 		else {
-			if($result['size'] == 1) {
-				$fuec = $fuecBasicData;
-				$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_OCUPANTES_TBL VALUES (0, '" . $numFuec . "', '" . $fuec->docType . "', '" . $fuec->docNum . "', '" . $fuec->name . "')");
+			if($fuecBasicData->docNum != '') {
+				$this->getNextConsecutivePassenger($numFuec);
+				$result = $this->result->FetchRow();
+				$this->result = $this->util->db->Execute("INSERT INTO CC_FUEC_OCUPANTES_TBL VALUES (0, " . ($result['number'] + 1) . ", '" . $numFuec . "', '" . $fuecBasicData->docType . "', '" . $fuecBasicData->docNum . "', '" . $fuecBasicData->name . "')");
 				if(!$this->result) {
 					$this->util->db->Execute("DELETE FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '".$numFuec."'");
 					$respCode = 99;
 					break;
 				}
-			}
-			else {
-				$respCode = 1;
 			}
 		}
 		return $respCode;
@@ -127,6 +116,10 @@ class Fuec
 		$result = $this->result->FetchRow();
 		$this->result = $this->util->db->Execute("SELECT LPAD(".$result['Auto_increment'].", 4, 0) AS number FROM DUAL");
 	}
+	
+	function getNextConsecutivePassenger($number) {
+		$this->result = $this->util->db->Execute("SELECT IFNULL(MAX(CC_ID_OCUPANTE_FLD), 0) AS number FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '" . $number . "'");
+	}
 
 	function getPassengersFuec($number) {
 		$this->result = $this->util->db->Execute("SELECT CC_TIPO_DOC_FLD AS docType,
@@ -136,6 +129,13 @@ class Fuec
 	}
 
 	function getPassengerFuec($number, $numberId) {
+		$this->result = $this->util->db->Execute("SELECT CC_TIPO_DOC_FLD AS docType,
+														 CC_NUM_ID_FLD AS docNum,
+														 CC_NOMBRE_FLD AS name
+												  FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '" . $number . "' AND CC_ID_OCUPANTE_FLD = '" . $numberId . "'");
+	}
+	
+	function getPassengerFuecView($number, $numberId) {
 		$this->result = $this->util->db->Execute("SELECT CC_TIPO_DOC_FLD AS docType,
 														 CC_NUM_ID_FLD AS docNum,
 														 CC_NOMBRE_FLD AS name
