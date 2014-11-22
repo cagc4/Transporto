@@ -239,10 +239,11 @@ class Utilities
 		$grid["multiselect"] = false;
 		$grid["resizable"] = true;
 		$grid["rowNum"] = 30;
-		$grid["autowidth"] = false;
+		$grid["altRows"] = true;
+		$grid["autowidth"] = true;
 	    //$grid["sortname"] = 'Numero_Documento';
 	    $grid["sortorder"] = "desc";  // ASC or DESC
-	    $grid["width"] = "1200";
+	    //$grid["width"] = "1200";
 	    $grid["height"] = "250";
 		$describeTable =' DESCRIBE '.$tableName;
 		$this->campos = $this->db->Execute($describeTable);
