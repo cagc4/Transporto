@@ -234,6 +234,8 @@ class Utilities
 	}
 
 	function getDataGrid($gridName, $tableName, $query){
+
+	    $path='/transporto';
 		$g = new jqgrid();
 		$grid["caption"] = $gridName;
 		$grid["multiselect"] = false;
@@ -258,51 +260,51 @@ class Utilities
 			switch($gridName) {
 				case 'Clientes':
 					if ($i == 2) {
-						$col["link"] = "/Pages/PassThrough.php?Page=Customer_srch&Numero_Documento={Numero_Documento}&Tipo_Identificacion={Tipo_Identificacion}";
+						$col["link"] = $path."/Pages/PassThrough.php?Page=Customer_srch&Numero_Documento={Numero_Documento}&Tipo_Identificacion={Tipo_Identificacion}";
 					}
 					break;
 				case 'Propietarios & Conductores':
 					if ($i == 2)
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Transporter_srch&Numero_Documento={Numero_Documento}&Tipo_Identificacion={Tipo_Identificacion}";
+						$col["link"] = $path."/Pages/PassThrough.php?Page=Transporter_srch&Numero_Documento={Numero_Documento}&Tipo_Identificacion={Tipo_Identificacion}";
 					break;
 				case 'Vehiculos':
 					if ($i == 1)
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Vehicle_srch&Placa={Placa}";
+						$col["link"] = $path."/Pages/PassThrough.php?Page=Vehicle_srch&Placa={Placa}";
 					break;
 				case 'Documentos':
 					if ($i == 4)
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Document_srch&Numero={Numero}&Placa={Placa}&Documento={Documento}";
+						$col["link"] = $path."/Pages/PassThrough.php?Page=Document_srch&Numero={Numero}&Placa={Placa}&Documento={Documento}";
 					break;
 				case 'Viajes Ocacionales':
 					if ($i == 1)
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=CasualTravel_srch&Consecutivo={Consecutivo}";
+						$col["link"] = $path."/Pages/PassThrough.php?Page=CasualTravel_srch&Consecutivo={Consecutivo}";
 					break;
 				case 'Extracto Contratos':
 					if ($i == 1)
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=ContractExtract_srch&Consecutivo={Consecutivo}";
+						$col["link"] = $path."/Pages/PassThrough.php?Page=ContractExtract_srch&Consecutivo={Consecutivo}";
 					break;
 				case 'Usuarios':
 					if ($i == 1)
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=User_srch&Usuario={Usuario}";
+						$col["link"] = $path."/Pages/PassThrough.php?Page=User_srch&Usuario={Usuario}";
 					break;
 				case 'Valores':
 					if ($i == 1)
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Value_srch&Campo={Campo}&Valor={Valor}";
+						$col["link"] = $path."/Pages/PassThrough.php?Page=Value_srch&Campo={Campo}&Valor={Valor}";
 					break;
 				case 'Contrato':
 					if ($i == 1)
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=Contract_srch&Consecutivo={Consecutivo}";
+						$col["link"] = $path."/Pages/PassThrough.php?Page=Contract_srch&Consecutivo={Consecutivo}";
 					break;
 				case 'FUEC':
 					if ($i == 1)
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=PrintFuec&Numero_FUEC={Numero_FUEC}";
+						$col["link"] = $path."/Pages/PassThrough.php?Page=PrintFuec&Numero_FUEC={Numero_FUEC}";
 					break;
 				case 'Ocupantes del FUEC':
 					if ($i == 1) {
 						$col["width"] = "0";
 					}
 					if ($i == 3)
-						$col["link"] = "/Transporto/Pages/PassThrough.php?Page=FuecPassenger_srch&Numero_Identificacion={Numero_Identificacion}";
+						$col["link"] = $path."/Pages/PassThrough.php?Page=FuecPassenger_srch&Numero_Identificacion={Numero_Identificacion}";
 					break;
 			}
 			//$col["width"] = "15";
