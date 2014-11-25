@@ -65,9 +65,9 @@ class Fuec
 																						 '" . $fuecResponsibleData->phoneResponsible . "',
 																						 '" . $fuecResponsibleData->addressResponsible . "',
 																						 '" . $fuecDriver1Data->docTypeDriver1 . "',
-																						 '" . $fuecDriver1Data->docNumDriver1 . "',
+																						 '" . $fuecDriver2Data->docNumDriver2 . "',
 																						 '" . $fuecDriver2Data->docTypeDriver2 . "',
-																						 '" . $fuecDriver2Data->docNumDriver2 . "')");
+																						 '" . $fuecDriver1Data->docNumDriver1 . "')");
 			if(!$this->result) {
 				$this->util->db->Execute("DELETE FROM CC_FUEC_TBL WHERE CC_NUMERO_FUEC_FLD = ".$numFuec);
 				$respCode = 99;
