@@ -76,7 +76,7 @@ class TemplateReport
 			$this->pdf->Image(K_PATH_IMAGES.'Logo.png', 10,5, 50, 0, '', '', '', false, 0);
 			$this->pdf->Image(K_PATH_IMAGES.'tituloReporte.png', 150,22, 55, 0, '', '', '', false, 0);
 			$this->pdf->Image(K_PATH_IMAGES.'supertransporte.jpg', 150,10, 40,10, '', '', '', false, 0);
-			$this->pdf->Image(K_PATH_IMAGES.'incontec.jpg', 195,5,10,0, '', '', '', false, 0);
+			//$this->pdf->Image(K_PATH_IMAGES.'incontec.jpg', 195,5,10,0, '', '', '', false, 0);
 		}
 
 		if ($firma)
@@ -109,7 +109,7 @@ class TemplateReport
 	}
 
 	function exportarPdf($id){
-		$this->pdf->Output($id.'pdf', 'I');
+		$this->pdf->Output($id, 'I');
 	}
 	function serviceOrder($tamanoFuenteForm,$objetoS,$persona,$celular,$direcO,$direcD,$salida,$regreso,$conductor,$placa,$consecutivo)
 	{
@@ -796,7 +796,9 @@ EOD;
 
 		$html = <<<EOD
 
-				<p align="center"><font face="Arial" size="11"><b>CONTRATO DE TRANSPORTE</b></font></p>
+				<p align="center"><font face="Arial" size="11"><b>CONTRATO DE TRANSPORTE</b></font><br>
+				<font face="Arial" size="9"><b>N&uacute;mero $consecutivo</b></font></p>
+
 
 				<p align="justify"><font face="Arial" size="10">Conste por el presente documento, que entre los suscritos a saber <b> $nombreContratante .</b>$tipoDocumento .<b>$contratante</b> quien para efectos del presente se
 				denominará CONTRATANTE, y el señor <b>TRANSCORVALLE S.A.S, </b>NIT. No <b>821.002.227-2</b>, quien para efectos del mismo se denominará CONTRATISTA,
