@@ -49,7 +49,7 @@ class CasualTravel
 		}
 		if($respCode == 0) {
 			if($casualTravelDriversData->driverone != '') {
-				$this->result = $this->util->db->Execute("SELECT CC_NUME_DOC_FLD AS driverone FROM CC_PROPCOND_TBL WHERE CC_NUME_DOC_FLD = '".$casualTravelDriversData->driverone."' AND CC_TYPE_PC_FLD = '02'");
+				$this->result = $this->util->db->Execute("SELECT CC_NUME_DOC_FLD AS driverone FROM CC_PROPCOND_TBL WHERE CC_NUME_DOC_FLD = '".$casualTravelDriversData->driverone."' AND CC_TYPE_PC_FLD in ('01','02')");
 				$result = $this->result->FetchRow();
 				if($result['driverone'] == null) {
 					$respCode = 5;
@@ -58,7 +58,7 @@ class CasualTravel
 		}
 		if($respCode == 0) {
 			if($casualTravelDriversData->drivertwo != '') {
-				$this->result = $this->util->db->Execute("SELECT CC_NUME_DOC_FLD AS drivertwo FROM CC_PROPCOND_TBL WHERE CC_NUME_DOC_FLD = '".$casualTravelDriversData->drivertwo."' AND CC_TYPE_PC_FLD = '02'");
+				$this->result = $this->util->db->Execute("SELECT CC_NUME_DOC_FLD AS drivertwo FROM CC_PROPCOND_TBL WHERE CC_NUME_DOC_FLD = '".$casualTravelDriversData->drivertwo."' AND CC_TYPE_PC_FLD in ('01','02')");
 				$result = $this->result->FetchRow();
 				if($result['drivertwo'] == null) {
 					$respCode = 6;

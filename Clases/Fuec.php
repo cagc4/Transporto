@@ -33,13 +33,13 @@ class Fuec
 		if($respCode == 0) {
 			$this->result = $this->util->db->Execute("SELECT * FROM CC_PROPCOND_TBL WHERE CC_TIPO_DOC_FLD = '" . $fuecDriver1Data->docTypeDriver1 . "' AND
 																						  CC_NUME_DOC_FLD = '" . $fuecDriver1Data->docNumDriver1 . "' AND
-																						  CC_TYPE_PC_FLD = '02'");
+																						  CC_TYPE_PC_FLD in ('01','02')");
 			$result = $this->result->FetchRow();
 			if($result) {
 				if($fuecDriver2Data->docTypeDriver2 != '' && $fuecDriver2Data->docTypeDriver2 != '') {
 					$this->result = $this->util->db->Execute("SELECT * FROM CC_PROPCOND_TBL WHERE CC_TIPO_DOC_FLD = '" . $fuecDriver2Data->docTypeDriver2 . "' AND
 																								  CC_NUME_DOC_FLD = '" . $fuecDriver2Data->docNumDriver2 . "' AND
-																								  CC_TYPE_PC_FLD = '02'");
+																								  CC_TYPE_PC_FLD in ('01','02')");
 					$result = $this->result->FetchRow();
 					if(!$result) {
 						$respCode = 4;

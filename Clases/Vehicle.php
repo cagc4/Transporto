@@ -43,7 +43,7 @@ class Vehicle
 						if($vehicleOwnerData->numDocOwner != $vehicleDriverData->numDocDriver) {
 							$this->result = $this->util->db->Execute("SELECT * FROM CC_PROPCOND_TBL WHERE CC_TIPO_DOC_FLD = '".$vehicleDriverData->docTypeDriver."' AND 
 																										  CC_NUME_DOC_FLD = '".$vehicleDriverData->numDocDriver."' AND 
-																										  CC_TYPE_PC_FLD = '02'");
+																										  CC_TYPE_PC_FLD in ('01','02')");
 							if($this->result->FetchRow()) {
 								$this->result = $this->util->db->Execute("INSERT INTO CC_PER_VEH_TBL VALUES('".$vehicleDriverData->docTypeDriver."',
 																											'".$vehicleDriverData->numDocDriver."',
