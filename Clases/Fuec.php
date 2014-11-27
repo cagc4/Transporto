@@ -125,7 +125,7 @@ class Fuec
 		$this->result = $this->util->db->Execute("SELECT CC_TIPO_DOC_FLD AS docType,
 														 CC_NUM_ID_FLD AS docNum,
 														 CC_NOMBRE_FLD AS name
-												  FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '" . $number . "'");
+												  FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '" . $number . "' ORDER BY CC_ID_FLD");
 	}
 
 	function getPassengerFuec($number, $numberId) {
@@ -160,13 +160,10 @@ class Fuec
 		else {
 			$this->util->db->Execute("DELETE FROM CC_FUEC_OCUPANTES_TBL WHERE CC_NUMERO_FUEC_FLD = '".$numFuec."' AND CC_NUM_ID_FLD = '" . $numberId . "'");
 			$this->getPassengersFuec($numFuec);
-			$result = $this->result->FetchRow();
-			if($result) {
-				$nextPassenger = 1;
-				foreach($result as $passenger) {
-					$this->util->db->Execute("UPDATE CC_FUEC_OCUPANTES_TBL SET CC_ID_OCUPANTE_FLD = " . $nextPassenger . " WHERE CC_NUMERO_FUEC_FLD = '".$numFuec."' AND CC_NUM_ID_FLD = '" . $passenger['docNum'] . "'");
-					$nextPassenger ++;
-				}
+			$nextPassenger = 1;
+			while($result = $this->result->FetchRow()) {
+				$this->util->db->Execute("UPDATE CC_FUEC_OCUPANTES_TBL SET CC_ID_OCUPANTE_FLD = " . $nextPassenger . " WHERE CC_NUMERO_FUEC_FLD = '".$numFuec."' AND CC_NUM_ID_FLD = '" . $result['docNum'] . "'");
+				$nextPassenger ++;
 			}
 		}
 		return $respcode;

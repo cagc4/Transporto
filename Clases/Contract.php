@@ -29,6 +29,7 @@ class Contract
 		}*/
 		$separators = array(' ','-');
 		$plates = strtoupper(str_replace($separators, '', $contractBasicData->plate));
+		$contractBasicData->plate = $plates;
 		if(strlen($plates) > 0) {
 			$capacidad = 0;
 			if(strlen($plates) > 6) {
@@ -36,8 +37,8 @@ class Contract
 					if($contractBasicData->totalBuses != '') {
 						if($contractBasicData->totalBuses == (substr_count($plates, ',') + 1)) {
 							$plates = explode(',', $plates);
-							foreach($auxPlates as $plate) {
-								$this->result = $this->util->db->Execute("SELECT CC_CAPACIDAD_FLD AS size FROM CC_VEHICLE_TBL WHERE CC_PLACA_FLD = '".str_replace($separators, '', $auxPlates)."'");
+							foreach($plates as $plate) {
+								$this->result = $this->util->db->Execute("SELECT CC_CAPACIDAD_FLD AS size FROM CC_VEHICLE_TBL WHERE CC_PLACA_FLD = '".$plate."'");
 								$result = $this->result->FetchRow();
 								if($result != null) {
 									$capacidad = $capacidad + $result['size'];
@@ -87,7 +88,7 @@ class Contract
 			$this->result = $this->util->db->Execute("INSERT INTO CC_CONTRACT_TBL VALUES('".$result['number']."',
 																					 '".$contractBasicData->object."',
 																					 '".$contractBasicData->number."',
-																					 '".$plates."',
+																					 '".$contractBasicData->plate."',
 																					 '".$contractBasicData->totalBuses."',
 																					 '".$contractBasicData->numPassengers."',
 																					 STR_TO_DATE('".$contractScheduleData->outputDate->month."/".$contractScheduleData->outputDate->day."/".$contractScheduleData->outputDate->year."','%m/%d/%Y'),
