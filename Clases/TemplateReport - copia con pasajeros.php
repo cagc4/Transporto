@@ -854,6 +854,112 @@ EOD;
 		$objFuec->getFuec($numerofuec);
 		$result = $objFuec->result->FetchRow();
 
+		$objFuec->getPassengerFuec($numerofuec,1);
+		$resultPas1 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,2);
+		$resultPas2 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,3);
+		$resultPas3 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,4);
+		$resultPas4 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,5);
+		$resultPas5 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,6);
+		$resultPas6 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,7);
+		$resultPas7 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,8);
+		$resultPas8 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,9);
+		$resultPas9 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,10);
+		$resultPas10 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,11);
+		$resultPas11 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,12);
+		$resultPas12 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,13);
+		$resultPas13 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,14);
+		$resultPas14 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,15);
+		$resultPas15 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,16);
+		$resultPas16 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,17);
+		$resultPas17 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,18);
+		$resultPas18 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,19);
+		$resultPas19 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,20);
+		$resultPas20 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,21);
+		$resultPas21 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,22);
+		$resultPas22 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,23);
+		$resultPas23 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,24);
+		$resultPas24 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,25);
+		$resultPas25 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,26);
+		$resultPas26 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,27);
+		$resultPas27 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,28);
+		$resultPas28 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,29);
+		$resultPas29 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,30);
+		$resultPas30 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,31);
+		$resultPas31 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,32);
+		$resultPas32 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,33);
+		$resultPas33 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,34);
+		$resultPas34 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,35);
+		$resultPas35 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,36);
+		$resultPas36 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,37);
+		$resultPas37 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,38);
+		$resultPas38 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,39);
+		$resultPas39 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,40);
+		$resultPas40 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,41);
+		$resultPas41 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,42);
+		$resultPas42 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,43);
+		$resultPas43 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,44);
+		$resultPas44 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,45);
+		$resultPas45 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,46);
+		$resultPas46 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,47);
+		$resultPas47 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,48);
+		$resultPas48 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,49);
+		$resultPas49 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,50);
+		$resultPas50 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,51);
+		$resultPas51 = $objFuec->result->FetchRow();
+		$objFuec->getPassengerFuec($numerofuec,52);
+		$resultPas52 = $objFuec->result->FetchRow();
+
+
 		$html = <<<EOD
 
 		<table width="100%">
@@ -1083,7 +1189,7 @@ EOD;
 		</td>
 		<td border="1" width="15%" >
 			<font style="font-size:10">
-				C.C.:<br>&nbsp;&nbsp;$result[19]
+				C.C.:$resultPas1[1]<br>&nbsp;&nbsp;$result[19]
 			</font>
 		</td>
 		<td border="1" width="35%" >
@@ -1105,7 +1211,7 @@ EOD;
 		</td>
 		<td border="1" width="15%" >
 			<font style="font-size:10">
-				C.C.:<br>&nbsp;&nbsp;$result[23]
+				C.C.:$resultPas1[1]<br>&nbsp;&nbsp;$result[23]
 			</font>
 		</td>
 		<td border="1" width="35%" >
@@ -1127,7 +1233,7 @@ EOD;
 		</td>
 		<td border="1" width="15%" >
 			<font style="font-size:10">
-				C.C.:<br>&nbsp;&nbsp;$result[27]
+				C.C.:$resultPas1[1]<br>&nbsp;&nbsp;$result[27]
 			</font>
 		</td>
 		<td border="1" width="35%" >
@@ -1138,6 +1244,233 @@ EOD;
 		<td border="1" width="15%" >
 			<font style="font-size:10">
 				DIRECCI&#211;N:<br>&nbsp;&nbsp;$result[29]
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td border="1" width="100%" align="center" >
+			<font style="font-size:12">
+				<strong>OCUPANTES GRUPO ESPECIFICO DE USUARIOS.</strong>
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas1[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.$resultPas1[1]
+			</font>
+		</td>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas2[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.:$resultPas2[1]
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas3[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.:$resultPas3[1]
+			</font>
+		</td>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas4[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.:$resultPas4[1]
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas5[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.:$resultPas5[1]
+			</font>
+		</td>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas6[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.:$resultPas6[1]
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas7[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.:$resultPas7[1]
+			</font>
+		</td>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas8[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.:$resultPas8[1]
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas9[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.:$resultPas9[1]
+			</font>
+		</td>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas10[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.:$resultPas10[1]
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas11[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.:$resultPas11[1]
+			</font>
+		</td>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas12[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.:$resultPas12[1]
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas13[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.:$resultPas13[1]
+			</font>
+		</td>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas14[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.:$resultPas14[1]
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas15[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.:$resultPas15[1]
+			</font>
+		</td>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas16[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.:$resultPas16[1]
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas17[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.:$resultPas17[1]
+			</font>
+		</td>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas18[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.:$resultPas18[1]
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas19[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.:$resultPas19[1]
+			</font>
+		</td>
+		<td border="1" width="30%">
+			<font style="font-size:9">
+				NOMBRE:$resultPas20[2]
+			</font>
+		</td>
+		<td border="1" width="20%">
+			<font style="font-size:9">
+				C.C.:$resultPas20[1]
 			</font>
 		</td>
 	</tr>
@@ -1169,13 +1502,375 @@ EOD;
 
 		$style=$this->codigoBarraEstilo();
 		$this->pdf->write2DBarcode($numerofuec, 'QRCODE,L', 10, 10, 25,25, $style, 'N');
-		$this->pdf->Image(K_PATH_IMAGES.'supertransporte.jpg', 160,20, 40,10, '', '', '', false, 0);
 		$this->pdf->writeHTML($html, true, false, true, false, '');
 
 		$this->pdf->AddPage();
 
 		$html = <<<EOD
-			<br><br><br><br><br><br>
+
+			<table width="100%">
+				<tr>
+					<td border="1"  width="100%" align="center">
+						<font style="font-size:10">
+							<strong>OCUPANTES GRUPO ESPECIFICO DE USUARIOS.</strong>
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas21[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas21[1]
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas22[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas22[1]
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas23[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas23[1]
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas24[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas24[1]
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas25[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas25[1]
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas26[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas26[1]
+						</font>
+					</td>
+				</tr>
+					<tr>
+						<td border="1"  width="30%">
+							<font style="font-size:9">
+								NOMBRE:$resultPas27[2]
+							</font>
+						</td>
+						<td border="1"  width="20%">
+							<font style="font-size:9">
+								C.C.:$resultPas27[1]
+							</font>
+						</td>
+						<td border="1"  width="30%">
+							<font style="font-size:9">
+								NOMBRE:$resultPas28[2]
+							</font>
+						</td>
+						<td border="1"  width="20%">
+							<font style="font-size:9">
+								C.C.:$resultPas28[1]
+							</font>
+						</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas29[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas29[1]
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas30[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas30[1]
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas31[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas31[1]
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas32[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas32[1]
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas33[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas33[1]
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas34[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas34[1]
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas35[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas35[1]
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas36[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas36[1]
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas37[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas37[1]
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas38[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas38[1]
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas39[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas39[1]
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas40[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas40[1]
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas41[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas41[1]
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas42[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas42[1]
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas43[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas43[1]
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas44[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas44[1]
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas45[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas45[1]
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas46[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas46[1]
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas47[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas47[1]
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas48[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas48[1]
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas49[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas48[1]
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas50[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas50[1]
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas51[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas51[1]
+						</font>
+					</td>
+					<td border="1"  width="30%">
+						<font style="font-size:9">
+							NOMBRE:$resultPas52[2]
+						</font>
+					</td>
+					<td border="1"  width="20%">
+						<font style="font-size:9">
+							C.C.:$resultPas52[1]
+						</font>
+					</td>
+				</tr>
+			</table>
+
+			<br><br>
 			<table width="100%">
 				<tr>
 					<td width="11%"></td>
