@@ -13,9 +13,11 @@ $template->navigateBar('PrintFuec');
 	<table>
 		<tr>
 			<td width =250><center><a href="" onclick="window.open('/Transporto/Pages/Fuec_pri.php');"><img src='../Images/Icons/pdf.png' width="150" height="150" ></a></center></td>
+			<td width =250><center><a href="" onclick="window.open('/Transporto/Pages/ServiceOrder_pri_fuec.php');"><img src='../Images/Icons/pdf2.png' width="150" height="150" ></a></center></td>
 		</tr>
 		<tr>
 			<td align ='center'>Imprimir FUEC <?php echo $_SESSION['number'];?></td>
+			<td align ='center'>Imprimir Orden de Servicio <?php echo $_SESSION['number'];?></td>
 		</tr>
 	</table>
 	</center>

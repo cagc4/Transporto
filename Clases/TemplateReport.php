@@ -114,8 +114,10 @@ class TemplateReport
 	function serviceOrder($tamanoFuenteForm,$objetoS,$persona,$celular,$direcO,$direcD,$salida,$regreso,$conductor,$placa,$consecutivo)
 	{
 
+
 		$salida=$this->util->timestampATexto($salida,'u');
 		$regreso=$this->util->timestampATexto($regreso,'u');
+
 
 		$this->pdf->Ln(25);
 

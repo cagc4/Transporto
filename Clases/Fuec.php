@@ -191,6 +191,10 @@ class Fuec
 															,A.CC_NUM_DOC_RESPONSABLE_FLD
 															,A.CC_TEL_RESPONSABLE_FLD
         													,A.CC_DIR_RESPONSABLE_FLD
+        													,B.CC_ORIGEN_FLD
+        													,B.CC_DESTINO_FLD
+        													,CONCAT(B.CC_FECHASALI_FLD ,' ',B.CC_HORASALI_FLD)
+        													,CONCAT(B.CC_FECHAREGR_FLD ,' ',B.CC_HORAREGR_FLD)
         										  FROM    	CC_FUEC_TBL A, CC_CONTRACT_TBL B , CC_VEHICLE_TBL D
 												  WHERE		A.CC_NUM_CONTRATO_TBL = B.CC_ID_FLD
 												  AND     	A.CC_PLACA_FLD = D.CC_PLACA_FLD

@@ -1,40 +1,44 @@
 <?php
 
 include "../Clases/TemplateReport.php";
-include "../Clases/CasualTravel.php";
 
 $reporte='Orden de Servicio';
 
 $objTemplate = new TemplateReport($reporte,'l','CAGC1',true,'empleado');
 if(!isset($_SESSION['number'])){
-	header('location:CasualTravel_srch.php');
+	header('location:Fuec_srch.php');
 }
-$casualTravel = new CasualTravel();
-$casualTravel->getServiceOrder($_SESSION['number']);
-$result = $casualTravel->result->FetchRow();
+
+$fuec = new Fuec();
+$fuec->getFuec($_SESSION['number']);
+$result = $fuec->result->FetchRow();
 $objTemplate->setupForm($reporte,true,true,true,true,true);
 
-$consecutivo = $result['consecutivo'].'-P';
-$objetoS = $result['objetoS'];
+
+$consecutivo = $_SESSION['number'];
+$objetoS = $result['3'];
 if($objetoS == '') {$objetoS = '                                                  ';}
-$persona = $result['persona'];
+$persona = $result['26'];
 if($persona == '') {$persona = '                                                  ';}
-$celular = $result['celular'];
+$celular = $result['28'];
 if($celular == '') {$celular = '                                                  ';}
-$direcO = $result['origen'];
+$direcO = $result['30'];
 if($direcO == '') {$direcO = '                                                  ';}
-$direcD = $result['destino'];
+$direcD = $result['31'];
 if($direcD == '') {$direcD = '                                                  ';}
-$salida = $result['fechasalida'];
+$salida = $result['32'];
 if($salida == '') {$salida = '                                                  ';}
-$regreso = $result['fecharegreso'];
+$regreso = $result['33'];
 if($regreso == '') {$regreso = '                                                  ';}
-$conductor = $result['conductor'];
+$conductor = $result['18'];
 if($conductor == '') {$conductor = '                                                  ';}
-$placa = $result['placa'];
+$placa = $result['12'];
 if($placa == '') {$placa = '                              ';}
+
 
 $objTemplate->serviceOrder(8,$objetoS,$persona,$celular,$direcO,$direcD,$salida,$regreso,$conductor,$placa,$consecutivo);
 $objTemplate->exportarPdf($consecutivo);
+
+
 
 ?>
