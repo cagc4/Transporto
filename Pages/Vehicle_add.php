@@ -1,6 +1,6 @@
 <?php
 include "../Clases/TemplatePage.php";
-include "../Clases/vehicle.php";
+include "../Clases/Vehicle.php";
 
 $util = new Utilities();
 $template = new TemplatePage(true, true, 'empleado');
@@ -79,7 +79,7 @@ function onSubmit($formValues) {
 		}
 	}
 	else {
-		$response = array('successPageHtml' => '<meta http-equiv="refresh" content="0; url=vehicle_srch.php">');
+		$response = array('successPageHtml' => '<meta http-equiv="refresh" content="0; url=Vehicle_srch.php">');
 	}
 	return $response;
 }

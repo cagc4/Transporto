@@ -1,6 +1,6 @@
 <?php
 include "../Clases/TemplatePage.php";
-include "../Clases/vehicle.php";
+include "../Clases/Vehicle.php";
 
 $util = new Utilities();
 $template = new TemplatePage(true, true, 'empleado');
