@@ -4,7 +4,7 @@ class Document
 {
 	var $util;
 	var $result;
-	
+
 	function Document()
 	{
 		$this->util = new Utilities();
@@ -12,14 +12,14 @@ class Document
 
 	function addDocument($documentData)
 	{
-		$respCode = 0;			
+		$respCode = 0;
 		$documentBasicData = $documentData->documentFormBasicData->documentFormBasic;
 		$documentInsurance = $documentData->documentFormInsuranceData->documentFormInsurance;
 		$documentCoverage = $documentData->documentFormCoverageData->documentFormCoverage;
 		$documentComments = $documentData->documentFormCommentsData->documentFormComments;
-		$this->result = $this->util->db->Execute("SELECT * FROM CC_VEHICLE_TBL WHERE CC_PLACA_FLD = '".$documentBasicData->plate."'");
+		$this->result = $this->util->db->Execute("SELECT * FROM cc_vehicle_tbl WHERE cc_placa_fld = '".$documentBasicData->plate."'");
 		if($this->result->FetchRow()) {
-			$this->result = $this->util->db->Execute("INSERT INTO CC_DOCUMENTO_TBL VALUES('".$documentBasicData->number."',
+			$this->result = $this->util->db->Execute("INSERT INTO cc_documento_tbl VALUES('".$documentBasicData->number."',
 																						  '".$documentBasicData->documentType."',
 																						  '".$documentBasicData->plate."',
 																						  STR_TO_DATE('".$documentInsurance->dateOfIssue->month."/".$documentInsurance->dateOfIssue->day."/".$documentInsurance->dateOfIssue->year."','%m/%d/%Y'),
@@ -29,9 +29,9 @@ class Document
 																						  '".$documentBasicData->transitAgency."',
 																						  '".$documentComments->details."')");
 			if(!$this->result) {
-				$this->util->db->Execute("DELETE FROM CC_DOCUMENTO_TBL WHERE CC_PLACA_FLD = '".$documentBasicData->plate."' AND 
-																		CC_IDENTIFICADOR_FLD = '".$documentBasicData->number."' AND 
-																		CC_TIPO_DOCUM_FLD = '".$documentBasicData->documentType."'");								   
+				$this->util->db->Execute("DELETE FROM cc_documento_tbl WHERE cc_placa_fld = '".$documentBasicData->plate."' AND
+																		cc_identificador_fld = '".$documentBasicData->number."' AND
+																		cc_tipo_docum_fld = '".$documentBasicData->documentType."'");
 				$respCode = 1;
 			}
 		}
@@ -40,28 +40,28 @@ class Document
 		}
 		return $respCode;
 	}
-	
+
 	function getDocument($number, $plate, $documentType) {
-		$this->result = $this->util->db->Execute("SELECT CC_IDENTIFICADOR_FLD AS number,
-														 CC_TIPO_DOCUM_FLD AS documentType,
-														 CC_PLACA_FLD AS plate,
-														 DATE_FORMAT(CC_FECHA_EXP_FLD, '%m/%d/%Y') AS dateOfIssue,
-														 DATE_FORMAT(CC_FECHA_VEN_FLD, '%m/%d/%Y') AS expirationDate,
-														 CC_NOMBRE_ASE_FLD AS insurance,
-														 CC_COBERTURA_FLD AS coverage,
-														 CC_ORG_TRAN_FLD AS transitAgency,
-														 CC_OBSERVACIONES_FLD AS details
-												  FROM CC_DOCUMENTO_TBL
-												  WHERE CC_PLACA_FLD = '".$plate."' AND 
-														CC_IDENTIFICADOR_FLD = '".$number."' AND
-														CC_TIPO_DOCUM_FLD = (SELECT CC_VALOR_FLD FROM CC_VALORES_TBL WHERE CC_DESCRIPCION_FLD = '".$documentType."' AND CC_CAMPO_FLD = 'cc_tipo_docum_fld')");
+		$this->result = $this->util->db->Execute("SELECT cc_identificador_fld AS number,
+														 cc_tipo_docum_fld AS documentType,
+														 cc_placa_fld AS plate,
+														 DATE_FORMAT(cc_fecha_exp_fld, '%m/%d/%Y') AS dateOfIssue,
+														 DATE_FORMAT(cc_fecha_ven_fld, '%m/%d/%Y') AS expirationDate,
+														 cc_nombre_ase_fld AS insurance,
+														 cc_cobertura_fld AS coverage,
+														 cc_org_tran_fld AS transitAgency,
+														 cc_observaciones_fld AS details
+												  FROM cc_documento_tbl
+												  WHERE cc_placa_fld = '".$plate."' AND
+														cc_identificador_fld = '".$number."' AND
+														cc_tipo_docum_fld = (SELECT cc_valor_fld FROM cc_valores_tbl WHERE cc_descripcion_fld = '".$documentType."' AND cc_campo_fld = 'cc_tipo_docum_fld')");
 	}
-	
+
 	function modifyDocument($documentData, $number, $plate, $documentType) {
-		$respCode = 0;			
-		$this->util->db->Execute("DELETE FROM CC_DOCUMENTO_TBL WHERE CC_PLACA_FLD = '".$plate."' AND 
-																	CC_IDENTIFICADOR_FLD = '".$number."' AND 
-																	CC_TIPO_DOCUM_FLD = (SELECT CC_VALOR_FLD FROM CC_VALORES_TBL WHERE CC_DESCRIPCION_FLD = '".$documentType."' AND CC_CAMPO_FLD = 'cc_tipo_docum_fld')");
+		$respCode = 0;
+		$this->util->db->Execute("DELETE FROM cc_documento_tbl WHERE cc_placa_fld = '".$plate."' AND
+																	cc_identificador_fld = '".$number."' AND
+																	cc_tipo_docum_fld = (SELECT cc_valor_fld FROM cc_valores_tbl WHERE cc_descripcion_fld = '".$documentType."' AND cc_campo_fld = 'cc_tipo_docum_fld')");
 		$respCode = $this->addDocument($documentData);
 		return $respCode;
 	}

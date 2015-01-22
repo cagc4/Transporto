@@ -4,7 +4,7 @@ class Contract
 {
 	var $util;
 	var $result;
-	
+
 	function Contract()
 	{
 		$this->util = new Utilities();
@@ -13,13 +13,13 @@ class Contract
 	function addContract($contractData)
 	{
 		$respCode = 0;
-		
+
 		$contractBasicData = $contractData->contractFormBasicData->contractFormBasic;
 		$contractLocationData = $contractData->contractFormLocationData->contractFormLocation;
 		$contractScheduleData = $contractData->contractFormScheduleData->contractFormSchedule;
 		$contractConditionData = $contractData->contractFormConditionData->contractFormCondition;
 		/*if($contractBasicData->plate != '') {
-			$this->result = $this->util->db->Execute("SELECT CC_CAPACIDAD_FLD AS size FROM CC_VEHICLE_TBL WHERE CC_PLACA_FLD = '".$contractBasicData->plate."'");
+			$this->result = $this->util->db->Execute("SELECT cc_capacidad_fld AS size FROM cc_vehicle_tbl WHERE cc_placa_fld = '".$contractBasicData->plate."'");
 			$result = $this->result->FetchRow();
 			if($result != null) {
 				if($contractBasicData->numPassengers > $result['size']) {
@@ -38,7 +38,7 @@ class Contract
 						if($contractBasicData->totalBuses == (substr_count($plates, ',') + 1)) {
 							$plates = explode(',', $plates);
 							foreach($plates as $plate) {
-								$this->result = $this->util->db->Execute("SELECT CC_CAPACIDAD_FLD AS size FROM CC_VEHICLE_TBL WHERE CC_PLACA_FLD = '".$plate."'");
+								$this->result = $this->util->db->Execute("SELECT cc_capacidad_fld AS size FROM cc_vehicle_tbl WHERE cc_placa_fld = '".$plate."'");
 								$result = $this->result->FetchRow();
 								if($result != null) {
 									$capacidad = $capacidad + $result['size'];
@@ -47,7 +47,7 @@ class Contract
 									$respCode = 2;
 									break;
 								}
-							}							
+							}
 						}
 						else {
 							$respCode = 5;
@@ -63,7 +63,7 @@ class Contract
 			}
 			else {
 				if($contractBasicData->totalBuses == 1) {
-					$this->result = $this->util->db->Execute("SELECT CC_CAPACIDAD_FLD AS size FROM CC_VEHICLE_TBL WHERE CC_PLACA_FLD = '".$plates."'");
+					$this->result = $this->util->db->Execute("SELECT cc_capacidad_fld AS size FROM cc_vehicle_tbl WHERE cc_placa_fld = '".$plates."'");
 					$result = $this->result->FetchRow();
 					if($result != null) {
 						$capacidad = $result['size'];
@@ -85,7 +85,7 @@ class Contract
 		if($respCode == 0) {
 			$this->getNextConsecutive();
 			$result = $this->result->FetchRow();
-			$this->result = $this->util->db->Execute("INSERT INTO CC_CONTRACT_TBL VALUES('".$result['number']."',
+			$this->result = $this->util->db->Execute("INSERT INTO cc_contract_tbl VALUES('".$result['number']."',
 																					 '".$contractBasicData->object."',
 																					 '".$contractBasicData->number."',
 																					 '".$contractBasicData->plate."',
@@ -102,39 +102,39 @@ class Contract
 																					 '".$contractConditionData->contractCost."',
 																					 '".$contractConditionData->advance."')");
 			if(!$this->result) {
-				$this->util->db->Execute("DELETE FROM CC_CONTRACT_TBL WHERE CC_ID_FLD = '".$result['number']."'");
+				$this->util->db->Execute("DELETE FROM cc_contract_tbl WHERE cc_id_fld = '".$result['number']."'");
 				$respCode = 6;
 			}
 		}
 		return $respCode;
 	}
-	
+
 	function getNextConsecutive() {
-		$this->result = $this->util->db->Execute("SHOW TABLE STATUS LIKE 'CC_CONTRACT_TBL'");
+		$this->result = $this->util->db->Execute("SHOW TABLE STATUS LIKE 'cc_contract_tbl'");
 		$result = $this->result->FetchRow();
-		$this->result = $this->util->db->Execute("SELECT LPAD(".$result['Auto_increment'].", 4, 0) AS number FROM DUAL");
+		$this->result = $this->util->db->Execute("SELECT LPAD(".$result['Auto_increment'].", 4, 0) AS number FROM dual");
 	}
-	
+
 	function getContract($number) {
-		$this->result = $this->util->db->Execute("SELECT CC_ID_FLD AS consecutivo,
-														 CC_OBJETOCONT_FLD AS objetoS,
-														 CC_NUME_DOC_FLD AS numeroDoc,
-														 CC_PLACA_FLD AS placa,
-														 CC_NUMBUSES_FLD AS busesCon,
-														 CC_NUMPASAJEROS_FLD AS numPas,
-														 CC_FECHASALI_FLD AS fechasalida,
-														 CC_FECHAREGR_FLD AS fecharegreso,
-														 CC_HORASALI_FLD AS horasalida,
-														 CC_HORAREGR_FLD AS horaregreso,
-														 CC_ORIGEN_FLD AS origen,
-														 CC_DESTINO_FLD AS destino,
-														 CC_DIRSALIDA_FLD AS direSalida,
-														 CC_FECHAFIRMA_FLD AS fechaFirma,
-														 CAST(CC_COSTOCONTRATO_FLD AS CHAR) AS total,
-														 CAST(CC_ABONO_FLD AS CHAR) AS abono,
-														 DATEDIFF(CC_FECHAREGR_FLD, CC_FECHASALI_FLD)+1 AS dias														 
-												  FROM CC_CONTRACT_TBL 
-												  WHERE CC_ID_FLD = ".$number);
+		$this->result = $this->util->db->Execute("SELECT cc_id_fld as consecutivo,
+														 cc_objetocont_fld as objetos,
+														 cc_nume_doc_fld as numerodoc,
+														 cc_placa_fld as placa,
+														 cc_numbuses_fld as busescon,
+														 cc_numpasajeros_fld as numpas,
+														 cc_fechasali_fld as fechasalida,
+														 cc_fecharegr_fld as fecharegreso,
+														 cc_horasali_fld as horasalida,
+														 cc_horaregr_fld as horaregreso,
+														 cc_origen_fld as origen,
+														 cc_destino_fld as destino,
+														 cc_dirsalida_fld as diresalida,
+														 cc_fechafirma_fld as fechafirma,
+														 cast(cc_costocontrato_fld as char) as total,
+														 cast(cc_abono_fld as char) as abono,
+														 datediff(cc_fecharegr_fld, cc_fechasali_fld)+1 as dias
+												  FROM cc_contract_tbl
+												  WHERE cc_id_fld = ".$number);
 	}
  }
 ?>

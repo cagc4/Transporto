@@ -29,19 +29,19 @@ class Utilities
 
 	function fillDropDown($dropDownField)
 	{
-		$this->result = $this->db->Execute("SELECT CC_DESCRIPCION_FLD, CC_VALOR_FLD FROM CC_VALORES_TBL WHERE CC_CAMPO_FLD = '" . $dropDownField . "' AND CC_ESTADO_FLD = 'A'");
+		$this->result = $this->db->Execute("SELECT cc_descripcion_fld, cc_valor_fld FROM cc_valores_tbl WHERE cc_campo_fld = '" . $dropDownField . "' AND cc_estado_fld = 'A'");
 		$innerarray = array();
 		array_push($innerarray, array ('value' => '','label' => ' - Seleccione - ','disabled' => false,'selected' => true,));
 		while ($row = $this->result->FetchRow())
 		{
-			array_push($innerarray, array ('value' => $row["CC_VALOR_FLD"], 'label' => $row["CC_DESCRIPCION_FLD"],));
+			array_push($innerarray, array ('value' => $row["cc_valor_fld"], 'label' => $row["cc_descripcion_fld"],));
 		}
 		return $innerarray;
 	}
 
 	function fillDropDownVew($dropDownField, $selected)
 	{
-		$this->result = $this->db->Execute("SELECT CC_DESCRIPCION_FLD, CC_VALOR_FLD FROM CC_VALORES_TBL WHERE CC_CAMPO_FLD = '" . $dropDownField . "' AND CC_ESTADO_FLD = 'A'");
+		$this->result = $this->db->Execute("SELECT cc_descripcion_fld, cc_valor_fld FROM cc_valores_tbl WHERE cc_campo_fld = '" . $dropDownField . "' AND cc_estado_fld = 'A'");
 		$innerarray = array();
 		if($selected == '') {
 			array_push($innerarray, array ('value' => '','label' => ' - Seleccione - ','disabled' => false,'selected' => true,));
@@ -51,11 +51,11 @@ class Utilities
 		}
 		while ($row = $this->result->FetchRow())
 		{
-			if($row["CC_VALOR_FLD"] == $selected) {
-				array_push($innerarray, array ('value' => $row["CC_VALOR_FLD"], 'label' => $row["CC_DESCRIPCION_FLD"], 'selected' => true));
+			if($row["cc_valor_fld"] == $selected) {
+				array_push($innerarray, array ('value' => $row["cc_valor_fld"], 'label' => $row["cc_descripcion_fld"], 'selected' => true));
 			}
 			else {
-				array_push($innerarray, array ('value' => $row["CC_VALOR_FLD"], 'label' => $row["CC_DESCRIPCION_FLD"],));
+				array_push($innerarray, array ('value' => $row["cc_valor_fld"], 'label' => $row["cc_descripcion_fld"],));
 			}
 		}
 		return $innerarray;
@@ -63,19 +63,19 @@ class Utilities
 
 	function fillDropDownState()
 	{
-		$this->result = $this->db->Execute("SELECT CC_CODIGODEPT_FLD, CC_DESCRIPC_FLD FROM CC_DEPARTAMENTO_TBL");
+		$this->result = $this->db->Execute("SELECT cc_codigodept_fld, cc_descripc_fld FROM cc_departamento_tbl");
 		$innerarray = array();
 		array_push($innerarray, array ('value' => '','label' => ' - Seleccione - ','disabled' => false,'selected' => true,));
 		while ($row = $this->result->FetchRow())
 		{
-			array_push($innerarray, array ('value' => $row["CC_CODIGODEPT_FLD"], 'label' => $row["CC_DESCRIPC_FLD"],));
+			array_push($innerarray, array ('value' => $row["cc_codigodept_fld"], 'label' => $row["cc_descripc_fld"],));
 		}
 		return $innerarray;
 	}
 
 	function fillDropDownStateVew($selected)
 	{
-		$this->result = $this->db->Execute("SELECT CC_CODIGODEPT_FLD, CC_DESCRIPC_FLD FROM CC_DEPARTAMENTO_TBL");
+		$this->result = $this->db->Execute("SELECT cc_codigodept_fld, cc_descripc_fld FROM cc_departamento_tbl");
 		$innerarray = array();
 		if($selected == '') {
 			array_push($innerarray, array ('value' => '','label' => ' - Seleccione - ','disabled' => false,'selected' => true,));
@@ -85,11 +85,11 @@ class Utilities
 		}
 		while ($row = $this->result->FetchRow())
 		{
-			if($row["CC_CODIGODEPT_FLD"] == $selected) {
-				array_push($innerarray, array ('value' => $row["CC_CODIGODEPT_FLD"], 'label' => $row["CC_DESCRIPC_FLD"], 'selected' => true));
+			if($row["cc_codigodept_fld"] == $selected) {
+				array_push($innerarray, array ('value' => $row["cc_codigodept_fld"], 'label' => $row["cc_descripc_fld"], 'selected' => true));
 			}
 			else {
-				array_push($innerarray, array ('value' => $row["CC_CODIGODEPT_FLD"], 'label' => $row["CC_DESCRIPC_FLD"],));
+				array_push($innerarray, array ('value' => $row["cc_codigodept_fld"], 'label' => $row["cc_descripc_fld"],));
 			}
 		}
 		return $innerarray;
@@ -98,16 +98,16 @@ class Utilities
 	function fillDropDownCity($state)
 	{
 		if($state != '') {
-			$this->result = $this->db->Execute("SELECT CC_CODCIUDAD_FLD, CC_DESCRIPC_FLD FROM CC_CIUDAD_TBL WHERE CC_CODIGODEPT_FLD = '".$state."'");
+			$this->result = $this->db->Execute("SELECT cc_codciudad_fld, cc_descripc_fld FROM cc_ciudad_tbl WHERE cc_codigodept_fld = '".$state."'");
 		}
 		else {
-			$this->result = $this->db->Execute("SELECT CC_CODCIUDAD_FLD, CC_DESCRIPC_FLD FROM CC_CIUDAD_TBL");
+			$this->result = $this->db->Execute("SELECT cc_codciudad_fld, cc_descripc_fld FROM cc_ciudad_tbl");
 		}
 		$innerarray = array();
 		array_push($innerarray, array ('value' => '','label' => ' - Seleccione - ','disabled' => false,'selected' => true,));
 		while ($row = $this->result->FetchRow())
 		{
-			array_push($innerarray, array ('value' => $row["CC_CODCIUDAD_FLD"], 'label' => $row["CC_DESCRIPC_FLD"],));
+			array_push($innerarray, array ('value' => $row["cc_codciudad_fld"], 'label' => $row["cc_descripc_fld"],));
 		}
 		return $innerarray;
 	}
@@ -115,10 +115,10 @@ class Utilities
 	function fillDropDownCityVew($state, $selected)
 	{
 		if($state != '') {
-			$this->result = $this->db->Execute("SELECT CC_CODCIUDAD_FLD, CC_DESCRIPC_FLD FROM CC_CIUDAD_TBL WHERE CC_CODIGODEPT_FLD = '".$state."'");
+			$this->result = $this->db->Execute("SELECT cc_codciudad_fld, cc_descripc_fld FROM cc_ciudad_tbl WHERE cc_codigodept_fld = '".$state."'");
 		}
 		else {
-			$this->result = $this->db->Execute("SELECT CC_CODCIUDAD_FLD, CC_DESCRIPC_FLD FROM CC_CIUDAD_TBL");
+			$this->result = $this->db->Execute("SELECT cc_codciudad_fld, cc_descripc_fld FROM cc_ciudad_tbl");
 		}
 		$innerarray = array();
 		if($selected == '') {
@@ -129,11 +129,11 @@ class Utilities
 		}
 		while ($row = $this->result->FetchRow())
 		{
-			if($row["CC_CODCIUDAD_FLD"] == $selected) {
-				array_push($innerarray, array ('value' => $row["CC_CODCIUDAD_FLD"], 'label' => $row["CC_DESCRIPC_FLD"], 'selected' => true));
+			if($row["cc_codciudad_fld"] == $selected) {
+				array_push($innerarray, array ('value' => $row["cc_codciudad_fld"], 'label' => $row["cc_descripc_fld"], 'selected' => true));
 			}
 			else {
-				array_push($innerarray, array ('value' => $row["CC_CODCIUDAD_FLD"], 'label' => $row["CC_DESCRIPC_FLD"],));
+				array_push($innerarray, array ('value' => $row["cc_codciudad_fld"], 'label' => $row["cc_descripc_fld"],));
 			}
 		}
 		return $innerarray;
@@ -178,19 +178,19 @@ class Utilities
 
 	function fillDropDownValue()
 	{
-		$this->result = $this->db->Execute("SELECT CC_CAMPO_FLD, CC_DESCRIPCION_FLD FROM CC_FIELDS_TBL");
+		$this->result = $this->db->Execute("SELECT cc_campo_fld, cc_descripcion_fld FROM cc_fields_tbl");
 		$innerarray = array();
 		array_push($innerarray, array ('value' => '','label' => ' - Seleccione - ','disabled' => false,'selected' => true,));
 		while ($row = $this->result->FetchRow())
 		{
-			array_push($innerarray, array ('value' => $row["CC_CAMPO_FLD"], 'label' => $row["CC_DESCRIPCION_FLD"],));
+			array_push($innerarray, array ('value' => $row["cc_campo_fld"], 'label' => $row["cc_descripcion_fld"],));
 		}
 		return $innerarray;
 	}
 
 	function fillDropDownValueVew($selected)
 	{
-		$this->result = $this->db->Execute("SELECT CC_CAMPO_FLD, CC_DESCRIPCION_FLD FROM CC_FIELDS_TBL");
+		$this->result = $this->db->Execute("SELECT cc_campo_fld, cc_descripcion_fld FROM cc_fields_tbl");
 		$innerarray = array();
 		if($selected == '') {
 			array_push($innerarray, array ('value' => '','label' => ' - Seleccione - ','disabled' => false,'selected' => true,));
@@ -200,11 +200,11 @@ class Utilities
 		}
 		while ($row = $this->result->FetchRow())
 		{
-			if($row["CC_CAMPO_FLD"] == $selected) {
-				array_push($innerarray, array ('value' => $row["CC_CAMPO_FLD"], 'label' => $row["CC_DESCRIPCION_FLD"], 'selected' => true));
+			if($row["cc_campo_fld"] == $selected) {
+				array_push($innerarray, array ('value' => $row["cc_campo_fld"], 'label' => $row["cc_descripcion_fld"], 'selected' => true));
 			}
 			else {
-				array_push($innerarray, array ('value' => $row["CC_CAMPO_FLD"], 'label' => $row["CC_DESCRIPCION_FLD"],));
+				array_push($innerarray, array ('value' => $row["cc_campo_fld"], 'label' => $row["cc_descripcion_fld"],));
 			}
 		}
 		return $innerarray;
@@ -212,7 +212,7 @@ class Utilities
 
 	function findMenu($page) {
 
-		$this->menu= $this->db->Execute("SELECT A.CC_TYPE_FLD, A.CC_URL_FLD ,B.CC_NOMBRE_FLD FROM  CC_NAVEGACION_TBL A , CC_IMAGENES_TBL B WHERE   A.CC_TYPE_FLD  = B.CC_IDENTIFICADOR_FLD AND  A.CC_PAGE_FLD ='$page' ORDER BY B.CC_PRIORIDAD_FLD");
+		$this->menu= $this->db->Execute("SELECT A.cc_type_fld, A.cc_url_fld ,B.cc_nombre_fld FROM  cc_navegacion_tbl A , cc_imagenes_tbl B WHERE   A.cc_type_fld  = B.cc_identificador_fld AND  A.cc_page_fld ='$page' ORDER BY B.cc_prioridad_fld");
 
 		return $this->menu;
 	}
@@ -222,7 +222,7 @@ class Utilities
 
 		$password=md5($password);
 		$this->db=$this->cx->conectar();
-		$this->result = $this->db->Execute("SELECT CC_ROLE_FLD AS role, CC_ESTADO_FLD AS state FROM CC_USER_TBL WHERE CC_USER_ID_FLD='$login' AND CC_PSSWRD_FLD='$password'");
+		$this->result = $this->db->Execute("SELECT cc_role_fld AS role, cc_estado_fld AS state FROM cc_user_tbl WHERE cc_user_id_fld='$login' AND cc_psswrd_fld='$password'");
 		$this->cx->desconectar();
 		if($this->result) {
 			$permiso = $this->result->FetchRow();
@@ -235,7 +235,7 @@ class Utilities
 
 	function getDataGrid($gridName, $tableName, $query){
 
-	    $path='/transporto';
+	    $path='/Transporto';
 		$g = new jqgrid();
 		$grid["caption"] = $gridName;
 		$grid["multiselect"] = false;

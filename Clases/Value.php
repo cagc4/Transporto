@@ -4,7 +4,7 @@ class Value
 {
 	var $util;
 	var $result;
-	
+
 	function Value()
 	{
 		$this->util = new Utilities();
@@ -12,34 +12,34 @@ class Value
 
 	function addValue($valueData)
 	{
-		$respCode = 0;			
+		$respCode = 0;
 		$valueBasicData = $valueData->valueFormBasicData->valueFormBasic;
-		$this->result = $this->util->db->Execute("INSERT INTO CC_VALORES_TBL VALUES('".$valueBasicData->fieldValue."',
+		$this->result = $this->util->db->Execute("INSERT INTO cc_valores_tbl VALUES('".$valueBasicData->fieldValue."',
 																					'".$valueBasicData->value."',
 																					'".$valueBasicData->description."',
 																					'A')");
 		if(!$this->result) {
-			$this->util->db->Execute("DELETE FROM CC_VALORES_TBL WHERE CC_CAMPO_FLD = '".$userBasicData->fieldValue."' AND CC_VALOR_FLD = '".$userBasicData->value."'");								   
+			$this->util->db->Execute("DELETE FROM cc_valores_tbl WHERE cc_campo_fld = '".$userBasicData->fieldValue."' AND cc_valor_fld = '".$userBasicData->value."'");
 			$respCode = 1;
 		}
 		return $respCode;
 	}
-	
+
 	function getValue($field, $value) {
-		$this->result = $this->util->db->Execute("SELECT V.CC_CAMPO_FLD AS fieldValue,
-														 V.CC_VALOR_FLD AS value,
-														 V.CC_DESCRIPCION_FLD AS description,
-														 V.CC_ESTADO_FLD AS state
-												  FROM CC_FIELDS_TBL F INNER JOIN CC_VALORES_TBL V ON F.CC_CAMPO_FLD = V.CC_CAMPO_FLD
-												  WHERE F.CC_DESCRIPCION_FLD = '".$field."' AND V.CC_VALOR_FLD = '".$value."'");
+		$this->result = $this->util->db->Execute("SELECT V.cc_campo_fld AS fieldValue,
+														 V.cc_valor_fld AS value,
+														 V.cc_descripcion_fld AS description,
+														 V.cc_estado_fld AS state
+												  FROM cc_fields_tbl F INNER JOIN cc_valores_tbl V ON F.cc_campo_fld = V.cc_campo_fld
+												  WHERE F.cc_descripcion_fld = '".$field."' AND V.cc_valor_fld = '".$value."'");
 	}
-	
+
 	function modifyValue($valueData) {
-		$respCode = 0;			
+		$respCode = 0;
 		$valueBasicData = $valueData->valueFormBasicData->valueFormBasic;
-		$this->result = $this->util->db->Execute("UPDATE CC_VALORES_TBL SET CC_DESCRIPCION_FLD = '".$valueBasicData->description."',
-																		    CC_ESTADO_FLD = '".$valueBasicData->state."'
-												  WHERE CC_CAMPO_FLD = '".$valueBasicData->fieldValue."' AND CC_VALOR_FLD = '".$valueBasicData->value."'");
+		$this->result = $this->util->db->Execute("UPDATE cc_valores_tbl SET cc_descripcion_fld = '".$valueBasicData->description."',
+																		    cc_estado_fld = '".$valueBasicData->state."'
+												  WHERE cc_campo_fld = '".$valueBasicData->fieldValue."' AND cc_valor_fld = '".$valueBasicData->value."'");
 		if(!$this->result) {
 			$respCode = 1;
 		}

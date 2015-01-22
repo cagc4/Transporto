@@ -22,9 +22,9 @@ class TemplatePage
 	function logoCabecera() {
 
 	    if ($this->role =='administrador')
-	    	$logoCa= "<a href='HomeAdmin.php'><img src='../Images/logo.png'></a>";
+	    	$logoCa= "<a href='HomeAdmin.php'><img src='../Images/Logo.png'></a>";
 		else
-			$logoCa= "<a href='Home.php'><img src='../Images/logo.png'></a>";
+			$logoCa= "<a href='Home.php'><img src='../Images/Logo.png'></a>";
 
 		return $logoCa;
 
@@ -141,9 +141,9 @@ class TemplatePage
 
 			while ($row = $menu->FetchRow()){
 
-				$direccion = $row["CC_URL_FLD"];
-				$tipo = $row["CC_TYPE_FLD"];
-				$image = $row["CC_NOMBRE_FLD"];
+				$direccion = $row["cc_url_fld"];
+				$tipo = $row["cc_type_fld"];
+				$image = $row["cc_nombre_fld"];
 
 				$icono = "<img src='$image' border=0 >";
 

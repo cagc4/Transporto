@@ -4,7 +4,7 @@ class CasualTravel
 {
 	var $util;
 	var $result;
-	
+
 	function CasualTravel()
 	{
 		$this->util = new Utilities();
@@ -13,13 +13,13 @@ class CasualTravel
 	function addCasualTravel($casualTravelData)
 	{
 		$respCode = 0;
-		
+
 		$casualTravelBasicData = $casualTravelData->casualTravelFormBasicData->casualTravelFormBasic;
 		$casualTravelLocationData = $casualTravelData->casualTravelFormLocationData->casualTravelFormLocation;
 		$casualTravelScheduleData = $casualTravelData->casualTravelFormScheduleData->casualTravelFormSchedule;
 		$casualTravelDriversData = $casualTravelData->casualTravelFormDriversData->casualTravelFormDrivers;
 		if($casualTravelBasicData->plate != '') {
-			$this->result = $this->util->db->Execute("SELECT CC_CAPACIDAD_FLD AS size FROM CC_VEHICLE_TBL WHERE CC_PLACA_FLD = '".$casualTravelBasicData->plate."'");
+			$this->result = $this->util->db->Execute("SELECT cc_capacidad_fld AS size FROM cc_vehicle_tbl WHERE cc_placa_fld = '".$casualTravelBasicData->plate."'");
 			$result = $this->result->FetchRow();
 			if($result['size'] == null) {
 				$respCode = 2;
@@ -28,11 +28,11 @@ class CasualTravel
 				if($casualTravelBasicData->numPassengers > $result['size']) {
 					$respCode = 3;
 				}
-				$this->result = $this->util->db->Execute("SELECT (CASE WHEN ((TO_DAYS(CC_FECHA_VEN_FLD) - TO_DAYS(CURDATE())) < 0) THEN ((TO_DAYS(CC_FECHA_VEN_FLD) - TO_DAYS(CURDATE())))
-																	   WHEN (((TO_DAYS(CC_FECHA_VEN_FLD) - TO_DAYS(CURDATE())) >= 1) AND ((TO_DAYS(CC_FECHA_VEN_FLD) - TO_DAYS(CURDATE())) <= 30)) THEN ((TO_DAYS(CC_FECHA_VEN_FLD) - TO_DAYS(CURDATE())))
-																	   ELSE ((TO_DAYS(CC_FECHA_VEN_FLD) - TO_DAYS(CURDATE()))) END) AS Estado
-														  FROM CC_DOCUMENTO_TBL
-														  WHERE CC_PLACA_FLD = '".$casualTravelBasicData->plate."'");
+				$this->result = $this->util->db->Execute("SELECT (CASE WHEN ((TO_DAYS(cc_fecha_ven_fld) - TO_DAYS(CURDATE())) < 0) THEN ((TO_DAYS(cc_fecha_ven_fld) - TO_DAYS(CURDATE())))
+																	   WHEN (((TO_DAYS(cc_fecha_ven_fld) - TO_DAYS(CURDATE())) >= 1) AND ((TO_DAYS(cc_fecha_ven_fld) - TO_DAYS(CURDATE())) <= 30)) THEN ((TO_DAYS(cc_fecha_ven_fld) - TO_DAYS(CURDATE())))
+																	   ELSE ((TO_DAYS(cc_fecha_ven_fld) - TO_DAYS(CURDATE()))) END) AS Estado
+														  FROM cc_documento_tbl
+														  WHERE cc_placa_fld = '".$casualTravelBasicData->plate."'");
 				$result = $this->result->FetchRow();
 				if($result['Estado'] == null) {
 					$respCode = 4;
@@ -49,7 +49,7 @@ class CasualTravel
 		}
 		if($respCode == 0) {
 			if($casualTravelDriversData->driverone != '') {
-				$this->result = $this->util->db->Execute("SELECT CC_NUME_DOC_FLD AS driverone FROM CC_PROPCOND_TBL WHERE CC_NUME_DOC_FLD = '".$casualTravelDriversData->driverone."' AND CC_TYPE_PC_FLD in ('01','02')");
+				$this->result = $this->util->db->Execute("SELECT cc_nume_doc_fld AS driverone FROM cc_propcond_tbl WHERE cc_nume_doc_fld = '".$casualTravelDriversData->driverone."' AND cc_type_pc_fld in ('01','02')");
 				$result = $this->result->FetchRow();
 				if($result['driverone'] == null) {
 					$respCode = 5;
@@ -58,7 +58,7 @@ class CasualTravel
 		}
 		if($respCode == 0) {
 			if($casualTravelDriversData->drivertwo != '') {
-				$this->result = $this->util->db->Execute("SELECT CC_NUME_DOC_FLD AS drivertwo FROM CC_PROPCOND_TBL WHERE CC_NUME_DOC_FLD = '".$casualTravelDriversData->drivertwo."' AND CC_TYPE_PC_FLD in ('01','02')");
+				$this->result = $this->util->db->Execute("SELECT cc_nume_doc_fld AS drivertwo FROM cc_propcond_tbl WHERE cc_nume_doc_fld = '".$casualTravelDriversData->drivertwo."' AND cc_type_pc_fld in ('01','02')");
 				$result = $this->result->FetchRow();
 				if($result['drivertwo'] == null) {
 					$respCode = 6;
@@ -68,7 +68,7 @@ class CasualTravel
 		if($respCode == 0) {
 			$this->getNextConsecutive();
 			$result = $this->result->FetchRow();
-			$this->result = $this->util->db->Execute("INSERT INTO CC_FORMOCACIONAL_TBL VALUES('".$result['number']."',
+			$this->result = $this->util->db->Execute("INSERT INTO cc_formocacional_tbl VALUES('".$result['number']."',
 																					 '".$casualTravelBasicData->object."',
 																					 '".$casualTravelBasicData->number."',
 																					 '".$casualTravelBasicData->plate."',
@@ -84,77 +84,77 @@ class CasualTravel
 																					 '".$casualTravelDriversData->driverone."',
 																					 '".$casualTravelDriversData->drivertwo."',
 																					 '".$casualTravelBasicData->responsible."')");
-																					 
+
 			if(!$this->result) {
-				$this->util->db->Execute("DELETE FROM CC_FORMOCACIONAL_TBL WHERE CC_ID_FLD = '".$result['number']."'");
+				$this->util->db->Execute("DELETE FROM cc_formocacional_tbl WHERE cc_id_fld = '".$result['number']."'");
 				$respCode = 1;
 			}
 		}
 		return $respCode;
 	}
-	
+
 	function getNextConsecutive() {
-		$this->result = $this->util->db->Execute("SHOW TABLE STATUS LIKE 'CC_FORMOCACIONAL_TBL'");
+		$this->result = $this->util->db->Execute("SHOW TABLE STATUS LIKE 'cc_formocacional_tbl'");
 		$result = $this->result->FetchRow();
-		$this->result = $this->util->db->Execute("SELECT LPAD(".$result['Auto_increment'].", 4, 0) AS number FROM DUAL");
+		$this->result = $this->util->db->Execute("SELECT LPAD(".$result['Auto_increment'].", 4, 0) AS number FROM dual");
 	}
-	
+
 	function getCasualTravel($number) {
-		$this->result = $this->util->db->Execute("SELECT CC_ID_FLD AS consecutivo,
-														 CC_OBJETOCONT_FLD AS objetoS,
-														 CC_NUME_DOC_FLD AS numeroDoc,
-														 CC_PLACA_FLD AS placa,
-														 CC_NUMBUSES_FLD AS busesCon,
-														 CC_NUMPASAJEROS_FLD AS numPas,
-														 CC_FECHASALI_FLD AS fechasalida,
-														 CC_FECHAREGR_FLD AS fecharegreso,
-														 CC_HORASALI_FLD AS horasalida,
-														 CC_HORAREGR_FLD AS horaregreso,
-														 CC_ORIGEN_FLD AS origen,
-														 CC_DESTINO_FLD AS destino,
-														 CC_DIRSALIDA_FLD AS direSalida,
-														 CC_CONDUCTOR1_FLD AS conductor1,
-														 CC_CONDUCTOR2_FLD AS conductor2,
-														 CC_ENCARGADO_FLD AS responsible
-												  FROM CC_FORMOCACIONAL_TBL 
-												  WHERE CC_ID_FLD = ".$number);
+		$this->result = $this->util->db->Execute("SELECT cc_id_fld as consecutivo,
+														 cc_objetocont_fld as objetos,
+														 cc_nume_doc_fld as numerodoc,
+														 cc_placa_fld as placa,
+														 cc_numbuses_fld as busescon,
+														 cc_numpasajeros_fld as numpas,
+														 cc_fechasali_fld as fechasalida,
+														 cc_fecharegr_fld as fecharegreso,
+														 cc_horasali_fld as horasalida,
+														 cc_horaregr_fld as horaregreso,
+														 cc_origen_fld as origen,
+														 cc_destino_fld as destino,
+														 cc_dirsalida_fld as diresalida,
+														 cc_conductor1_fld as conductor1,
+														 cc_conductor2_fld as conductor2,
+														 cc_encargado_fld as responsible
+												  FROM cc_formocacional_tbl
+												  WHERE cc_id_fld = ".$number);
 	}
-	
+
 	function getServiceOrder($number) {
-		$resultSO = $this->util->db->Execute("SELECT F.CC_ID_FLD AS consecutivo,
-													 F.CC_OBJETOCONT_FLD AS objetoS,
-													 F.CC_PLACA_FLD AS placa,
-													 CONCAT(F.CC_FECHASALI_FLD, ' ', F.CC_HORASALI_FLD) AS fechasalida,
-													 CONCAT(F.CC_FECHAREGR_FLD, ' ', F.CC_HORAREGR_FLD) AS fecharegreso,
-													 F.CC_DIRSALIDA_FLD AS origen,
-													 F.CC_DESTINO_FLD AS destino,
-													 F.CC_ENCARGADO_FLD AS responsable
-											  FROM CC_FORMOCACIONAL_TBL F
-											  WHERE F.CC_ID_FLD = ".$number);
-		$resultP = $this->util->db->Execute("SELECT P.CC_FNOMBRE_FLD AS persona,
-													A.CC_CELULAR_FLD AS celular,
-													( SELECT PV.CC_FNOMBRE_FLD FROM CC_PERSON_TBL PV WHERE PV.CC_NUME_DOC_FLD = F.CC_CONDUCTOR1_FLD  )  AS conductor,
-													C.CC_TIPO_DOC_FLD AS tipoID,
-													C.CC_NUME_DOC_FLD AS numID
-											 FROM CC_FORMOCACIONAL_TBL F INNER JOIN CC_PERSON_TBL P ON F.CC_NUME_DOC_FLD = P.CC_NUME_DOC_FLD INNER JOIN CC_CUSTOMER_TBL C ON P.CC_NUME_DOC_FLD = C.CC_NUME_DOC_FLD INNER JOIN CC_ADDRESS_TBL A ON C.CC_NUME_DOC_FLD = A.CC_NUME_DOC_FLD
-											 WHERE F.CC_ID_FLD = ".$number);
+		$resultSO = $this->util->db->Execute("SELECT f.cc_id_fld as consecutivo,
+													 f.cc_objetocont_fld as objetos,
+													 f.cc_placa_fld as placa,
+													 concat(f.cc_fechasali_fld, ' ', f.cc_horasali_fld) as fechasalida,
+													 concat(f.cc_fecharegr_fld, ' ', f.cc_horaregr_fld) as fecharegreso,
+													 f.cc_dirsalida_fld as origen,
+													 f.cc_destino_fld as destino,
+													 f.cc_encargado_fld as responsable
+											  from cc_formocacional_tbl f
+											  where f.cc_id_fld = ".$number);
+		$resultp = $this->util->db->execute("select p.cc_fnombre_fld as persona,
+													a.cc_celular_fld as celular,
+													( select pv.cc_fnombre_fld from cc_person_tbl pv where pv.cc_nume_doc_fld = f.cc_conductor1_fld  )  as conductor,
+													c.cc_tipo_doc_fld as tipoid,
+													c.cc_nume_doc_fld as numid
+											 from cc_formocacional_tbl f inner join cc_person_tbl p on f.cc_nume_doc_fld = p.cc_nume_doc_fld inner join cc_customer_tbl c on p.cc_nume_doc_fld = c.cc_nume_doc_fld inner join cc_address_tbl a on c.cc_nume_doc_fld = a.cc_nume_doc_fld
+											 where f.cc_id_fld = ".$number);
 		$resultSO = $resultSO->FetchRow();
 		if($resultP) {
 			$resultP = $resultP->FetchRow();
 			if($resultP['tipoID'] == 'nt') {
-				$resultP = $this->util->db->Execute("SELECT CC_PERSONACONTACTO_FLD AS persona,
+				$resultP = $this->util->db->Execute("SELECT cc_personacontacto_fld AS persona,
 															'".$resultP['celular']."' AS celular,
 															'".$resultP['conductor']."' AS conductor
-													 FROM CC_CUSTOMER_TBL WHERE CC_TIPO_DOC_FLD = '".$resultP['tipoID']."' AND CC_NUME_DOC_FLD = '".$resultP['numID']."'");
+													 FROM cc_customer_tbl WHERE cc_tipo_doc_fld = '".$resultP['tipoID']."' AND cc_nume_doc_fld = '".$resultP['numID']."'");
 				$resultP = $resultP->FetchRow();
 			}
 			if($resultP['conductor'] == '') {
 				$resultP = $this->util->db->Execute("SELECT '".$resultP['persona']."' AS persona,
 															'".$resultP['celular']."' AS celular,
-															(SELECT P.CC_FNOMBRE_FLD FROM CC_PER_VEH_TBL PV INNER JOIN CC_PERSON_TBL P ON PV.CC_NUME_DOC_FLD = P.CC_NUME_DOC_FLD INNER JOIN CC_PROPCOND_TBL PC ON P.CC_NUME_DOC_FLD = PC.CC_NUME_DOC_FLD WHERE PV.CC_PLACA_FLD = '".$resultSO['placa']."' AND PC.CC_TYPE_PC_FLD = '01') AS conductor
-													 FROM DUAL");
+															(SELECT P.cc_fnombre_fld FROM cc_per_veh_tbl PV INNER JOIN cc_person_tbl P ON PV.cc_nume_doc_fld = P.cc_nume_doc_fld INNER JOIN cc_propcond_tbl PC ON P.cc_nume_doc_fld = PC.cc_nume_doc_fld WHERE PV.cc_placa_fld = '".$resultSO['placa']."' AND PC.cc_type_pc_fld = '01') AS conductor
+													 FROM dual");
 				$resultP = $resultP->FetchRow();
-			}			
+			}
 		}
 		if($resultSO['responsable'] == '') {
 			$this->result = $this->util->db->Execute("SELECT '".$resultSO['consecutivo']."' AS consecutivo,
@@ -167,7 +167,7 @@ class CasualTravel
 															 '".$resultP['persona']."' AS persona,
 															 '".$resultP['celular']."' AS celular,
 															 '".$resultP['conductor']."' AS conductor
-													  FROM DUAL");
+													  FROM dual");
 		}
 		else {
 			$this->result = $this->util->db->Execute("SELECT '".$resultSO['consecutivo']."' AS consecutivo,
@@ -180,7 +180,7 @@ class CasualTravel
 															 '".$resultSO['responsable']."' AS persona,
 															 '".$resultP['celular']."' AS celular,
 															 '".$resultP['conductor']."' AS conductor
-													  FROM DUAL");
+													  FROM dual");
 		}
 	}
  }

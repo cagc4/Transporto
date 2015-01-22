@@ -4,7 +4,7 @@ class Transporter
 {
 	var $util;
 	var $result;
-	
+
 	function Transporter()
 	{
 		$this->util = new Utilities();
@@ -12,21 +12,21 @@ class Transporter
 
 	function addTransporter($transporterData)
 	{
-		$respCode = 0;		
+		$respCode = 0;
 		$transporterBasicData = $transporterData->transporterFormBasicData->transporterFormBasic;
 		$transporterContactData = $transporterData->transporterFormContactData->transporterFormContact;
 		$transporterLocationData = $transporterData->transporterFormLocationData->transporterFormLocation;
 		$transporterLicenseData = $transporterData->transporterFormLicenseData->transporterFormLicense;
 		$transporterFinancialData = $transporterData->transporterFormFinancialData->transporterFormFinancial;
 		$transporterCommentsData = $transporterData->transporterFormCommentsData->transporterFormComments;
-		$this->result = $this->util->db->Execute("INSERT INTO CC_PERSON_TBL VALUES('".$transporterBasicData->docType."',
+		$this->result = $this->util->db->Execute("INSERT INTO cc_person_tbl VALUES('".$transporterBasicData->docType."',
 																				   '".$transporterBasicData->docNum."',
 																				   '".$transporterBasicData->name."',
 																			       STR_TO_DATE('".$transporterBasicData->birthDate->month."/".$transporterBasicData->birthDate->day."/".$transporterBasicData->birthDate->year."','%m/%d/%Y'),
 																				   '".$transporterBasicData->cityExpedition."',
 																				   '".$transporterCommentsData->details."')");
 		if($this->result) {
-			$this->result = $this->util->db->Execute("INSERT INTO CC_PROPCOND_TBL VALUES('".$transporterBasicData->docType."',
+			$this->result = $this->util->db->Execute("INSERT INTO cc_propcond_tbl VALUES('".$transporterBasicData->docType."',
 																						 '".$transporterBasicData->docNum."',
 																						 '".$transporterBasicData->ownerType."',
 																						 '".$transporterFinancialData->bank."',
@@ -36,7 +36,7 @@ class Transporter
 																						 '".$transporterLicenseData->licenseNum."',
 																						 STR_TO_DATE('".$transporterLicenseData->expirationDate->month."/".$transporterLicenseData->expirationDate->day."/".$transporterLicenseData->expirationDate->year."','%m/%d/%Y'))");
 			if($this->result) {
-				$this->result = $this->util->db->Execute("INSERT INTO CC_ADDRESS_TBL VALUES('".$transporterBasicData->docType."',
+				$this->result = $this->util->db->Execute("INSERT INTO cc_address_tbl VALUES('".$transporterBasicData->docType."',
 																							'".$transporterBasicData->docNum."',
 																							'".$transporterLocationData->address."',
 																							'".$transporterContactData->phone."',
@@ -45,54 +45,54 @@ class Transporter
 																							'".$transporterLocationData->state."',
 																							'".$transporterLocationData->city."')");
 				if(!$this->result) {
-					$this->util->db->Execute("DELETE FROM CC_ADDRESS_TBL WHERE CC_TIPO_DOC_FLD = '".$transporterBasicData->docType."' AND CC_NUME_DOC_FLD = '".$transporterBasicData->docNum."'");
-					$this->util->db->Execute("DELETE FROM CC_PROPCOND_TBL WHERE CC_TIPO_DOC_FLD = '".$transporterBasicData->docType."' AND CC_NUME_DOC_FLD = '".$transporterBasicData->docNum."'");
-					$this->util->db->Execute("DELETE FROM CC_PERSON_TBL WHERE CC_TIPO_DOC_FLD = '".$transporterBasicData->docType."' AND CC_NUME_DOC_FLD = '".$transporterBasicData->docNum."'");									   
+					$this->util->db->Execute("DELETE FROM cc_address_tbl WHERE cc_tipo_doc_fld = '".$transporterBasicData->docType."' AND cc_nume_doc_fld = '".$transporterBasicData->docNum."'");
+					$this->util->db->Execute("DELETE FROM cc_propcond_tbl WHERE cc_tipo_doc_fld = '".$transporterBasicData->docType."' AND cc_nume_doc_fld = '".$transporterBasicData->docNum."'");
+					$this->util->db->Execute("DELETE FROM cc_person_tbl WHERE cc_tipo_doc_fld = '".$transporterBasicData->docType."' AND cc_nume_doc_fld = '".$transporterBasicData->docNum."'");
 					$respCode = 1;
 				}
 			}
 			else {
-				$this->util->db->Execute("DELETE FROM CC_PROPCOND_TBL WHERE CC_TIPO_DOC_FLD = '".$transporterBasicData->docType."' AND CC_NUME_DOC_FLD = '".$transporterBasicData->docNum."'");
-				$this->util->db->Execute("DELETE FROM CC_PERSON_TBL WHERE CC_TIPO_DOC_FLD = '".$transporterBasicData->docType."' AND CC_NUME_DOC_FLD = '".$transporterBasicData->docNum."'");									   
+				$this->util->db->Execute("DELETE FROM cc_propcond_tbl WHERE cc_tipo_doc_fld = '".$transporterBasicData->docType."' AND cc_nume_doc_fld = '".$transporterBasicData->docNum."'");
+				$this->util->db->Execute("DELETE FROM cc_person_tbl WHERE cc_tipo_doc_fld = '".$transporterBasicData->docType."' AND cc_nume_doc_fld = '".$transporterBasicData->docNum."'");
 				$respCode = 1;
 			}
 		}
 		else {
-			$this->util->db->Execute("DELETE CC_PERSON_TBL WHERE CC_TIPO_DOC_FLD = '".$transporterBasicData->docType."' AND CC_NUME_DOC_FLD = '".$transporterBasicData->docNum."'");
+			$this->util->db->Execute("DELETE cc_person_tbl WHERE cc_tipo_doc_fld = '".$transporterBasicData->docType."' AND cc_nume_doc_fld = '".$transporterBasicData->docNum."'");
 			$respCode = 1;
 		}
 		return $respCode;
 	}
-	
+
 	function getTransporter($docNum, $docType) {
-		$this->result = $this->util->db->Execute("SELECT P.CC_TIPO_DOC_FLD AS docType,
-														 P.CC_NUME_DOC_FLD AS docNum,
-														 P.CC_FNOMBRE_FLD AS name,
-														 DATE_FORMAT(P.CC_FECHANAC_FLD, '%m/%d/%Y') AS birthDate,
-														 P.CC_CODCIUDAD_FLD AS cityExpedition,
-														 P.CC_DETALLES_FLD AS details,
-														 PC.CC_TYPE_PC_FLD AS ownerType,
-														 PC.CC_BANCO_FLD AS bank,
-														 PC.CC_TIPOCUENTA_FLD AS acctType,
-														 PC.CC_NUMCUENTA_FLD AS acctNum,
-														 PC.CC_CATLICENCIA_FLD AS licenseCategory,
-														 PC.CC_NUMLICENCIA_FLD AS licenseNum,
-														 DATE_FORMAT(PC.CC_FCHVENCLICENCIA_FLD, '%m/%d/%Y') AS expirationDate,
-														 D.CC_DIRECCION_FLD AS address,
-														 D.CC_TELEFONO_FLD AS phone,
-														 D.CC_CELULAR_FLD AS celPhone,
-														 D.CC_EMAIL_FLD AS email,
-														 D.CC_CODIGODEPT_FLD AS state,
-														 D.CC_CODCIUDAD_FLD AS city
-												  FROM (CC_PERSON_TBL P INNER JOIN CC_PROPCOND_TBL PC ON P.CC_TIPO_DOC_FLD = PC.CC_TIPO_DOC_FLD AND P.CC_NUME_DOC_FLD = PC.CC_NUME_DOC_FLD) INNER JOIN CC_ADDRESS_TBL D ON P.CC_TIPO_DOC_FLD = D.CC_TIPO_DOC_FLD AND P.CC_NUME_DOC_FLD = D.CC_NUME_DOC_FLD
-												  WHERE P.CC_NUME_DOC_FLD = '".$docNum."' AND P.CC_TIPO_DOC_FLD = (SELECT CC_VALOR_FLD FROM CC_VALORES_TBL WHERE CC_DESCRIPCION_FLD = '".$docType."' AND CC_CAMPO_FLD = 'cc_tipo_doc_fld')");
+		$this->result = $this->util->db->Execute("SELECT P.cc_tipo_doc_fld AS docType,
+														 P.cc_nume_doc_fld AS docNum,
+														 P.cc_fnombre_fld AS name,
+														 DATE_FORMAT(P.cc_fechanac_fld, '%m/%d/%Y') AS birthDate,
+														 P.cc_codciudad_fld AS cityExpedition,
+														 P.cc_detalles_fld AS details,
+														 PC.cc_type_pc_fld AS ownerType,
+														 PC.cc_banco_fld AS bank,
+														 PC.cc_tipocuenta_fld AS acctType,
+														 PC.cc_numcuenta_fld AS acctNum,
+														 PC.cc_catlicencia_fld AS licenseCategory,
+														 PC.cc_numlicencia_fld AS licenseNum,
+														 DATE_FORMAT(PC.cc_fchvenclicencia_fld, '%m/%d/%Y') AS expirationDate,
+														 D.cc_direccion_fld AS address,
+														 D.cc_telefono_fld AS phone,
+														 D.cc_celular_fld AS celPhone,
+														 D.cc_email_fld AS email,
+														 D.cc_codigodept_fld AS state,
+														 D.cc_codciudad_fld AS city
+												  FROM (cc_person_tbl P INNER JOIN cc_propcond_tbl PC ON P.cc_tipo_doc_fld = PC.cc_tipo_doc_fld AND P.cc_nume_doc_fld = PC.cc_nume_doc_fld) INNER JOIN cc_address_tbl D ON P.cc_tipo_doc_fld = D.cc_tipo_doc_fld AND P.cc_nume_doc_fld = D.cc_nume_doc_fld
+												  WHERE P.cc_nume_doc_fld = '".$docNum."' AND P.cc_tipo_doc_fld = (SELECT cc_valor_fld FROM cc_valores_tbl WHERE cc_descripcion_fld = '".$docType."' AND cc_campo_fld = 'cc_tipo_doc_fld')");
 	}
-	
+
 	function modifyTransporter($transporterData, $custId, $docType) {
 		$respCode = 0;
-		$this->util->db->Execute("DELETE FROM CC_ADDRESS_TBL WHERE CC_NUME_DOC_FLD = '".$custId."' AND CC_TIPO_DOC_FLD = (SELECT CC_VALOR_FLD FROM CC_VALORES_TBL WHERE CC_DESCRIPCION_FLD = '".$docType."' AND CC_CAMPO_FLD = 'cc_tipo_doc_fld')");
-		$this->util->db->Execute("DELETE FROM CC_PROPCOND_TBL WHERE CC_NUME_DOC_FLD = '".$custId."' AND CC_TIPO_DOC_FLD = (SELECT CC_VALOR_FLD FROM CC_VALORES_TBL WHERE CC_DESCRIPCION_FLD = '".$docType."' AND CC_CAMPO_FLD = 'cc_tipo_doc_fld')");
-		$this->util->db->Execute("DELETE FROM CC_PERSON_TBL WHERE CC_NUME_DOC_FLD = '".$custId."' AND CC_TIPO_DOC_FLD = (SELECT CC_VALOR_FLD FROM CC_VALORES_TBL WHERE CC_DESCRIPCION_FLD = '".$docType."' AND CC_CAMPO_FLD = 'cc_tipo_doc_fld')");									   
+		$this->util->db->Execute("DELETE FROM cc_address_tbl WHERE cc_nume_doc_fld = '".$custId."' AND cc_tipo_doc_fld = (SELECT cc_valor_fld FROM cc_valores_tbl WHERE cc_descripcion_fld = '".$docType."' AND cc_campo_fld = 'cc_tipo_doc_fld')");
+		$this->util->db->Execute("DELETE FROM cc_propcond_tbl WHERE cc_nume_doc_fld = '".$custId."' AND cc_tipo_doc_fld = (SELECT cc_valor_fld FROM cc_valores_tbl WHERE cc_descripcion_fld = '".$docType."' AND cc_campo_fld = 'cc_tipo_doc_fld')");
+		$this->util->db->Execute("DELETE FROM cc_person_tbl WHERE cc_nume_doc_fld = '".$custId."' AND cc_tipo_doc_fld = (SELECT cc_valor_fld FROM cc_valores_tbl WHERE cc_descripcion_fld = '".$docType."' AND cc_campo_fld = 'cc_tipo_doc_fld')");
 		$respCode = $this->addTransporter($transporterData);
 		return $respCode;
 	}

@@ -14,42 +14,42 @@ class User
 	{
 		$respCode = 0;
 		$userBasicData = $userData->userFormBasicData->userFormBasic;
-		$this->result = $this->util->db->Execute("INSERT INTO CC_USER_TBL VALUES('".$userBasicData->user."',
+		$this->result = $this->util->db->Execute("INSERT INTO cc_user_tbl VALUES('".$userBasicData->user."',
 																				 '".md5($userBasicData->user)."',
 																				 '".$userBasicData->role."',
 																				 'C')");
 		if(!$this->result) {
-			$this->util->db->Execute("DELETE FROM CC_USER_TBL WHERE CC_USER_ID_FLD = '".$userBasicData->user."'");
+			$this->util->db->Execute("DELETE FROM cc_user_tbl WHERE cc_user_id_fld = '".$userBasicData->user."'");
 			$respCode = 1;
 		}
 		return $respCode;
 	}
 
 	function getUser($user) {
-		$this->result = $this->util->db->Execute("SELECT CC_PSSWRD_FLD AS password,
-														 CC_USER_ID_FLD AS user,
-														 CC_ROLE_FLD AS role,
-														 CC_ESTADO_FLD AS state
-												  FROM CC_USER_TBL
-												  WHERE CC_USER_ID_FLD = '".$user."'");
+		$this->result = $this->util->db->Execute("SELECT cc_psswrd_fld AS password,
+														 cc_user_id_fld AS user,
+														 cc_role_fld AS role,
+														 cc_estado_fld AS state
+												  FROM cc_user_tbl
+												  WHERE cc_user_id_fld = '".$user."'");
 	}
 
 	function modifyUser($userData) {
 		$respCode = 0;
 		$userBasicData = $userData->userFormBasicData->userFormBasic;
 		if($userBasicData->state == 'C') {
-			$this->result = $this->util->db->Execute("UPDATE CC_USER_TBL SET CC_PSSWRD_FLD = '".md5($userBasicData->user)."',
-																			 CC_ROLE_FLD = '".$userBasicData->role."',
-																			 CC_ESTADO_FLD = '".$userBasicData->state."'
-													  WHERE CC_USER_ID_FLD = '".$userBasicData->user."'");
+			$this->result = $this->util->db->Execute("UPDATE cc_user_tbl SET cc_psswrd_fld = '".md5($userBasicData->user)."',
+																			 cc_role_fld = '".$userBasicData->role."',
+																			 cc_estado_fld = '".$userBasicData->state."'
+													  WHERE cc_user_id_fld = '".$userBasicData->user."'");
 			if(!$this->result) {
 				$respCode = 1;
 			}
 		}
 		else {
-			$this->result = $this->util->db->Execute("UPDATE CC_USER_TBL SET CC_ROLE_FLD = '".$userBasicData->role."',
-																			 CC_ESTADO_FLD = '".$userBasicData->state."'
-													  WHERE CC_USER_ID_FLD = '".$userBasicData->user."'");
+			$this->result = $this->util->db->Execute("UPDATE cc_user_tbl SET cc_role_fld = '".$userBasicData->role."',
+																			 cc_estado_fld = '".$userBasicData->state."'
+													  WHERE cc_user_id_fld = '".$userBasicData->user."'");
 			if(!$this->result) {
 				$respCode = 1;
 			}
@@ -60,9 +60,9 @@ class User
 	function modifyUserPass($userData) {
 		$respCode = 0;
 		$userBasicData = $userData->loginFormBasicData->loginFormBasic;
-		$this->result = $this->util->db->Execute("UPDATE CC_USER_TBL SET CC_PSSWRD_FLD = '".md5($userBasicData->password)."',
-																		 CC_ESTADO_FLD = 'A'
-												  WHERE CC_USER_ID_FLD = '".$userBasicData->user."'");
+		$this->result = $this->util->db->Execute("UPDATE cc_user_tbl SET cc_psswrd_fld = '".md5($userBasicData->password)."',
+																		 cc_estado_fld = 'A'
+												  WHERE cc_user_id_fld = '".$userBasicData->user."'");
 		if(!$this->result) {
 			$respCode = 1;
 		}

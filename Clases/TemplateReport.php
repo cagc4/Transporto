@@ -239,7 +239,7 @@ class TemplateReport
 			$numeroI='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 		}
 
-		$this->result = $this->util->db->Execute("SELECT PC.CC_NUME_DOC_FLD, P.CC_FNOMBRE_FLD FROM CC_PERSON_TBL P INNER JOIN CC_PROPCOND_TBL PC ON P.CC_NUME_DOC_FLD = PC.CC_NUME_DOC_FLD WHERE P.CC_NUME_DOC_FLD = '$conductor1'");
+		$this->result = $this->util->db->Execute("SELECT PC.cc_nume_doc_fld, P.cc_fnombre_fld FROM cc_person_tbl P INNER JOIN cc_propcond_tbl PC ON P.cc_nume_doc_fld = PC.cc_nume_doc_fld WHERE P.cc_nume_doc_fld = '$conductor1'");
 
 		if($this->result) {
 			$cedulaCondu=$this->result->fields[0];
@@ -252,7 +252,7 @@ class TemplateReport
 			$nombreCondu = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 		}
 
-		$this->result = $this->util->db->Execute("SELECT PC.CC_NUME_DOC_FLD, P.CC_FNOMBRE_FLD FROM CC_PERSON_TBL P INNER JOIN CC_PROPCOND_TBL PC ON P.CC_NUME_DOC_FLD = PC.CC_NUME_DOC_FLD WHERE P.CC_NUME_DOC_FLD = '$conductor2'");
+		$this->result = $this->util->db->Execute("SELECT PC.cc_nume_doc_fld, P.cc_fnombre_fld FROM cc_person_tbl P INNER JOIN cc_propcond_tbl PC ON P.cc_nume_doc_fld = PC.cc_nume_doc_fld WHERE P.cc_nume_doc_fld = '$conductor2'");
 
 		if($this->result) {
 			$cedulaCondu2=$this->result->fields[0];
@@ -265,7 +265,7 @@ class TemplateReport
 			$nombreCondu2 = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 		}
 
-		$this->result = $this->util->db->Execute("SELECT CC_DESCRIPC_FLD FROM CC_CIUDAD_TBL WHERE CC_CODCIUDAD_FLD = (SELECT CC_CODCIUDAD_FLD FROM CC_PERSON_TBL WHERE CC_NUME_DOC_FLD = '$numeroDoc')");
+		$this->result = $this->util->db->Execute("SELECT cc_descripc_fld FROM cc_ciudad_tbl WHERE cc_codciudad_fld = (SELECT cc_codciudad_fld FROM cc_person_tbl WHERE cc_nume_doc_fld = '$numeroDoc')");
 
 		if($this->result) {
 			$ciudadExp=$this->result->fields[0];

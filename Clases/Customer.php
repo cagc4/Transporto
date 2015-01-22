@@ -4,7 +4,7 @@ class Customer
 {
 	var $util;
 	var $result;
-	
+
 	function Customer()
 	{
 		$this->util = new Utilities();
@@ -12,27 +12,27 @@ class Customer
 
 	function addCustomer($customerData)	{
 		$respCode = 0;
-		
+
 		$customerBasicData = $customerData->customerFormBasicData->customerFormBasic;
 		$customerContactData = $customerData->customerFormContactData->customerFormContact;
 		$customerLocationData = $customerData->customerFormLocationData->customerFormLocation;
 		$customerFinancialData = $customerData->customerFormFinancialData->customerFormFinancial;
 		$customerCommentsData = $customerData->customerFormCommentsData->customerFormComments;
-		$this->result = $this->util->db->Execute("INSERT INTO CC_PERSON_TBL VALUES('".$customerBasicData->docType."',
+		$this->result = $this->util->db->Execute("INSERT INTO cc_person_tbl VALUES('".$customerBasicData->docType."',
 																				   '".$customerBasicData->docNum."',
 																				   '".$customerBasicData->name."',
 																				   STR_TO_DATE('".$customerBasicData->birthDate->month."/".$customerBasicData->birthDate->day."/".$customerBasicData->birthDate->year."','%m/%d/%Y'),
 																				   '".$customerBasicData->cityExpedition."',
 																				   '".$customerComments->details."')");
 		if($this->result) {
-			$this->result = $this->util->db->Execute("INSERT INTO CC_CUSTOMER_TBL VALUES('".$customerBasicData->docType."',
+			$this->result = $this->util->db->Execute("INSERT INTO cc_customer_tbl VALUES('".$customerBasicData->docType."',
 																					     '".$customerBasicData->docNum."',
 																					     '".$customerFinancialData->bank."',
 																					     '".$customerFinancialData->acctType."',
 																					     '".$customerFinancialData->acctNum."',
 																					     '".$customerBasicData->contact."')");
 			if($this->result) {
-				$this->result = $this->util->db->Execute("INSERT INTO CC_ADDRESS_TBL VALUES('".$customerBasicData->docType."',
+				$this->result = $this->util->db->Execute("INSERT INTO cc_address_tbl VALUES('".$customerBasicData->docType."',
 																						    '".$customerBasicData->docNum."',
 																						    '".$customerLocationData->address."',
 																						    '".$customerContactData->phone."',
@@ -41,52 +41,52 @@ class Customer
 																						    '".$customerLocationData->state."',
 																						    '".$customerLocationData->city."')");
 				if(!$this->result) {
-					$this->util->db->Execute("DELETE FROM CC_ADDRESS_TBL WHERE CC_TIPO_DOC_FLD = '".$customerBasicData->docType."' AND CC_NUME_DOC_FLD = '".$customerBasicData->docNum."'");
-					$this->util->db->Execute("DELETE FROM CC_CUSTOMER_TBL WHERE CC_TIPO_DOC_FLD = '".$customerBasicData->docType."' AND CC_NUME_DOC_FLD = '".$customerBasicData->docNum."'");
-					$this->util->db->Execute("DELETE FROM CC_PERSON_TBL WHERE CC_TIPO_DOC_FLD = '".$customerBasicData->docType."' AND CC_NUME_DOC_FLD = '".$customerBasicData->docNum."'");									   
+					$this->util->db->Execute("DELETE FROM cc_address_tbl WHERE cc_tipo_doc_fld = '".$customerBasicData->docType."' AND cc_nume_doc_fld = '".$customerBasicData->docNum."'");
+					$this->util->db->Execute("DELETE FROM cc_customer_tbl WHERE cc_tipo_doc_fld = '".$customerBasicData->docType."' AND cc_nume_doc_fld = '".$customerBasicData->docNum."'");
+					$this->util->db->Execute("DELETE FROM cc_person_tbl WHERE cc_tipo_doc_fld = '".$customerBasicData->docType."' AND cc_nume_doc_fld = '".$customerBasicData->docNum."'");
 					$respCode = 1;
 				}
 			}
 			else {
-				$this->util->db->Execute("DELETE FROM CC_CUSTOMER_TBL WHERE CC_TIPO_DOC_FLD = '".$customerBasicData->docType."' AND CC_NUME_DOC_FLD = '".$customerBasicData->docNum."'");
-				$this->util->db->Execute("DELETE FROM CC_PERSON_TBL WHERE CC_TIPO_DOC_FLD = '".$customerBasicData->docType."' AND CC_NUME_DOC_FLD = '".$customerBasicData->docNum."'");									   
+				$this->util->db->Execute("DELETE FROM cc_customer_tbl WHERE cc_tipo_doc_fld = '".$customerBasicData->docType."' AND cc_nume_doc_fld = '".$customerBasicData->docNum."'");
+				$this->util->db->Execute("DELETE FROM cc_person_tbl WHERE cc_tipo_doc_fld = '".$customerBasicData->docType."' AND cc_nume_doc_fld = '".$customerBasicData->docNum."'");
 				$respCode = 1;
 			}
 		}
 		else {
-			$this->util->db->Execute("DELETE FROM CC_PERSON_TBL WHERE CC_TIPO_DOC_FLD = '".$customerBasicData->docType."' AND CC_NUME_DOC_FLD = '".$customerBasicData->docNum."'");
+			$this->util->db->Execute("DELETE FROM cc_person_tbl WHERE cc_tipo_doc_fld = '".$customerBasicData->docType."' AND cc_nume_doc_fld = '".$customerBasicData->docNum."'");
 			$respCode = 1;
 		}
 		return $respCode;
 	}
-	
+
 	function getCustomer($docNum) {
-		$this->result = $this->util->db->Execute("SELECT P.CC_TIPO_DOC_FLD AS docType,
-														 P.CC_NUME_DOC_FLD AS docNum,
-														 P.CC_FNOMBRE_FLD AS name,
-														 DATE_FORMAT(P.CC_FECHANAC_FLD, '%m/%d/%Y') AS birthDate,
-														 P.CC_CODCIUDAD_FLD AS cityExpedition,
-														 P.CC_DETALLES_FLD AS details,
-														 C.CC_BANCO_FLD AS bank,
-														 C.CC_TIPOCUENTA_FLD AS acctType,
-														 C.CC_NUMCUENTA_FLD AS acctNum,
-														 C.CC_PERSONACONTACTO_FLD AS contact,
-														 D.CC_DIRECCION_FLD AS address,
-														 D.CC_TELEFONO_FLD AS phone,
-														 D.CC_CELULAR_FLD AS celPhone,
-														 D.CC_EMAIL_FLD AS email,
-														 D.CC_CODIGODEPT_FLD AS state,
-														 D.CC_CODCIUDAD_FLD AS city
-												  FROM (CC_PERSON_TBL P INNER JOIN CC_CUSTOMER_TBL C ON P.CC_TIPO_DOC_FLD = C.CC_TIPO_DOC_FLD AND P.CC_NUME_DOC_FLD = C.CC_NUME_DOC_FLD) INNER JOIN CC_ADDRESS_TBL D ON P.CC_TIPO_DOC_FLD = D.CC_TIPO_DOC_FLD AND P.CC_NUME_DOC_FLD = D.CC_NUME_DOC_FLD
-												  WHERE P.CC_NUME_DOC_FLD = '".$docNum."'");
+		$this->result = $this->util->db->Execute("SELECT p.cc_tipo_doc_fld as docType,
+														 p.cc_nume_doc_fld as docNum,
+														 p.cc_fnombre_fld as name,
+														 date_format(p.cc_fechanac_fld, '%m/%d/%y') as birthDate,
+														 p.cc_codciudad_fld as cityExpedition,
+														 p.cc_detalles_fld as details,
+														 c.cc_banco_fld as bank,
+														 c.cc_tipocuenta_fld as acctType,
+														 c.cc_numcuenta_fld as acctNum,
+														 c.cc_personacontacto_fld as contact,
+														 d.cc_direccion_fld as address,
+														 d.cc_telefono_fld as phone,
+														 d.cc_celular_fld as celPhone,
+														 d.cc_email_fld as email,
+														 d.cc_codigodept_fld as state,
+														 d.cc_codciudad_fld as city
+												  from (cc_person_tbl p inner join cc_customer_tbl c on p.cc_tipo_doc_fld = c.cc_tipo_doc_fld and p.cc_nume_doc_fld = c.cc_nume_doc_fld) inner join cc_address_tbl d on p.cc_tipo_doc_fld = d.cc_tipo_doc_fld and p.cc_nume_doc_fld = d.cc_nume_doc_fld
+												  where p.cc_nume_doc_fld = '".$docNum."'");
 	}
-	
+
 	function modifyCustomer($customerData, $custId) {
 		$respCode = 0;
 		$customerCommentsData = $customerData->customerFormCommentsData->customerFormComments;
-		$this->util->db->Execute("DELETE FROM CC_ADDRESS_TBL WHERE CC_NUME_DOC_FLD = '".$custId."'");
-		$this->util->db->Execute("DELETE FROM CC_CUSTOMER_TBL WHERE CC_NUME_DOC_FLD = '".$custId."'");
-		$this->util->db->Execute("DELETE FROM CC_PERSON_TBL WHERE CC_NUME_DOC_FLD = '".$custId."'");
+		$this->util->db->Execute("DELETE FROM cc_address_tbl WHERE cc_nume_doc_fld = '".$custId."'");
+		$this->util->db->Execute("DELETE FROM cc_customer_tbl WHERE cc_nume_doc_fld = '".$custId."'");
+		$this->util->db->Execute("DELETE FROM cc_person_tbl WHERE cc_nume_doc_fld = '".$custId."'");
 		$respCode = $this->addCustomer($customerData);
 		return $respCode;
 	}
