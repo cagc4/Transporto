@@ -802,7 +802,7 @@ EOD;
 				<font face="Arial" size="9"><b>N&uacute;mero $consecutivo</b></font></p>
 
 
-				<p align="justify"><font face="Arial" size="10">Conste por el presente documento, que entre los suscritos a saber <b> $nombreContratante .</b>$tipoDocumento .<b>$contratante</b> quien para efectos del presente se
+				<p align="justify"><font face="Arial" size="10">Conste por el presente documento, que entre los suscritos a saber <b> $nombreContratante</b>, $tipoDocumento<b>, $contratante</b> quien para efectos del presente se
 				denominará CONTRATANTE, y el señor <b>TRANSCORVALLE S.A.S, </b>NIT. No <b>821.002.227-2</b>, quien para efectos del mismo se denominará CONTRATISTA,
 				hemos celebrado el presente contrato de transporte, estipulado con las siguientes cláusulas:</font></p>
 
