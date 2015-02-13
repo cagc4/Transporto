@@ -7,7 +7,12 @@ $reporte='FUEC';
 
 $objTemplate = new TemplateReport('FUEC','P','LEGAL',true,'empleado');
 if(!isset($_SESSION['number'])){
-	header('location:Fuec_srch.php');
+	if(!$_GET["Numero_FUEC"]) {
+		header('location:Fuec_srch.php');
+	}
+	else {
+		$_SESSION['number'] = $_GET["Numero_FUEC"];
+	}
 }
 $objTemplate->setupForm($reporte,false,false,false,false,false);
 
