@@ -1,6 +1,6 @@
 <?php
 include "../Clases/TemplatePage.php";
-$template = new TemplatePage(false, false, 'empleado');
+$template = new TemplatePage(false, true, 'empleado');
 $location = '';
 switch($_GET["Page"]) {
 	case 'Customer_srch':
