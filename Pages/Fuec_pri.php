@@ -5,7 +5,7 @@ include "../Clases/CasualTravel.php";
 
 $reporte='FUEC';
 
-$objTemplate = new TemplateReport('FUEC','P','LEGAL',true,'empleado');
+$objTemplate = new TemplateReport('FUEC','P','LEGAL',false,'empleado');
 if(!isset($_SESSION['number'])){
 	header('location:Fuec_srch.php');
 }
