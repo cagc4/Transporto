@@ -1170,7 +1170,7 @@ EOD;
 
 
 		$style=$this->codigoBarraEstilo();
-		$this->pdf->write2DBarcode($numerofuec, 'QRCODE,L', 10, 10, 25,25, $style, 'N');
+		$this->pdf->write2DBarcode('http://transcorvalle.com/Transporto/Pages/PassThrough.php?Page=PrintFuec&Numero_FUEC='.$numerofuec, 'QRCODE,L', 10, 10, 25,25, $style, 'N');
 		$this->pdf->Image(K_PATH_IMAGES.'supertransporte.jpg', 160,20, 40,10, '', '', '', false, 0);
 		$this->pdf->Image(K_PATH_IMAGES.'firma.png',120,192,80,25, '', '', '', false, 0);
 		$this->pdf->writeHTML($html, true, false, true, false, '');
