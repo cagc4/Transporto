@@ -90,6 +90,14 @@ class Transporter
 
 	function modifyTransporter($transporterData, $custId, $docType) {
 		$respCode = 0;
+		$transporterBasicData = $transporterData->transporterFormBasicData->transporterFormBasic;
+		$this->result = $this->util->db->Execute("SELECT cc_placa_fld AS plate FROM cc_per_veh_tbl WHERE cc_nume_doc_fld = '".$custId."' AND cc_tipo_doc_fld = (SELECT cc_valor_fld FROM cc_valores_tbl WHERE cc_descripcion_fld = '".$docType."' AND cc_campo_fld = 'cc_tipo_doc_fld')");
+		while($result = $this->result->FetchRow()) {
+			$this->util->db->Execute("INSERT INTO cc_per_veh_tbl VALUES('".$transporterBasicData->docType."',
+																		'".$transporterBasicData->docNum."',
+																		'".$result['plate']."')");
+		}
+		$this->util->db->Execute("DELETE FROM cc_per_veh_tbl WHERE cc_nume_doc_fld = '".$custId."' AND cc_tipo_doc_fld = (SELECT cc_valor_fld FROM cc_valores_tbl WHERE cc_descripcion_fld = '".$docType."' AND cc_campo_fld = 'cc_tipo_doc_fld')");
 		$this->util->db->Execute("DELETE FROM cc_address_tbl WHERE cc_nume_doc_fld = '".$custId."' AND cc_tipo_doc_fld = (SELECT cc_valor_fld FROM cc_valores_tbl WHERE cc_descripcion_fld = '".$docType."' AND cc_campo_fld = 'cc_tipo_doc_fld')");
 		$this->util->db->Execute("DELETE FROM cc_propcond_tbl WHERE cc_nume_doc_fld = '".$custId."' AND cc_tipo_doc_fld = (SELECT cc_valor_fld FROM cc_valores_tbl WHERE cc_descripcion_fld = '".$docType."' AND cc_campo_fld = 'cc_tipo_doc_fld')");
 		$this->util->db->Execute("DELETE FROM cc_person_tbl WHERE cc_nume_doc_fld = '".$custId."' AND cc_tipo_doc_fld = (SELECT cc_valor_fld FROM cc_valores_tbl WHERE cc_descripcion_fld = '".$docType."' AND cc_campo_fld = 'cc_tipo_doc_fld')");
