@@ -12,7 +12,7 @@ $template->navigateBar('Home');
 		<tr>
 			<td width =250><center><a href='Customer_srch.php' ><img src='../Images/Icons/customers.png' width="150" height="150" ></a></center></td>
 			<td width =250><center><a href='Transporter_srch.php' ><img src='../Images/Icons/Driver.png' width="150" height="150" ></a></center></td>
-			<td width =250><center><a href='Vehicle_srch.php' ><img src='../Images/Icons/Bus.gif' width="150" height="150" ></a></center></td>
+			<td width =250><center><a href='AdminVehicle.php' ><img src='../Images/Icons/Bus.gif' width="150" height="150" ></a></center></td>
 			<td width =250><center><a href='Document_srch.php' ><img src='../Images/Icons/documents.png' width="150" height="150" ></a></center></td>
 			<td width =250><center><a href='Forms.php' ><img src='../Images/Icons/planillas.png' width="150" height="150" ></a></center></td>
 		</tr>
