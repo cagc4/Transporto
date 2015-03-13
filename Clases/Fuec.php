@@ -68,13 +68,13 @@ class Fuec
 																						 '" . $fuecDriver2Data->docNumDriver2 . "',
 																						 '" . $fuecDriver2Data->docTypeDriver2 . "',
 																						 '" . $fuecDriver1Data->docNumDriver1 . "')");
-			if(!$this->result) {
+			/*if(!$this->result) {
 				$this->util->db->Execute("DELETE FROM cc_fuec_tbl WHERE cc_numero_fuec_fld = ".$numFuec);
 				$respCode = 99;
 			}
-			else {
+			else {*/
 				$_SESSION['number'] = $numFuec;
-			}
+			//}
 		}
 		return $respCode;
 	}
