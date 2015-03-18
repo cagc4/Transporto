@@ -306,6 +306,13 @@ class Utilities
 					if ($i == 3)
 						$col["link"] = $path."/Pages/PassThrough.php?Page=FuecPassenger_srch&Numero_Identificacion={Numero_Identificacion}";
 					break;
+				case 'Mantenimientos Vehiculares':
+					if ($i == 1) {
+						$col["width"] = "0";
+					}
+					if ($i == 3)
+						$col["link"] = $path."/Pages/PassThrough.php?Page=Maintenance_srch&ID={Identificador}";
+					break;
 			}
 			//$col["width"] = "15";
 			$col["editable"] = false;

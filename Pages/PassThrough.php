@@ -60,6 +60,10 @@ switch($_GET["Page"]) {
 		$_SESSION['numberId'] = $_GET["Numero_Identificacion"];
 		$location = 'location:FuecPassenger_mdfy.php';
 		break;
+	case 'Maintenance_srch':
+		$_SESSION['ID'] = $_GET["ID"];
+		$location = 'location:Maintenance_vw.php';
+		break;
 }
 header($location);
 ?>

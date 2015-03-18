@@ -11,7 +11,7 @@ $template->navigateBar('AdminVehicle');
 	<table>
 		<tr>
 			<td width =250><center><a href='Vehicle_srch.php' ><img src='../Images/Icons/AdminVehicles.png' width="120" height="120" ></a></center></td>
-            		<td width =250><center><a href='Vehicle_srch.php' ><img src='../Images/Icons/mantenimiento.png' width="150" height="150" ></a></center></td>
+            		<td width =250><center><a href='Maintenance_srch.php' ><img src='../Images/Icons/mantenimiento.png' width="150" height="150" ></a></center></td>
             	</tr>
 		<tr>
 			<td align ='center'>Vehiculos</td>
