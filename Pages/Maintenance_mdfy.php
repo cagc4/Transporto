@@ -18,7 +18,7 @@ $documentForm = new JFormer('maintenanceForm', array('title' => '<div align="cen
 $jFormPage1 = new JFormPage($documentForm->id . 'BasicData', array('title' => 'Basicos'));
 $jFormSection1 = new JFormSection($documentForm->id . 'Basic');
 $jFormSection1->addJFormComponentArray(array(
-	new JFormComponentDropDown('maintenanceType', 'Tipo de documento:  ', $util->fillDropDownVew('cc_mantenimiento_fld', $result['maintenanceType']), array('disabled' => false, 'validationOptions' => array('required'))),
+	new JFormComponentDropDown('maintenanceType', 'Tipo de Mantenimiento:  ', $util->fillDropDownVew('cc_mantenimiento_fld', $result['maintenanceType']), array('disabled' => false, 'validationOptions' => array('required'))),
 	new JFormComponentSingleLineText('plate', 'Placa:  ', array('initialValue' => $result['plate'], 'disabled' => false, 'validationOptions' => array('required'), 'tip' => '<p>El vehiculo debe ser registrado previamente</p>')),
 	new JFormComponentDate('maintenanceDate', 'Fecha Mantenimiento:  ', array('initialValue' => $result['maintenanceDate'], 'disabled' => false, 'tip' => '<p>Formato MM/DD/AAAA</p>', 'validationOptions' => array('required'))),
 	new JFormComponentDate('nextMaintenanceDate', 'Fecha Proximo Mantenimiento:  ', array('initialValue' => $result['nextMaintenanceDate'], 'disabled' => false, 'tip' => '<p>Formato MM/DD/AAAA</p>', 'validationOptions' => array('required'))),

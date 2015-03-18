@@ -62,13 +62,24 @@ $jFormSection5->addJFormComponentArray(array(
 $jFormPage5->addJFormSection($jFormSection5);
 $transporterForm->addJFormPage($jFormPage5);
 
-$jFormPage6 = new JFormPage($transporterForm->id . 'CommentsData', array('title' => 'Observaciones'));
-$jFormSection6 = new JFormSection($transporterForm->id . 'Comments');
+$jFormPage6 = new JFormPage($transporterForm->id . 'ParafiscalesData', array('title' => 'Basicos'));
+$jFormSection6 = new JFormSection($transporterForm->id . 'Basic');
 $jFormSection6->addJFormComponentArray(array(
-	new JFormComponentTextArea('details', 'Comentarios:  ', array('initialValue' => '', 'disabled' => false))
+	new JFormComponentDropDown('eps', 'EPS:  ', $util->fillDropDown('cc_eps_fld'), array('disabled' => false, 'validationOptions' => array('required'),)),
+    new JFormComponentDropDown('arl', 'ARL:  ', $util->fillDropDown('cc_arl_fld'), array('disabled' => false, 'validationOptions' => array('required'),)),
+	new JFormComponentDropDown('pensiones', 'Fondo de Pensiones y Cesantias:  ', $util->fillDropDown('cc_pensiones_cesantias_fld'), array('disabled' => false, 'validationOptions' => array('required'),)),
+	new JFormComponentSingleLineText('centroReconocimiento', 'Centro de reconocimiento:  ', array('initialValue' => '', 'disabled' => false, 'validationOptions' => array('required', 'integer'), 'tip' => '<p>Ingresar solo numeros</p>')),
 ));
 $jFormPage6->addJFormSection($jFormSection6);
 $transporterForm->addJFormPage($jFormPage6);
+
+$jFormPage7 = new JFormPage($transporterForm->id . 'CommentsData', array('title' => 'Observaciones'));
+$jFormSection7 = new JFormSection($transporterForm->id . 'Comments');
+$jFormSection7->addJFormComponentArray(array(
+	new JFormComponentTextArea('details', 'Comentarios:  ', array('initialValue' => '', 'disabled' => false))
+));
+$jFormPage7->addJFormSection($jFormSection7);
+$transporterForm->addJFormPage($jFormPage7);
 
 function onSubmit($formValues) {
 	$transporter = new Transporter();
