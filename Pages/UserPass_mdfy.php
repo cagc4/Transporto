@@ -19,7 +19,7 @@ $jFormPage1 = new JFormPage($userForm->id . 'BasicData', array('title' => 'Basic
 $jFormSection1 = new JFormSection($userForm->id . 'Basic');
 $jFormSection1->addJFormComponentArray(array(
 	new JFormComponentSingleLineText('user', 'Usuario:  ', array('initialValue' => $result['user'], 'disabled' => true, 'validationOptions' => array('required'))),
-	new JFormComponentSingleLineText('password', 'Clave:  ', array('type' => 'password', 'initialValue' => $result['password'], 'disabled' => false, 'validationOptions' => array('required'), 'tip' => '<p>Ingrese su nueva clave</p>'))
+	new JFormComponentSingleLineText('password', 'Clave:  ', array('type' => 'password', 'initialValue' => '', 'disabled' => false, 'validationOptions' => array('required'), 'tip' => '<p>Ingrese su nueva clave</p>'))
 ));
 $jFormPage1->addJFormSection($jFormSection1);
 $userForm->addJFormPage($jFormPage1);
