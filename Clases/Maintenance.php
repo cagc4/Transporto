@@ -28,12 +28,13 @@ class Maintenance
                 if(strlen($plate) == 6) {
                     $this->result = $this->util->db->Execute("SELECT * FROM cc_vehicle_tbl WHERE cc_placa_fld = '".$plate."'");
                     if($this->result->FetchRow()) {
-						$this->result = $this->util->db->Execute("SELECT cc_id_fld AS ID FROM
+						$this->result = $this->util->db->Execute("SELECT cc_id_fld AS ID FROM cc_mantenimientos_tbl
 																  WHERE cc_tipo_fld = '".$maintenanceBasicData->maintenanceType."' AND
 																	    cc_placa_fld = '".$maintenanceBasicData->plate."' AND 
 																		cc_estado_fld = 'A'");
-						if($result = $this->result->FetchRow()) {
-							$this->result = $this->util->db->Execute("UPDATE cc_mantenimientos_tbl SET cc_estadp_fld = 'I'
+						$result = $this->result->FetchRow();
+						if($result != null) {
+							$this->result = $this->util->db->Execute("UPDATE cc_mantenimientos_tbl SET cc_estado_fld = 'I'
 																	  WHERE cc_id_fld = " . $result['ID']);
 						}
                         $this->result = $this->util->db->Execute("INSERT INTO cc_mantenimientos_tbl VALUES(0,
@@ -50,7 +51,7 @@ class Maintenance
                             $this->util->db->Execute("DELETE FROM cc_mantenimientos_tbl WHERE cc_tipo_fld = '".$maintenanceBasicData->plate."' AND
                                                                                               cc_placa_fld = '".$maintenanceBasicData->number."' AND
                                                                                               cc_fecha_fld = STR_TO_DATE('".$maintenanceBasicData->maintenanceDate->month."/".$maintenanceBasicData->maintenanceDate->day."/".$maintenanceBasicData->maintenanceDate->year."','%m/%d/%Y')");
-							$this->result = $this->util->db->Execute("UPDATE cc_mantenimientos_tbl SET cc_estadp_fld = 'A'
+							$this->result = $this->util->db->Execute("UPDATE cc_mantenimientos_tbl SET cc_estado_fld = 'A'
 																	  WHERE cc_id_fld = " . $result['ID']);
                             $respCode = 1;
                         }
