@@ -31,7 +31,7 @@ $jFormPage2 = new JFormPage($transporterForm->id . 'ContactData', array('title' 
 $jFormSection2 = new JFormSection($transporterForm->id . 'Contact');
 $jFormSection2->addJFormComponentArray(array(
 	new JFormComponentSingleLineText('phone', 'Telefono:  ', array('initialValue' => $result['phone'], 'disabled' => true)),
-	new JFormComponentSingleLineText('celPhone', 'Celular:  ', array('initialValue' => $result['celPhone'], 'disabled' => true, 'validationOptions' => array('integer', 'minLength' => 10), 'tip' => '<p>Ingresar minimo 10 digitos</p>')),
+	new JFormComponentSingleLineText('celPhone', 'Celular:  ', array('initialValue' => $result['celPhone'], 'disabled' => true,)),
 	new JFormComponentSingleLineText('email', 'E-mail:  ', array('initialValue' => $result['email'], 'disabled' => true, 'validationOptions' => array('email'))),
 ));
 $jFormPage2->addJFormSection($jFormSection2);
@@ -67,13 +67,25 @@ $jFormSection5->addJFormComponentArray(array(
 $jFormPage5->addJFormSection($jFormSection5);
 $transporterForm->addJFormPage($jFormPage5);
 
-$jFormPage6 = new JFormPage($transporterForm->id . 'CommentsData', array('title' => 'Observaciones'));
-$jFormSection6 = new JFormSection($transporterForm->id . 'Comments');
+$jFormPage6 = new JFormPage($transporterForm->id . 'ParafiscalesData', array('title' => 'Parafiscales'));
+$jFormSection6 = new JFormSection($transporterForm->id . 'Parafiscales');
 $jFormSection6->addJFormComponentArray(array(
-	new JFormComponentTextArea('details', 'Comentarios:  ', array('initialValue' => $result['details'], 'disabled' => true))
+	new JFormComponentDropDown('eps', 'EPS:  ', $util->fillDropDownVew('cc_eps_fld', $result['eps']), array('disabled' => true,)),
+    new JFormComponentDropDown('arl', 'ARL:  ', $util->fillDropDownVew('cc_arl_fld', $result['arl']), array('disabled' => true,)),
+	new JFormComponentDropDown('pensionesCesantias', 'Fondo de Pensiones y Cesantias:  ', $util->fillDropDownVew('cc_pCesantias_fld', $result['pensionesCesantias']), array('disabled' => true,)),
+	new JFormComponentSingleLineText('centroReconocimiento', 'Centro de reconocimiento:  ', array('initialValue' => $result['centroReconocimiento'], 'disabled' => true,)),
 ));
 $jFormPage6->addJFormSection($jFormSection6);
 $transporterForm->addJFormPage($jFormPage6);
+
+$jFormPage7 = new JFormPage($transporterForm->id . 'CommentsData', array('title' => 'Observaciones'));
+$jFormSection7 = new JFormSection($transporterForm->id . 'Comments');
+$jFormSection7->addJFormComponentArray(array(
+	new JFormComponentTextArea('details', 'Comentarios:  ', array('initialValue' => $result['details'], 'disabled' => true))
+));
+$jFormPage7->addJFormSection($jFormSection7);
+$transporterForm->addJFormPage($jFormPage7);
+
 
 function onSubmit($formValues) {
 	$response = array('successPageHtml' => '<meta http-equiv="refresh" content="0; url=Transporter_mdfy.php">');

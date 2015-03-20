@@ -18,6 +18,7 @@ class Transporter
 		$transporterLocationData = $transporterData->transporterFormLocationData->transporterFormLocation;
 		$transporterLicenseData = $transporterData->transporterFormLicenseData->transporterFormLicense;
 		$transporterFinancialData = $transporterData->transporterFormFinancialData->transporterFormFinancial;
+		$transporterFormParafiscalesData = $transporterData->transporterFormParafiscalesData->transporterFormParafiscales;
 		$transporterCommentsData = $transporterData->transporterFormCommentsData->transporterFormComments;
 		$this->result = $this->util->db->Execute("INSERT INTO cc_person_tbl VALUES('".$transporterBasicData->docType."',
 																				   '".$transporterBasicData->docNum."',
@@ -34,7 +35,11 @@ class Transporter
 																						 '".$transporterFinancialData->acctNum."',
 																						 '".$transporterLicenseData->licenseCategory."',
 																						 '".$transporterLicenseData->licenseNum."',
-																						 STR_TO_DATE('".$transporterLicenseData->expirationDate->month."/".$transporterLicenseData->expirationDate->day."/".$transporterLicenseData->expirationDate->year."','%m/%d/%Y'))");
+																						 STR_TO_DATE('".$transporterLicenseData->expirationDate->month."/".$transporterLicenseData->expirationDate->day."/".$transporterLicenseData->expirationDate->year."','%m/%d/%Y'),
+																						 '".$transporterFormParafiscalesData->eps."',
+																						 '".$transporterFormParafiscalesData->arl."',
+																						 '".$transporterFormParafiscalesData->pensionesCesantias."',
+																						 '".$transporterFormParafiscalesData->centroReconocimiento."')");
 			if($this->result) {
 				$this->result = $this->util->db->Execute("INSERT INTO cc_address_tbl VALUES('".$transporterBasicData->docType."',
 																							'".$transporterBasicData->docNum."',
@@ -78,6 +83,10 @@ class Transporter
 														 PC.cc_catlicencia_fld AS licenseCategory,
 														 PC.cc_numlicencia_fld AS licenseNum,
 														 DATE_FORMAT(PC.cc_fchvenclicencia_fld, '%m/%d/%Y') AS expirationDate,
+														 PC.cc_eps_fld AS eps,
+														 PC.cc_arl_fld AS arl,
+														 PC.cc_pensiones_cesantias_fld AS pensionesCesantias,
+														 PC.cc_centro_reconocimiento_fld centroReconocimiento,
 														 D.cc_direccion_fld AS address,
 														 D.cc_telefono_fld AS phone,
 														 D.cc_celular_fld AS celPhone,

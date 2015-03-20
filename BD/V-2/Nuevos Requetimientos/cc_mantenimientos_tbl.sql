@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version: 5.5.8)
-# Date: 2015-03-17 22:25:30
+# Date: 2015-03-19 22:02:42
 # Generator: MySQL-Front 5.3  (Build 4.121)
 
 /*!40101 SET NAMES utf8 */;
@@ -20,4 +20,4 @@ CREATE TABLE `cc_mantenimientos_tbl` (
   `cc_observaciones_fld` blob,
   `cc_estado_fld` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`cc_id_fld`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
