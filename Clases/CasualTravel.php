@@ -131,7 +131,7 @@ class CasualTravel
 													 f.cc_encargado_fld as responsable
 											  from cc_formocacional_tbl f
 											  where f.cc_id_fld = ".$number);
-		$resultp = $this->util->db->execute("select p.cc_fnombre_fld as persona,
+		$resultP = $this->util->db->execute("select p.cc_fnombre_fld as persona,
 													a.cc_celular_fld as celular,
 													( select pv.cc_fnombre_fld from cc_person_tbl pv where pv.cc_nume_doc_fld = f.cc_conductor1_fld  )  as conductor,
 													c.cc_tipo_doc_fld as tipoid,
@@ -141,11 +141,11 @@ class CasualTravel
 		$resultSO = $resultSO->FetchRow();
 		if($resultP) {
 			$resultP = $resultP->FetchRow();
-			if($resultP['tipoID'] == 'nt') {
+			if($resultP['tipoid'] == 'nt') {
 				$resultP = $this->util->db->Execute("SELECT cc_personacontacto_fld AS persona,
 															'".$resultP['celular']."' AS celular,
 															'".$resultP['conductor']."' AS conductor
-													 FROM cc_customer_tbl WHERE cc_tipo_doc_fld = '".$resultP['tipoID']."' AND cc_nume_doc_fld = '".$resultP['numID']."'");
+													 FROM cc_customer_tbl WHERE cc_tipo_doc_fld = '".$resultP['tipoid']."' AND cc_nume_doc_fld = '".$resultP['numid']."'");
 				$resultP = $resultP->FetchRow();
 			}
 			if($resultP['conductor'] == '') {
@@ -158,7 +158,7 @@ class CasualTravel
 		}
 		if($resultSO['responsable'] == '') {
 			$this->result = $this->util->db->Execute("SELECT '".$resultSO['consecutivo']."' AS consecutivo,
-															 '".$resultSO['objetoS']."' AS objetoS,
+															 '".$resultSO['objetos']."' AS objetoS,
 															 '".$resultSO['placa']."' AS placa,
 															 '".$resultSO['fechasalida']."' AS fechasalida,
 															 '".$resultSO['fecharegreso']."' AS fecharegreso,

@@ -11,5 +11,8 @@ $query = 'select * from cc_sos_orden_tbl';
 $render = $template->headerSearch('Orden Servicio', 'Orden Servicio', 'cc_sos_orden_tbl', $query);
 $template->navigateBar('SosOrden_srch');
 $template->bodySearch($render);
+?>
+<a href="PrintSos.php">orden de servicio Prueba </a>
+<?php
 $template->tail();
 ?>

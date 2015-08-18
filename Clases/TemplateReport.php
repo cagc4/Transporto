@@ -51,7 +51,7 @@ class TemplateReport
 			$yf =320;
 		}
 
-		if ($reporte == 'Orden de Servicio'){
+		if ($reporte == 'Orden de Servicio'|| $reporte == 'SOS'){
 
 			$wb =20;
 			$xb =20;
@@ -111,8 +111,54 @@ class TemplateReport
 	function exportarPdf($id){
 		$this->pdf->Output($id, 'I');
 	}
+
+    function reportSos($tamanoFuenteForm,$objetoS,$persona,$celular,$direcO,$direcD,$salida,$regreso,$conductor,$placa,$consecutivo)
+    {
+
+
+		$salida=$this->util->timestampATexto($salida,'u');
+		$regreso=$this->util->timestampATexto($regreso,'u');
+
+
+		$this->pdf->Ln(25);
+
+		$this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm+2); $this->pdf->Cell(0, 5, $consecutivo, 0, 1, 'R');
+		$this->pdf->SetFont('helvetica', 'BU', $tamanoFuenteForm+4); $this->pdf->Cell(0, 5, 'ORDEN DE SERVICIO	', 0, 1, 'C');
+
+		$this->pdf->Ln(5);
+
+		$this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(60, 5, 'OBJETO DEL SERVICIO: ');$this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0, 1, $objetoS);
+		$this->pdf->Ln(4);
+
+		$this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(60, 5, 'PERSONA ENCARGADA DEL SERVICIO:'); $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0, 1, $persona);
+
+		$this->pdf->Ln(4);
+		$this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(60, 5, 'CELULAR No:');$this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0, 1, $celular);
+
+		$this->pdf->Ln(7);
+		$this->pdf->SetFont('helvetica', 'BIU', $tamanoFuenteForm);$this->pdf->Cell(0, 5, 'UBICACIÓN DE ORIGEN Y DESTINO:', 0, 1, 'L');
+
+
+		$this->pdf->Ln(2);
+		$this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(60, 5, 'DIRECCION DE ORIGEN:'); $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0, 1, $direcO);
+		$this->pdf->Ln(4);
+		$this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(60, 5, 'DIRECCION DE DESTINO:');$this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0, 1, $direcD);
+
+
+		$this->pdf->Ln(8);
+		$this->pdf->SetFont('helvetica', 'BIU', $tamanoFuenteForm);$this->pdf->Cell(0, 5, 'FECHA Y HORA:', 0, 1, 'L');
+		$this->pdf->Ln(2);
+		$this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(60, 5, 'SALIDA:'); $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0, 1, $salida);
+		$this->pdf->Ln(4);
+		$this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(60, 5, 'REGRESO:'); $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0, 1, $regreso);
+
+		$this->pdf->Ln(5);
+
+		$this->pdf->SetFont('helvetica', 'BI', $tamanoFuenteForm-1); $this->pdf->Cell(60, 5, 'NOTA:  El vehículo con  placa '.$placa.' conducido por '.$conductor.' debe estar en perfecto estado Mecánico y de aseo.');
+
+	}
 	function serviceOrder($tamanoFuenteForm,$objetoS,$persona,$celular,$direcO,$direcD,$salida,$regreso,$conductor,$placa,$consecutivo)
-	{
+{
 
 
 		$salida=$this->util->timestampATexto($salida,'u');
