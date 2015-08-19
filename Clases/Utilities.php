@@ -313,6 +313,10 @@ class Utilities
 					if ($i == 3)
 						$col["link"] = $path."/Pages/PassThrough.php?Page=Maintenance_srch&ID={Identificador}";
 					break;
+				case 'Pacientes':
+					if ($i == 2)
+						$col["link"] = $path."/Pages/PassThrough.php?Page=Patient_srch&Tipo_Identificacion={Tipo_Identificacion}&Numero_Identificacion={Numero_Identificacion}";
+					break;
 			}
 			//$col["width"] = "15";
 			$col["editable"] = false;

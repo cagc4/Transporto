@@ -17,7 +17,7 @@ $customerForm = new JFormer('customerForm', array('title' => '<div align="center
 $jFormPage1 = new JFormPage($customerForm->id . 'BasicData', array('title' => 'Basicos'));
 $jFormSection1 = new JFormSection($customerForm->id . 'Basic');
 $jFormSection1->addJFormComponentArray(array(
-    new JFormComponentDropDown('docType', 'Tipo de documento:  ', $util->fillDropDownVew('cc_tipo_doc_fld', $result['docType'], true), array('disabled' => false, 'validationOptions' => array('required'),)),
+    new JFormComponentDropDown('docType', 'Tipo de documento:  ', $util->fillDropDownVew('cc_tipo_doc_fld', $result['docType']), array('disabled' => false, 'validationOptions' => array('required'),)),
 	new JFormComponentSingleLineText('docNum', 'Numero documento:  ', array('initialValue' => $result['docNum'], 'disabled' => false, 'validationOptions' => array('required', 'integer'), 'tip' => '<p>Ingresar solo numeros</p>')),
 	new JFormComponentDropDown('cityExpedition', 'Ciudad de Expedicion:  ',	$util->fillDropDownCityVew('', $result['cityExpedition']), array('disabled' => false, 'tip' => '<p>Ingresar solo si tipo documento es Cedula de Ciudadania</p>')),
 	new JFormComponentSingleLineText('name', 'Nombre/Razon social:  ', array('initialValue' => $result['name'], 'disabled' => false, 'validationOptions' => array('required'))),
@@ -51,7 +51,7 @@ $jFormPage4 = new JFormPage($customerForm->id . 'FinancialData', array('title' =
 $jFormSection4 = new JFormSection($customerForm->id . 'Financial');
 $jFormSection4->addJFormComponentArray(array(
 	new JFormComponentDropDown('bank', 'Banco:  ', $util->fillDropDownVew('cc_banco_fld', $result['bank'], true), array('disabled' => false)),
-	new JFormComponentDropDown('acctType', 'Tipo de Cuenta:  ', $util->fillDropDownVew('cc_tipoCuenta_fld', $result['acctType'], true), array('disabled' => false)),
+	new JFormComponentDropDown('acctType', 'Tipo de Cuenta:  ', $util->fillDropDownVew('cc_tipoCuenta_fld', $result['acctType']), array('disabled' => false)),
 	new JFormComponentSingleLineText('acctNum', 'Numero de Cuenta:  ', array('initialValue' => $result['acctNum'], 'disabled' => false)),
 ));
 $jFormPage4->addJFormSection($jFormSection4);

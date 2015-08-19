@@ -60,7 +60,7 @@ class Customer
 		return $respCode;
 	}
 
-	function getCustomer($docNum) {
+	function getCustomer($docNum, $docType) {
 		$this->result = $this->util->db->Execute("SELECT p.cc_tipo_doc_fld as docType,
 														 p.cc_nume_doc_fld as docNum,
 														 p.cc_fnombre_fld as name,
@@ -78,7 +78,7 @@ class Customer
 														 d.cc_codigodept_fld as state,
 														 d.cc_codciudad_fld as city
 												  from (cc_person_tbl p inner join cc_customer_tbl c on p.cc_tipo_doc_fld = c.cc_tipo_doc_fld and p.cc_nume_doc_fld = c.cc_nume_doc_fld) inner join cc_address_tbl d on p.cc_tipo_doc_fld = d.cc_tipo_doc_fld and p.cc_nume_doc_fld = d.cc_nume_doc_fld
-												  where p.cc_nume_doc_fld = '".$docNum."'");
+												  where p.cc_nume_doc_fld = '".$docNum."' AND p.cc_tipo_doc_fld = (SELECT cc_valor_fld FROM cc_valores_tbl WHERE cc_descripcion_fld = '".$docType."' AND cc_campo_fld = 'cc_tipo_doc_fld')");
 	}
 
 	function modifyCustomer($customerData, $custId) {
