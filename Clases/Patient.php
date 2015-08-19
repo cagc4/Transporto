@@ -17,10 +17,12 @@ class Patient
 		$patientCommentsData = $patientData->patientFormCommentsData->patientFormComments;
 		$this->result = $this->util->db->Execute("INSERT INTO cc_patient_tbl VALUES('".$patientBasicData->docType."',
 																					 '".$patientBasicData->docNum."',
-																					 '".$patientFinancialData->bank."',
-																					 '".$patientFinancialData->acctType."',
-																					 '".$patientFinancialData->acctNum."',
-																					 '".$patientBasicData->contact."')");
+																					 '".$patientBasicData->name."',
+																					 '".$patientBasicData->lastName."',
+																					 '".$patientBasicData->address."',
+																					 '".$patientBasicData->phone."',
+																					 '".$patientBasicData->venue."',
+																					 '".$patientCommentsData->details."')");
 			if(!$this->result) {
 				$this->util->db->Execute("DELETE FROM cc_patient_tbl WHERE cc_tipo_doc_fld = '".$patientBasicData->docType."' AND cc_nume_doc_fld = '".$patientBasicData->docNum."'");
 				$respCode = 1;
