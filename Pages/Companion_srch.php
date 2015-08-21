@@ -6,10 +6,10 @@ if(isset($_SESSION['docNum']) || isset($_SESSION['docType'])){
 	unset($_SESSION['docNum']);
 	unset($_SESSION['docType']);
 }
-$query = 'select * from cc_acompanante_tbl';
+$query = 'select * from cc_acompanante_vw';
 
-$render = $template->headerSearch('Administracion de Acompañantes', 'Acompañantes', 'cc_acompanante_tbl', $query);
-$template->navigateBar('Acompanante_srch');
+$render = $template->headerSearch('Administracion de Acompañantes', 'Acompañantes', 'cc_acompanante_vw', $query);
+$template->navigateBar('Companion_srch');
 $template->bodySearch($render);
 $template->tail();
 ?>
