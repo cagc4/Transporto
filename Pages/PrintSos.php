@@ -1,10 +1,16 @@
 <?php
+
 include "../Clases/TemplatePage.php";
 
 $template = new TemplatePage(false, true, 'empleado');
+
+$_SESSION['number']=12345;
+/*
 if(!isset($_SESSION['number'])){
 	header('location:SosOrden_srch.php');
 }
+*/
+    
 $render = $template->headerHome('Orden Servicio SOS');
 $template->navigateBar('PrintSos');
 ?>
@@ -21,4 +27,5 @@ $template->navigateBar('PrintSos');
 	</center>
 <?php
 $template->tail();
+
 ?>

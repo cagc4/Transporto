@@ -64,7 +64,7 @@ switch($_GET["Page"]) {
 		$_SESSION['ID'] = $_GET["ID"];
 		$location = 'location:Maintenance_vw.php';
 		break;
-	case 'Patient_srch':Companion_srch
+    case 'Patient_srch':
 		$_SESSION['docNum'] = $_GET["Numero_Documento"];
 		$_SESSION['docType'] = $_GET["Tipo_Identificacion"];
 		$location = 'location:Patient_vw.php';

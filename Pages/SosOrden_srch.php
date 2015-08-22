@@ -12,7 +12,7 @@ $render = $template->headerSearch('Orden Servicio', 'Orden Servicio', 'cc_sos_or
 $template->navigateBar('SosOrden_srch');
 $template->bodySearch($render);
 ?>
-<a href="PrintSos.php">orden de servicio Prueba </a>
+<a href="/Transporto/Pages/PrintSos.php">orden de servicio Prueba </a>
 <?php
 $template->tail();
 ?>
