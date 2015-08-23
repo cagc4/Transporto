@@ -198,8 +198,36 @@ class TemplateReport
         $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(15,0, $placa);
         $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(30,0, 'Firma del Conductor:');
         $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(0,0, '','B'); 
-
-
+        
+        $this->pdf->AddPage();
+        
+        $this->pdf->Ln(10);
+        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm+2);  $this->pdf->Cell(0,0, 'INFORMACION IMPRESA AL RESPALDO DE LA ORDEN');
+        $this->pdf->Ln(8);
+        $texto='1	OBLIGATORIO DILIGENCIAR Y HACER FIRMAR POR EL USUARIO Y/O ACOMPAÑANTE LA ORDEN DE SERVICIO.';
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0,0,$texto);$this->pdf->Ln(6);
+        $texto='2	OPERACIONES ASTRANSPORTES ES EL UNICO RESPONSABLES DE PROGRAMAR LOS SERVICIOS A LOS USUARIOS DE LA EPS	';
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0,0,$texto);$this->pdf->Ln(6);
+        $texto='3	LA  INFORMACIÓN  DEL USUARIO QUE CONOZCA EL CONDUCTOR ES DE DE EXTREMA CONFIDENCIALIDAD (Ley 1266/2008 HabeasData)';
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0,0,$texto);$this->pdf->Ln(6);
+        $texto='4	SE PROHIBE RECOGER PASAJEROS NO DETALLADOS EN LA ORDEN DE SERVICIO DE TRANSPORTE.';
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0,0,$texto);$this->pdf->Ln(6);
+        $texto='5	SE PROHIBE CAMBIAR LOS DESTINOS A SOLICITUD DEL USUARIO Y/O ACOMPAÑANTE.';
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0,0,$texto);$this->pdf->Ln(6);
+        $texto='6	SE PROHIBE RECOGER PACIENTES QUE NO TENGAN ACOMPAÑANTE AL MOMENTO DE HACER USO DEL SERVICIO DE TRANSPORTE.';
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0,0,$texto);$this->pdf->Ln(6);
+        $texto='7	SI LA ORDEN DE SERVICIO NO LLEVA REGISTRADO LAS FIRMAS Y SELLOS DE LA IPS EL DOCUMENTO NO TENDRÁ VALIDEZ Y NO SE PODRÁ REALIZAR                   EL COBRO DEL TRANSPORTE.';
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0,0,$texto);$this->pdf->Ln(6);
+        $texto='8	NO REALIZAR BORRONES  TACHONES NI CORRECCIONES, CUALQUIER ALTERACION ANULA LA ORDEN';		
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0,0,$texto);$this->pdf->Ln(20);
+        
+        $texto='TRANSPORTES CORAZÓN DEL VALLE TRANSCORVALLE S.A.S';		
+        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm+4);  $this->pdf->Cell(0,0,$texto,0,0,'C');$this->pdf->Ln(5);
+        
+        $texto='Calle 27 No. 32-47 Tuluá (Valle) - Tel (572) 2253308 - Cel (57) 3104201819';		
+        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm+2);  $this->pdf->Cell(0,0,$texto,0,0,'C');
+        
+        
 	}
 	function serviceOrder($tamanoFuenteForm,$objetoS,$persona,$celular,$direcO,$direcD,$salida,$regreso,$conductor,$placa,$consecutivo)
 {
