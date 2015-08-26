@@ -116,9 +116,9 @@ class TemplateReport
     {
 
         $tamanoFuenteForm=8;
-		$salida=$this->util->timestampATexto($salida,'u');
-		$regreso=$this->util->timestampATexto($regreso,'u');
-        $regreso2=$this->util->timestampATexto($regreso2,'u');
+		$salida=$this->util->timestampATexto($salida,'c');
+		$regreso=$this->util->timestampATexto($regreso,'c');
+        $regreso2=$this->util->timestampATexto($regreso2,'c');
 
 
 		$this->pdf->Ln(20);
@@ -151,7 +151,7 @@ class TemplateReport
         $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(60,5, $direcO,1);
         $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm); $this->pdf->Cell(21,5, 'Teléfono:',1); 
         $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(18,5, $teleO,1);
-        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm); $this->pdf->Cell(22,5, 'Fecha y Hora:',1);
+        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm); $this->pdf->Cell(20,5, 'Fecha y Hora:',1);
         $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0,5, $salida,1);
         $this->pdf->Ln(5);
         
@@ -192,8 +192,8 @@ class TemplateReport
         
         $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm+2);  $this->pdf->Cell(0,0, 'Datos del Vehículo');
         $this->pdf->Ln(5);
-        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(34,0, 'Nombre del Conductor:');
-        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(50,0, $conductor); 
+        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(32,0, 'Nombre del Conductor:');
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(55,0, $conductor); 
         $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(10,0, 'Placa');
         $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(15,0, $placa);
         $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(30,0, 'Firma del Conductor:');

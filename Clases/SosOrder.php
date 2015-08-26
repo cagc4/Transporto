@@ -222,48 +222,26 @@ class SosOrder
 	}
 	
 	function getSosOrderReport($numeroSosOrder) {
-		$this->result = $this->util->db->Execute("select 	cc_id_autoriza_fld AS authNumber,
-															(select cc_descripcion_fld
-															 from cc_valores_tbl
-															 where cc_campo_fld = 'cc_tipo_doc_fld' and
-																   cc_valor_fld = cc_tipo_doc_fld) AS docTypePatient,
-															cc_nume_doc_fld AS docNumPatient,
-															(select concat(cc_nombre_fld, ' ', cc_apellido_fld)
-															 from cc_paciente_tbl pc
-															 where pc.cc_tipo_doc_fld = cc_tipo_doc_fld AND
-																   pc.cc_nume_doc_fld = cc_nume_doc_fld ) AS patient,
-															(select cc_descripcion_fld
-															 from cc_valores_tbl
-															 where cc_campo_fld = 'cc_tipo_doc_fld' and
-																   cc_valor_fld = cc_tipo_doc_a_fld) AS docTypeCompanion,
-															cc_nume_doc_a_fld AS docNumCompanion,
-															concat((select concat(cc_nombre_fld, ' ', cc_apellido_fld)
-															 from cc_paciente_tbl pc
-															 where pc.cc_tipo_doc_fld = cc_tipo_doc_a_fld AND
-																   pc.cc_nume_doc_fld = cc_nume_doc_a_fld ), ' - ',
-															 (select cc_descripcion_fld
-															  from cc_valores_tbl
-															  where cc_campo_fld = 'cc_parentezco_fld' and
-																    cc_valor_fld = (select cc_parentezco_fld from cc_pac_acomp_tbl 
-																				    where cc_tipo_doc_fld = docTypePatient AND
-																						  cc_nume_doc_fld = docNumPatient AND
-																						  cc_tipo_doc_a_fld = docTypeCompanion AND
-																						  cc_nume_doc_a_fld = docNumCompanion))) AS companion,
-															cc_origen_fld AS source,
-															cc_telefono_fld AS phone,
-															concat(DATE_FORMAT(cc_fecha_fld, '%Y-%m-%d'), ' ', cc_hora_fld) AS collectDate,
-															cc_destino_fld AS destination1,
-															concat(DATE_FORMAT(cc_fecha_d_fld, '%Y-%m-%d'), ' ', cc_hora_d_fld) AS outputDate1,
-															cc_servicio1_fld AS cost1,
-															cc_destino2_fld AS destination2,
-															concat(DATE_FORMAT(cc_fecha_d2_fld, '%Y-%m-%d'), ' ', cc_hora_d2_fld) AS outputDate2,
-															cc_servicio2_fld AS cost2,
-															cc_placa_fld AS plate,
-															(select p.cc_Fnombre_fld 
-															 from cc_propcond_tbl drv inner join cc_person_tbl pr on drv.cc_tipo_doc_fld = pr.cc_tipo_doc_fld and drv.cc_nume_doc_fld = pr.cc_nume_doc_fld
-															 where drv.cc_tipo_doc_fld = cc_tipo_doc_c_fld AND
-																   drv.cc_nume_doc_fld = cc_nume_doc_c_fld) AS driver
-													from cc_sos_orden_tbl
+		$this->result = $this->util->db->Execute("select  
+                                                    sos.cc_id_autoriza_fld AS authNumber
+                                                    ,upper(sos.cc_tipo_doc_fld) AS docTypePatient
+                                                    ,sos.cc_nume_doc_fld AS docNumPatient
+                                                    ,(select concat(pc.cc_nombre_fld, ' ', pc.cc_apellido_fld) from cc_paciente_tbl pc where pc.cc_tipo_doc_fld = sos.cc_tipo_doc_fld  AND pc.cc_nume_doc_fld = sos.cc_nume_doc_fld ) AS patient
+                                                    ,upper(sos.cc_tipo_doc_a_fld) AS docTypeCompanion
+                                                    ,sos.cc_nume_doc_a_fld AS docNumCompanion
+                                                    ,concat((select concat(ac.cc_nombre_fld, ' ', ac.cc_apellido_fld) from cc_acompanante_tbl ac where ac.cc_tipo_doc_fld = sos.cc_tipo_doc_a_fld AND ac.cc_nume_doc_fld = sos.cc_nume_doc_a_fld ), ' - ', (select x3.cc_descripcion_fld from cc_valores_tbl x3  where x3.cc_campo_fld = 'cc_parentezco_fld' and x3.cc_valor_fld = (select paac.cc_parentezco_fld from cc_pac_acomp_tbl paac where paac.cc_tipo_doc_fld = sos.cc_tipo_doc_fld and paac.cc_nume_doc_fld = sos.cc_nume_doc_fld and paac.cc_tipo_doc_a_fld = sos.cc_tipo_doc_a_fld and paac.cc_nume_doc_a_fld = sos.cc_nume_doc_a_fld ))) AS companion
+                                                    ,sos.cc_origen_fld AS source
+                                                    ,sos.cc_telefono_fld AS phone
+                                                    ,concat(DATE_FORMAT(sos.cc_fecha_fld, '%Y-%m-%d'), ' ', sos.cc_hora_fld) AS collectDate
+                                                    ,sos.cc_destino_fld AS destination1
+                                                    ,concat(DATE_FORMAT(sos.cc_fecha_d_fld, '%Y-%m-%d'), ' ', sos.cc_hora_d_fld) AS outputDate1
+                                                    ,sos.cc_servicio1_fld AS cost1
+                                                    ,sos.cc_destino2_fld AS destination2
+                                                    ,concat(DATE_FORMAT(sos.cc_fecha_d2_fld, '%Y-%m-%d'), ' ', sos.cc_hora_d2_fld) AS outputDate2
+                                                    ,sos.cc_servicio2_fld AS cost2
+                                                    ,sos.cc_placa_fld AS plate
+                                                    ,(select pr.cc_Fnombre_fld from cc_propcond_tbl drv inner join cc_person_tbl pr on drv.cc_tipo_doc_fld = pr.cc_tipo_doc_fld and drv.cc_nume_doc_fld = pr.cc_nume_doc_fld where drv.cc_tipo_doc_fld = sos.cc_tipo_doc_c_fld AND drv.cc_nume_doc_fld = sos.cc_nume_doc_c_fld) AS driver
+                                                    from cc_sos_orden_tbl sos
 													where	cc_id_fld = '".$numeroSosOrder."'");
 	}
 
