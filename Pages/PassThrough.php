@@ -74,6 +74,10 @@ switch($_GET["Page"]) {
 		$_SESSION['docType'] = $_GET["Tipo_Identificacion"];
 		$location = 'location:Companion_vw.php';
 		break;
+	case 'SosOrder_srch':
+		$_SESSION['number'] = $_GET["Numero_Orden"];
+		$location = 'location:PrintSos.php';
+		break;
 }
 header($location);
 ?>

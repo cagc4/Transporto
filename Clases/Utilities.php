@@ -321,6 +321,10 @@ class Utilities
 					if ($i == 2)
 						$col["link"] = $path."/Pages/PassThrough.php?Page=Companion_srch&Tipo_Identificacion={Tipo_Identificacion}&Numero_Identificacion={Numero_Identificacion}";
 					break;
+				case 'Orden Servicio':
+					if ($i == 1)
+						$col["link"] = $path."/Pages/PassThrough.php?Page=SosOrder_srch&Numero_Orden={Numero_Orden}";
+					break;
 			}
 			//$col["width"] = "15";
 			$col["editable"] = false;

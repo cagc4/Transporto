@@ -4,12 +4,9 @@ include "../Clases/TemplatePage.php";
 
 $template = new TemplatePage(false, true, 'empleado');
 
-$_SESSION['number']=12345;
-/*
 if(!isset($_SESSION['number'])){
-	header('location:SosOrden_srch.php');
+	header('location:SosOrder_srch.php');
 }
-*/
     
 $render = $template->headerHome('Orden Servicio SOS');
 $template->navigateBar('PrintSos');
@@ -18,10 +15,10 @@ $template->navigateBar('PrintSos');
 	<center>
 	<table>
 		<tr>
-			<td width =250><center><a href="" onclick="window.open('/Transporto/Pages/Sos_pri.php');"><img src='../Images/Icons/pdf.png' width="150" height="150" ></a></center></td>
+			<td width =250><center><a href="" onclick="window.open('/Transporto/Pages/SosOrder_pri.php');"><img src='../Images/Icons/pdf.png' width="150" height="150" ></a></center></td>
 		</tr>
 		<tr>
-			<td align ='center'>Imprimir Orden de Servicio <?php echo $_SESSION['number'].'-P';?></td>
+			<td align ='center'>Imprimir Orden de Servicio <?php echo $_SESSION['number'];?></td>
 		</tr>
 	</table>
 	</center>
