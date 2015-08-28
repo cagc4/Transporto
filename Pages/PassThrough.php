@@ -78,6 +78,10 @@ switch($_GET["Page"]) {
 		$_SESSION['number'] = $_GET["Numero_Orden"];
 		$location = 'location:PrintSos.php';
 		break;
+	case 'SosOrder_cpy':
+		$_SESSION['number'] = $_GET["Numero_Orden"];
+		$location = 'location:SosOrder_pst.php';
+		break;
 }
 header($location);
 ?>

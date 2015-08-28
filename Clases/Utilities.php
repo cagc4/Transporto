@@ -325,6 +325,10 @@ class Utilities
 					if ($i == 1)
 						$col["link"] = $path."/Pages/PassThrough.php?Page=SosOrder_srch&Numero_Orden={Numero_Orden}";
 					break;
+				case 'Copia Orden Servicio':
+					if ($i == 1)
+						$col["link"] = $path."/Pages/PassThrough.php?Page=SosOrder_cpy&Numero_Orden={Numero_Orden}";
+					break;
 			}
 			//$col["width"] = "15";
 			$col["editable"] = false;

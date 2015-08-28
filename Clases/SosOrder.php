@@ -120,6 +120,41 @@ class SosOrder
 		$this->result = $this->util->db->Execute("SELECT LPAD(".$result['Auto_increment'].", 4, 0) AS number FROM DUAL");
 	}
 	
+	function copySosOrder($numeroSosOrder) {
+		$respCode = 0;
+		$this->result = $this->util->db->Execute("INSERT INTO cc_sos_orden_tbl (SELECT 0,
+																					   cc_id_autoriza_fld AS authNumber,
+																					   cc_tipo_doc_fld AS docTypePatient,
+																					   cc_nume_doc_fld AS docNumPatient,
+																					   cc_tipo_doc_a_fld AS docTypeCompanion,
+																					   cc_nume_doc_a_fld AS docNumCompanion,
+																					   cc_origen_fld AS source,
+																					   cc_telefono_fld AS phone,
+																					   cc_fecha_fld AS collectDate,	
+																					   cc_hora_fld AS collectTime,
+																					   cc_destino_fld AS destination1,
+																					   cc_fecha_d_fld AS outputDate1,
+																					   cc_hora_d_fld AS time1,
+																					   cc_servicio1_fld AS cost1,
+																					   cc_destino2_fld AS destination2,
+																					   cc_fecha_d2_fld AS outputDate2,
+																					   cc_hora_d2_fld AS time2,
+																					   cc_servicio2_fld AS cost2,
+																					   cc_placa_fld AS plate,
+																					   cc_tipo_doc_c_fld AS docTypeDriver,
+																					   cc_nume_doc_c_fld AS docNumDriver
+																				FROM cc_sos_orden_tbl WHERE cc_id_fld = '".$numeroSosOrder."')");
+		if(!$this->result) {
+			$respCode = 99;
+		}
+		else {
+			$this->getNextConsecutive();
+			$result = $this->result->FetchRow();
+			$_SESSION['number'] = $result['number'] - 1;
+		}
+		return $respCode;		
+	}
+	
 	function modifySosOrder($sosData, $numeroSosOrder) {
 		$respCode = 0;
 		$sosPatientData = $sosData->sosFormPatientData->sosFormPatient;
@@ -217,7 +252,6 @@ class SosOrder
 			if(!$this->result) {
 				$respCode = 99;
 			}
-			
 		}
 	}
 	
@@ -229,7 +263,7 @@ class SosOrder
                                                     ,(select concat(pc.cc_nombre_fld, ' ', pc.cc_apellido_fld) from cc_paciente_tbl pc where pc.cc_tipo_doc_fld = sos.cc_tipo_doc_fld  AND pc.cc_nume_doc_fld = sos.cc_nume_doc_fld ) AS patient
                                                     ,upper(sos.cc_tipo_doc_a_fld) AS docTypeCompanion
                                                     ,sos.cc_nume_doc_a_fld AS docNumCompanion
-                                                    ,concat((select concat(ac.cc_nombre_fld, ' ', ac.cc_apellido_fld) from cc_acompanante_tbl ac where ac.cc_tipo_doc_fld = sos.cc_tipo_doc_a_fld AND ac.cc_nume_doc_fld = sos.cc_nume_doc_a_fld ), ' - ', (select x3.cc_descripcion_fld from cc_valores_tbl x3  where x3.cc_campo_fld = 'cc_parentezco_fld' and x3.cc_valor_fld = (select paac.cc_parentezco_fld from cc_pac_acomp_tbl paac where paac.cc_tipo_doc_fld = sos.cc_tipo_doc_fld and paac.cc_nume_doc_fld = sos.cc_nume_doc_fld and paac.cc_tipo_doc_a_fld = sos.cc_tipo_doc_a_fld and paac.cc_nume_doc_a_fld = sos.cc_nume_doc_a_fld ))) AS companion
+                                                    ,concat((select concat(pc.cc_nombre_fld, ' ', pc.cc_apellido_fld) from cc_acompanante_tbl pc where pc.cc_tipo_doc_fld = sos.cc_tipo_doc_fld  AND pc.cc_nume_doc_fld = sos.cc_nume_doc_fld ), ' - ', (select cc_descripcion_fld from cc_valores_tbl where cc_campo_fld = 'cc_parentezco_fld' and cc_valor_fld = (select cc_parentezco_fld from cc_pac_acomp_tbl where cc_tipo_doc_fld = sos.cc_tipo_doc_fld AND cc_nume_doc_fld = sos.cc_nume_doc_fld AND cc_tipo_doc_a_fld = sos.cc_tipo_doc_a_fld AND cc_nume_doc_a_fld = sos.cc_nume_doc_a_fld))) AS companion
                                                     ,sos.cc_origen_fld AS source
                                                     ,sos.cc_telefono_fld AS phone
                                                     ,concat(DATE_FORMAT(sos.cc_fecha_fld, '%Y-%m-%d'), ' ', sos.cc_hora_fld) AS collectDate
