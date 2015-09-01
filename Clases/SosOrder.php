@@ -25,7 +25,8 @@ class SosOrder
 				$respCode = 1;
 			}
 		}
-		if($respCode == 0) {
+        
+        if($respCode == 0) {
 			if($sosPatientData->docTypePatient != '' && $sosPatientData->docNumPatient != '') {
 				$this->result = $this->util->db->Execute("SELECT * FROM cc_paciente_tbl WHERE cc_tipo_doc_fld = '" . $sosPatientData->docTypePatient . "' AND
 																							  cc_nume_doc_fld = '" . $sosPatientData->docNumPatient . "'");
@@ -35,7 +36,8 @@ class SosOrder
 				}
 			}
 		}
-		if($respCode == 0) {
+        
+	   if($respCode == 0) {
 			if($sosPatientData->docTypeCompanion != '' && $sosPatientData->docNumCompanion != '') {
 				$this->result = $this->util->db->Execute("SELECT * FROM cc_acompanante_tbl WHERE cc_tipo_doc_fld = '" . $sosPatientData->docTypeCompanion . "' AND
 																								 cc_nume_doc_fld = '" . $sosPatientData->docNumCompanion . "'");
@@ -55,23 +57,26 @@ class SosOrder
 																			WHERE cc_tipo_doc_fld = '" . $sosPatientData->docTypePatient . "' AND
 																				  cc_nume_doc_fld = '" . $sosPatientData->docNumPatient . "' AND
 																				  cc_tipo_doc_a_fld = '" . $sosPatientData->docTypeCompanion . "' AND
-																				  cc_nume_doc_a_fld = '" . $sosPatientData->docNumCompanion . "'");
+																				  cc_nume_doc_a_fld = '" . $sosPatientData->docNumCompanion ."'");
 						}
 						else {
-							$this->util->db->Execute("INSERT INTO cc_pac_acomp_tbl VALUES('" . $sosPatientData->docTypePatient . "',
-																						  '" . $sosPatientData->docNumPatient . "',
-																						  '" . $sosPatientData->docTypeCompanion . "',
-																						  '" . $sosPatientData->docNumCompanion . "',
-																						  '" . $sosPatientData->relationship . "'");
-						}
+                            
+                            $this->result =$this->util->db->Execute("INSERT INTO cc_pac_acomp_tbl VALUES('".$sosPatientData->docTypePatient."',
+                                                                                                         '".$sosPatientData->docNumPatient."',
+                                                                                                         '".$sosPatientData->docTypeCompanion."',
+                                                                                                         '".$sosPatientData->docNumCompanion."',
+                                                                                                         '" .$sosPatientData->relationship."')");
+						       
+                        }
 					}
 					else {
-						$respCode = 4;
+						//$respCode = 4;
 					}
 				}
 			}
 		}
-		if($respCode == 0) {
+        
+        if($respCode == 0) {
 			if($sosDriverVehicleData->docTypeDriver != '' && $sosDriverVehicleData->docNumDriver != '') {
 				$this->result = $this->util->db->Execute("SELECT * FROM cc_propcond_tbl WHERE cc_tipo_doc_fld = '" . $sosDriverVehicleData->docTypeDriver . "' AND
 																							  cc_nume_doc_fld = '" . $sosDriverVehicleData->docNumDriver . "' AND
@@ -263,7 +268,7 @@ class SosOrder
                                                     ,(select concat(pc.cc_nombre_fld, ' ', pc.cc_apellido_fld) from cc_paciente_tbl pc where pc.cc_tipo_doc_fld = sos.cc_tipo_doc_fld  AND pc.cc_nume_doc_fld = sos.cc_nume_doc_fld ) AS patient
                                                     ,upper(sos.cc_tipo_doc_a_fld) AS docTypeCompanion
                                                     ,sos.cc_nume_doc_a_fld AS docNumCompanion
-                                                    ,concat((select concat(pc.cc_nombre_fld, ' ', pc.cc_apellido_fld) from cc_acompanante_tbl pc where pc.cc_tipo_doc_fld = sos.cc_tipo_doc_fld  AND pc.cc_nume_doc_fld = sos.cc_nume_doc_fld ), ' - ', (select cc_descripcion_fld from cc_valores_tbl where cc_campo_fld = 'cc_parentezco_fld' and cc_valor_fld = (select cc_parentezco_fld from cc_pac_acomp_tbl where cc_tipo_doc_fld = sos.cc_tipo_doc_fld AND cc_nume_doc_fld = sos.cc_nume_doc_fld AND cc_tipo_doc_a_fld = sos.cc_tipo_doc_a_fld AND cc_nume_doc_a_fld = sos.cc_nume_doc_a_fld))) AS companion
+                                                    ,concat((select concat(pc.cc_nombre_fld, ' ', pc.cc_apellido_fld) from cc_acompanante_tbl pc where pc.cc_tipo_doc_fld = sos.cc_tipo_doc_a_fld  AND pc.cc_nume_doc_fld = sos.cc_nume_doc_a_fld ), ' - ', (select cc_descripcion_fld from cc_valores_tbl where cc_campo_fld = 'cc_parentezco_fld' and cc_valor_fld = (select cc_parentezco_fld from cc_pac_acomp_tbl where cc_tipo_doc_fld = sos.cc_tipo_doc_fld AND cc_nume_doc_fld = sos.cc_nume_doc_fld AND cc_tipo_doc_a_fld = sos.cc_tipo_doc_a_fld AND cc_nume_doc_a_fld = sos.cc_nume_doc_a_fld))) AS companion
                                                     ,sos.cc_origen_fld AS source
                                                     ,sos.cc_telefono_fld AS phone
                                                     ,concat(DATE_FORMAT(sos.cc_fecha_fld, '%Y-%m-%d'), ' ', sos.cc_hora_fld) AS collectDate
