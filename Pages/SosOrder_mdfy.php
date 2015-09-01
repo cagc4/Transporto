@@ -21,8 +21,8 @@ $jFormSection1->addJFormComponentArray(array(
     new JFormComponentSingleLineText('authNumber', 'Numero Autorizacion:  ', array('initialValue' => $result['authNumber'], 'disabled' => false,)),
 	new JFormComponentDropDown('docTypePatient', 'Tipo documento Paciente:  ', $util->fillDropDownVew('cc_tipo_doc_fld', $result['docTypePatient']), array('disabled' => false,)),
 	new JFormComponentSingleLineText('docNumPatient', 'Numero documento Paciente:  ', array('initialValue' => $result['docNumPatient'], 'disabled' => false)),
-	new JFormComponentDropDown('docTypeCompanion', 'Tipo documento Acompañante:  ', $util->fillDropDownVew('cc_tipo_doc_fld', $result['docTypeCompanion']), array('disabled' => false,)),
-    new JFormComponentSingleLineText('docNumCompanion', 'Numero documento Acompañante:  ', array('initialValue' => $result['docNumCompanion'], 'disabled' => false,)),
+	new JFormComponentDropDown('docTypeCompanion', 'Tipo documento Acompa&ntilde;ante:  ', $util->fillDropDownVew('cc_tipo_doc_fld', $result['docTypeCompanion']), array('disabled' => false,)),
+    new JFormComponentSingleLineText('docNumCompanion', 'Numero documento Acompa&ntilde;ante:  ', array('initialValue' => $result['docNumCompanion'], 'disabled' => false,)),
 	new JFormComponentDropDown('relationship', 'Parentezco:  ', $util->fillDropDownVew('cc_parentezco_fld', $result['relationship']), array('disabled' => false,)),
 ));
 $jFormPage1->addJFormSection($jFormSection1);

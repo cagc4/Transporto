@@ -4,10 +4,10 @@ include "../Clases/Companion.php";
 
 $util = new Utilities();
 $template = new TemplatePage(true, true, 'empleado');
-$template->headerForms('Mantenimiento de Acompañantes');
+$template->headerForms('Mantenimiento de Acompa&ntilde;antes');
 $template->navigateBar('Companion_add');
 
-$companionForm = new JFormer('companionForm', array('title' => '<div align="center"><h2>Creacion de Acompañantes</h2></div>', 'submitButtonText' => 'Aceptar', 'requiredText' => '*', 'pageNavigator' => true));
+$companionForm = new JFormer('companionForm', array('title' => '<div align="center"><h2>Creacion de Acompa&ntilde;antes</h2></div>', 'submitButtonText' => 'Aceptar', 'requiredText' => '*', 'pageNavigator' => true));
 
 $jFormPage1 = new JFormPage($companionForm->id . 'BasicData', array('title' => 'Basicos'));
 $jFormSection1 = new JFormSection($companionForm->id . 'Basic');
@@ -34,7 +34,7 @@ function onSubmit($formValues) {
 	$companion = new Companion();
 	$respCode = $companion->addCompanion($formValues);
 	if($respCode != 0) {
-		$response = array('failureNoticeHtml' => 'Inconvenientes tecnicos al procesar el acompañante.');
+		$response = array('failureNoticeHtml' => 'Inconvenientes tecnicos al procesar el acompa&ntilde;ante.');
 	}
 	else {
 		$response = array('successPageHtml' => '<meta http-equiv="refresh" content="0; url=Companion_srch.php">');

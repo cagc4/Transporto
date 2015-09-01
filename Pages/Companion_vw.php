@@ -7,12 +7,12 @@ $template = new TemplatePage(true, true, 'empleado');
 if(!isset($_SESSION['docNum']) || !isset($_SESSION['docType'])){
 	header('location:Companion_srch.php');
 }
-$template->headerForms('Mantenimiento de Acompañantes');
+$template->headerForms('Mantenimiento de Acompa&ntilde;antes');
 $template->navigateBar('Companion_vw');
 $companion = new Companion();
 $companion->getCompanion($_SESSION['docNum'], $_SESSION['docType']);
 $result = $companion->result->FetchRow();
-$companionForm = new JFormer('companionForm', array('title' => '<div align="center"><h2>Consulta de Acompañantes</h2></div>', 'submitButtonText' => 'Modificar', 'requiredText' => '*', 'pageNavigator' => true));
+$companionForm = new JFormer('companionForm', array('title' => '<div align="center"><h2>Consulta de Acompa&ntilde;antes</h2></div>', 'submitButtonText' => 'Modificar', 'requiredText' => '*', 'pageNavigator' => true));
 
 $jFormPage1 = new JFormPage($companionForm->id . 'BasicData', array('title' => 'Basicos'));
 $jFormSection1 = new JFormSection($companionForm->id . 'Basic');
