@@ -23,7 +23,7 @@ $jFormSection1->addJFormComponentArray(array(
 	new JFormComponentSingleLineText('docNumPatient', 'Numero documento Paciente:  ', array('initialValue' => $result['docNumPatient'], 'disabled' => false)),
 	new JFormComponentDropDown('docTypeCompanion', 'Tipo documento Acompañante:  ', $util->fillDropDownVew('cc_tipo_doc_fld', $result['docTypeCompanion']), array('disabled' => false,)),
     new JFormComponentSingleLineText('docNumCompanion', 'Numero documento Acompañante:  ', array('initialValue' => $result['docNumCompanion'], 'disabled' => false,)),
-	new JFormComponentDropDown('relationship', 'Parentezco:  ', $util->fillDropDownVew('cc_parentezco_fld', $result['relationship']), array('disabled' => false,)),
+	new JFormComponentDropDown('relationship', 'Parentezco:  ', $util->fillDropDown('cc_parentezco_fld'), array('initialValue' => $result['relationship'], 'disabled' => false,)),
 ));
 $jFormPage1->addJFormSection($jFormSection1);
 $sosForm->addJFormPage($jFormPage1);
