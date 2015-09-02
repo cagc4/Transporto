@@ -20,7 +20,7 @@ class Vehicle
 		$vehicleComments = $vehicleData->vehicleFormCommentsData->vehicleFormComments;
 		$this->result = $this->util->db->Execute("SELECT * FROM cc_propcond_tbl WHERE cc_tipo_doc_fld = '".$vehicleOwnerData->docTypeOwner."' AND
 																					  cc_nume_doc_fld = '".$vehicleOwnerData->numDocOwner."' AND
-																					  cc_type_pc_fld = '01'");
+																					  cc_type_pc_fld in ('01','02')");
 		if($this->result->FetchRow()) {
 			$this->result = $this->util->db->Execute("INSERT INTO cc_vehicle_tbl VALUES('".$vehicleBasicData->plate."',
 																						'".$vehicleBasicData->internalCode."',
