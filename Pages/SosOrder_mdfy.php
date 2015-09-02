@@ -11,7 +11,7 @@ $sosOrder = new SosOrder();
 $sosOrder->getSosOrder($_SESSION['number']);
 $result = $sosOrder->result->FetchRow();
 $template->headerForms('SOS');
-$template->navigateBar('SosOrder_add');
+$template->navigateBar('SosOrder_mdfy');
 
 $sosForm = new JFormer('sosForm', array('title' => '<div align="center"><h2>Registro de Orden de Servicio SOS No. '.$_SESSION['number'].'</h2></div>', 'submitButtonText' => 'Aceptar', 'requiredText' => '*', 'pageNavigator' => true));
 
@@ -73,7 +73,7 @@ $sosForm->addJFormPage($jFormPage5);
 
 function onSubmit($formValues) {
 	$sosOrder = new SosOrder();
-	$respCode = $sosOrder->modifySosOrder($formValues);
+	$respCode = $sosOrder->modifySosOrder($formValues, $_SESSION['number']);
 	if($respCode != 0) {
 		switch ($respCode) {
 			case 1:

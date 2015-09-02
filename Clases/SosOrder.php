@@ -167,7 +167,7 @@ class SosOrder
 		$sosDestination1Data = $sosData->sosFormDestination1Data->sosFormDestination1;
 		$sosDestination2Data = $sosData->sosFormDestination2Data->sosFormDestination2;
 		$sosDriverVehicleData = $sosData->sosFormDriverVehicleData->sosFormDriverVehicle;
-		/*
+		
 		if($sosDriverVehicleData->plate != '') {
 			$this->result = $this->util->db->Execute("SELECT cc_placa_fld FROM cc_vehicle_tbl WHERE cc_placa_fld = '" . $sosDriverVehicleData->plate . "'");
 			$result = $this->result->FetchRow();
@@ -231,29 +231,29 @@ class SosOrder
 					$respCode = 5;
 				}
 			}
-		}*/
+		}
 		if($respCode == 0) {
-			$this->result = $this->util->db->Execute("update table cc_sos_orden_tbl set cc_id_autoriza_fld = '" . $sosPatientData->authNumber . "',
-																						cc_tipo_doc_fld = '" . $sosPatientData->docTypePatient . "',
-																				  		cc_nume_doc_fld = '" . $sosPatientData->docNumPatient . "',
-																				  		cc_tipo_doc_a_fld = '" . $sosPatientData->docTypeCompanion . "',
-																				  		cc_nume_doc_a_fld = '" . $sosPatientData->docNumCompanion . "',
-																				  		cc_origen_fld = '" . $sosSourceData->source . "',
-																				  		cc_telefono_fld = '" . $sosSourceData->phone . "',
-																				  		cc_fecha_fld = STR_TO_DATE('".$sosSourceData->collectDate->month."/".$sosSourceData->collectDate->day."/".$sosSourceData->collectDate->year."','%m/%d/%Y'),
-																				  		cc_hora_fld = '" . $sosSourceData->collectTime . "',
-																				  		cc_destino_fld = '" . $sosDestination1Data->destination1 . "',
-																				  		cc_fecha_d_fld = STR_TO_DATE('".$sosDestination1Data->outputDate1->month."/".$sosDestination1Data->outputDate1->day."/".$sosDestination1Data->outputDate1->year."','%m/%d/%Y'),
-																				  		cc_hora_d_fld = '" . $sosDestination1Data->time1 . "',
-																				  		cc_servicio1_fld = '" . $sosDestination1Data->cost1 . "',
-																				  		cc_destino2_fld = '" . $sosDestination2Data->destination2 . "',
-																				  		cc_fecha_d2_fld = STR_TO_DATE('".$sosDestination2Data->outputDate2->month."/".$sosDestination2Data->outputDate2->day."/".$sosDestination2Data->outputDate2->year."','%m/%d/%Y'),
-																				  		cc_hora_d2_fld = '" . $sosDestination2Data->time2 . "',
-																				  		cc_servicio2_fld = '" . $sosDestination2Data->cost2 . "',
-																				  		cc_placa_fld = '" . $sosDriverVehicleData->plate . "',
-																				  		cc_tipo_doc_c_fld = '" . $sosDriverVehicleData->docTypeDriver . "',
-																				  		cc_nume_doc_c_fld = '" . $sosDriverVehicleData->docNumDriver . "'
-														where	cc_id_fld = '".$numeroSosOrder."'");
+			$this->result = $this->util->db->Execute("update cc_sos_orden_tbl set cc_id_autoriza_fld = '" . $sosPatientData->authNumber . "',
+																					cc_tipo_doc_fld = '" . $sosPatientData->docTypePatient . "',
+																				  	cc_nume_doc_fld = '" . $sosPatientData->docNumPatient . "',
+																				  	cc_tipo_doc_a_fld = '" . $sosPatientData->docTypeCompanion . "',
+																				  	cc_nume_doc_a_fld = '" . $sosPatientData->docNumCompanion . "',
+																				  	cc_origen_fld = '" . $sosSourceData->source . "',
+																				  	cc_telefono_fld = '" . $sosSourceData->phone . "',
+																				  	cc_fecha_fld = STR_TO_DATE('".$sosSourceData->collectDate->month."/".$sosSourceData->collectDate->day."/".$sosSourceData->collectDate->year."','%m/%d/%Y'),
+																				  	cc_hora_fld = '" . $sosSourceData->collectTime . "',
+																				  	cc_destino_fld = '" . $sosDestination1Data->destination1 . "',
+																				  	cc_fecha_d_fld = STR_TO_DATE('".$sosDestination1Data->outputDate1->month."/".$sosDestination1Data->outputDate1->day."/".$sosDestination1Data->outputDate1->year."','%m/%d/%Y'),
+																				  	cc_hora_d_fld = '" . $sosDestination1Data->time1 . "',
+																				  	cc_servicio1_fld = '" . $sosDestination1Data->cost1 . "',
+																				  	cc_destino2_fld = '" . $sosDestination2Data->destination2 . "',
+																				  	cc_fecha_d2_fld = STR_TO_DATE('".$sosDestination2Data->outputDate2->month."/".$sosDestination2Data->outputDate2->day."/".$sosDestination2Data->outputDate2->year."','%m/%d/%Y'),
+																				  	cc_hora_d2_fld = '" . $sosDestination2Data->time2 . "',
+																				  	cc_servicio2_fld = '" . $sosDestination2Data->cost2 . "',
+																				  	cc_placa_fld = '" . $sosDriverVehicleData->plate . "',
+																				  	cc_tipo_doc_c_fld = '" . $sosDriverVehicleData->docTypeDriver . "',
+																				  	cc_nume_doc_c_fld = '" . $sosDriverVehicleData->docNumDriver . "'
+														where	cc_id_fld = ".$numeroSosOrder);
 			if(!$this->result) {
 				$respCode = 99;
 			}
