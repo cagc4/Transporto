@@ -15552,7 +15552,7 @@ CREATE TABLE `cc_warnings_vw` (
 
 DROP TABLE `cc_acompanante_vw`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`transc_Admin`@`190.144.212.132` SQL SECURITY DEFINER VIEW `cc_acompanante_vw`
+CREATE VIEW `cc_acompanante_vw`
 AS SELECT
    (select `cc_valores_tbl`.`cc_descripcion_fld`
 FROM `cc_valores_tbl` where ((`cc_valores_tbl`.`cc_campo_fld` = 'cc_tipo_doc_fld') and (`cc_acompanante_tbl`.`cc_tipo_doc_fld` = `cc_valores_tbl`.`cc_valor_fld`))) AS `Tipo_Identificacion`,`cc_acompanante_tbl`.`cc_nume_doc_fld` AS `Numero_Identificacion`,`cc_acompanante_tbl`.`cc_nombre_fld` AS `Nombre`,`cc_acompanante_tbl`.`cc_apellido_fld` AS `Apellido`,`cc_acompanante_tbl`.`cc_direccion_fld` AS `Direccion`,`cc_acompanante_tbl`.`cc_telefono_fld` AS `Telefono` from `cc_acompanante_tbl`;
@@ -15618,7 +15618,7 @@ FROM `cc_valores_tbl` where ((`cc_valores_tbl`.`cc_campo_fld` = 'cc_role_fld') a
 
 DROP TABLE `cc_mantenimientos_vw`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`transc_Admin`@`190.144.212.132` SQL SECURITY DEFINER VIEW `cc_mantenimientos_vw`
+CREATE VIEW `cc_mantenimientos_vw`
 AS SELECT
    `cc_mantenimientos_tbl`.`cc_id_fld` AS `Identificador`,(select `cc_valores_tbl`.`cc_descripcion_fld`
 FROM `cc_valores_tbl` where ((`cc_valores_tbl`.`cc_campo_fld` = 'cc_mantenimiento_fld') and (`cc_valores_tbl`.`cc_valor_fld` = `cc_mantenimientos_tbl`.`cc_tipo_fld`))) AS `Tipo_Mantenimiento`,`cc_mantenimientos_tbl`.`cc_placa_fld` AS `Placa`,`cc_mantenimientos_tbl`.`cc_fecha_fld` AS `Fecha_Mantenimiento`,`cc_mantenimientos_tbl`.`cc_proximo_fld` AS `Proximo_Mantenimiento`,`cc_mantenimientos_tbl`.`cc_kilometraje_fld` AS `Kilometraje` from `cc_mantenimientos_tbl` where (`cc_mantenimientos_tbl`.`cc_estado_fld` = 'A');
@@ -15692,7 +15692,7 @@ FROM (`cc_fuec_tbl` `fc` join `cc_contract_tbl` `fr` on((`fc`.`cc_num_contrato_t
 
 DROP TABLE `cc_formocacional_vw`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`transc_Admin`@`190.144.212.132` SQL SECURITY DEFINER VIEW `cc_formocacional_vw`
+CREATE VIEW `cc_formocacional_vw`
 AS SELECT
    lpad(`cc_formocacional_tbl`.`cc_id_fld`,4,0) AS `Consecutivo`,
    `cc_formocacional_tbl`.`cc_objetoCont_fld` AS `Objeto_Contrato`,
@@ -15714,7 +15714,7 @@ FROM `cc_formocacional_tbl`;
 
 DROP TABLE `cc_sos_orden_vw`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`transc_Admin`@`190.144.212.132` SQL SECURITY DEFINER VIEW `cc_sos_orden_vw`
+CREATE  VIEW `cc_sos_orden_vw`
 AS SELECT
    `sos`.`cc_id_fld` AS `Numero_Orden`,(select concat(`pa`.`cc_nombre_fld`,' ',`pa`.`cc_apellido_fld`)
 FROM `cc_paciente_tbl` `pa` where ((`pa`.`cc_tipo_doc_fld` = `sos`.`cc_tipo_doc_fld`) and (`pa`.`cc_nume_doc_fld` = `sos`.`cc_nume_doc_fld`))) AS `Paciente`,`sos`.`cc_origen_fld` AS `Origen`,`sos`.`cc_fecha_fld` AS `Fecha_Recogida`,`sos`.`cc_destino_fld` AS `Destino_1`,`sos`.`cc_fecha_d_fld` AS `Fecha_Destino_1`,`sos`.`cc_destino2_fld` AS `Destino_2`,`sos`.`cc_fecha_d2_fld` AS `Fecha_Destino_2` from `cc_sos_orden_tbl` `sos`;
