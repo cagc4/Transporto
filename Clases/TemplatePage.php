@@ -208,7 +208,7 @@ class TemplatePage
 				<br><br><br><br>
 				<footer>
 						<p>Transcorvalle SAS Direcci&#243;n: Calle 27 # 32-47 ,Tel&#233;fono: (2) 2253308,Tulu&#225;, Valle del Cauca, Colombia 2014<br>
-						<a href='http://www.transcorvalle.com.co' style="background-color:transaparent" class='enlace'>www.transcorvalle.com.co</a>
+						<a href='http://www.transcorvalle.com' style="background-color:transaparent" class='enlace'>www.transcorvalle.com</a>
 				</footer>
 			</body>
 		</html>
