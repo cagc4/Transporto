@@ -90,7 +90,7 @@ function onSubmit($formValues) {
 				$response = array('failureNoticeHtml' => 'El conductor ingresado no existe.');
 				break;
 			default:
-				$response = array('failureNoticeHtml' => 'Inconvenientes tecnicos al procesar el FUEC.');
+				$response = array('failureNoticeHtml' => 'Inconvenientes tecnicos al procesar la orden de servicio.');
 		}
 	}
 	else {

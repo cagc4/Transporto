@@ -70,7 +70,7 @@ class SosOrder
                         }
 					}
 					else {
-						//$respCode = 4;
+						$respCode = 4;
 					}
 				}
 			}
@@ -175,7 +175,8 @@ class SosOrder
 				$respCode = 1;
 			}
 		}
-		if($respCode == 0) {
+        
+        if($respCode == 0) {
 			if($sosPatientData->docTypePatient != '' && $sosPatientData->docNumPatient != '') {
 				$this->result = $this->util->db->Execute("SELECT * FROM cc_paciente_tbl WHERE cc_tipo_doc_fld = '" . $sosPatientData->docTypePatient . "' AND
 																							  cc_nume_doc_fld = '" . $sosPatientData->docNumPatient . "'");
@@ -185,7 +186,8 @@ class SosOrder
 				}
 			}
 		}
-		if($respCode == 0) {
+        
+	   if($respCode == 0) {
 			if($sosPatientData->docTypeCompanion != '' && $sosPatientData->docNumCompanion != '') {
 				$this->result = $this->util->db->Execute("SELECT * FROM cc_acompanante_tbl WHERE cc_tipo_doc_fld = '" . $sosPatientData->docTypeCompanion . "' AND
 																								 cc_nume_doc_fld = '" . $sosPatientData->docNumCompanion . "'");
@@ -205,15 +207,17 @@ class SosOrder
 																			WHERE cc_tipo_doc_fld = '" . $sosPatientData->docTypePatient . "' AND
 																				  cc_nume_doc_fld = '" . $sosPatientData->docNumPatient . "' AND
 																				  cc_tipo_doc_a_fld = '" . $sosPatientData->docTypeCompanion . "' AND
-																				  cc_nume_doc_a_fld = '" . $sosPatientData->docNumCompanion . "'");
+																				  cc_nume_doc_a_fld = '" . $sosPatientData->docNumCompanion ."'");
 						}
 						else {
-							$this->util->db->Execute("INSERT INTO cc_pac_acomp_tbl VALUES('" . $sosPatientData->docTypePatient . "',
-																						  '" . $sosPatientData->docNumPatient . "',
-																						  '" . $sosPatientData->docTypeCompanion . "',
-																						  '" . $sosPatientData->docNumCompanion . "',
-																						  '" . $sosPatientData->relationship . "'");
-						}
+                            
+                            $this->result =$this->util->db->Execute("INSERT INTO cc_pac_acomp_tbl VALUES('".$sosPatientData->docTypePatient."',
+                                                                                                         '".$sosPatientData->docNumPatient."',
+                                                                                                         '".$sosPatientData->docTypeCompanion."',
+                                                                                                         '".$sosPatientData->docNumCompanion."',
+                                                                                                         '" .$sosPatientData->relationship."')");
+						       
+                        }
 					}
 					else {
 						$respCode = 4;
@@ -221,7 +225,8 @@ class SosOrder
 				}
 			}
 		}
-		if($respCode == 0) {
+        
+        if($respCode == 0) {
 			if($sosDriverVehicleData->docTypeDriver != '' && $sosDriverVehicleData->docNumDriver != '') {
 				$this->result = $this->util->db->Execute("SELECT * FROM cc_propcond_tbl WHERE cc_tipo_doc_fld = '" . $sosDriverVehicleData->docTypeDriver . "' AND
 																							  cc_nume_doc_fld = '" . $sosDriverVehicleData->docNumDriver . "' AND
@@ -253,7 +258,7 @@ class SosOrder
 																				  	cc_placa_fld = '" . $sosDriverVehicleData->plate . "',
 																				  	cc_tipo_doc_c_fld = '" . $sosDriverVehicleData->docTypeDriver . "',
 																				  	cc_nume_doc_c_fld = '" . $sosDriverVehicleData->docNumDriver . "'
-														where	cc_id_fld = ".$numeroSosOrder);
+														where	cc_id_fld = " . $numeroSosOrder);
 			if(!$this->result) {
 				$respCode = 99;
 			}
@@ -281,7 +286,7 @@ class SosOrder
                                                     ,sos.cc_placa_fld AS plate
                                                     ,(select pr.cc_Fnombre_fld from cc_propcond_tbl drv inner join cc_person_tbl pr on drv.cc_tipo_doc_fld = pr.cc_tipo_doc_fld and drv.cc_nume_doc_fld = pr.cc_nume_doc_fld where drv.cc_tipo_doc_fld = sos.cc_tipo_doc_c_fld AND drv.cc_nume_doc_fld = sos.cc_nume_doc_c_fld) AS driver
                                                     from cc_sos_orden_tbl sos
-													where	cc_id_fld = '".$numeroSosOrder."'");
+													where	cc_id_fld = " . $numeroSosOrder);
 	}
 
 	function getSosOrder($numeroSosOrder) {
@@ -311,7 +316,7 @@ class SosOrder
 																   cc_tipo_doc_a_fld = docTypeCompanion AND
 																   cc_nume_doc_a_fld = docNumCompanion) AS relationship
 													from cc_sos_orden_tbl
-													where	cc_id_fld = '".$numeroSosOrder."'");
+													where	cc_id_fld = " . $numeroSosOrder);
 	}
  }
 ?>
