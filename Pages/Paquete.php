@@ -13,7 +13,7 @@ $template->navigateBar('Paquete');
 			<td width =250><center><a href='CasualTravel_srch.php' ><img src='../Images/Icons/viajeOcacional.png' width="120" height="120" ></a></center></td>
         </tr>
 		<tr>
-			<td align ='center'>Viaje Ocacional</td>
+			<td align ='center'>Viaje Ocasional</td>
 		</tr>
 	</table>
 	</center>
