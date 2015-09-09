@@ -18,12 +18,12 @@ $sosForm = new JFormer('sosForm', array('title' => '<div align="center"><h2>Copi
 $jFormPage1 = new JFormPage($sosForm->id . 'PatientData', array('title' => 'Paciente'));
 $jFormSection1 = new JFormSection($sosForm->id . 'Patient');
 $jFormSection1->addJFormComponentArray(array(
-    new JFormComponentSingleLineText('authNumber', 'Numero Autorizacion:  ', array('initialValue' => $result['authNumber'], 'disabled' => true,)),
-	new JFormComponentDropDown('docTypePatient', 'Tipo documento Paciente:  ', $util->fillDropDownVew('cc_tipo_doc_fld', $result['docTypePatient']), array('disabled' => true,)),
-	new JFormComponentSingleLineText('docNumPatient', 'Numero documento Paciente:  ', array('initialValue' => $result['docNumPatient'], 'disabled' => true)),
-	new JFormComponentDropDown('docTypeCompanion', 'Tipo documento Acompañante:  ', $util->fillDropDownVew('cc_tipo_doc_fld', $result['docTypeCompanion']), array('disabled' => true,)),
-    new JFormComponentSingleLineText('docNumCompanion', 'Numero documento Acompañante:  ', array('initialValue' => $result['docNumCompanion'], 'disabled' => true,)),
-	new JFormComponentDropDown('relationship', 'Parentezco:  ', $util->fillDropDownVew('cc_parentezco_fld', $result['relationship']), array('initialValue' => $result['relationship'], 'disabled' => true,)),
+    new JFormComponentSingleLineText('authNumber', 'Numero Autorizacion:  ', array('initialValue' => $result['authNumber'], 'disabled' => false,)),
+	new JFormComponentDropDown('docTypePatient', 'Tipo documento Paciente:  ', $util->fillDropDownVew('cc_tipo_doc_fld', $result['docTypePatient']), array('disabled' => false,)),
+	new JFormComponentSingleLineText('docNumPatient', 'Numero documento Paciente:  ', array('initialValue' => $result['docNumPatient'], 'disabled' => false)),
+	new JFormComponentDropDown('docTypeCompanion', 'Tipo documento Acompañante:  ', $util->fillDropDownVew('cc_tipo_doc_fld', $result['docTypeCompanion']), array('disabled' => false,)),
+    new JFormComponentSingleLineText('docNumCompanion', 'Numero documento Acompañante:  ', array('initialValue' => $result['docNumCompanion'], 'disabled' => false,)),
+	new JFormComponentDropDown('relationship', 'Parentezco:  ', $util->fillDropDownVew('cc_parentezco_fld', $result['relationship']), array('initialValue' => $result['relationship'], 'disabled' => false,)),
 ));
 $jFormPage1->addJFormSection($jFormSection1);
 $sosForm->addJFormPage($jFormPage1);
@@ -31,10 +31,9 @@ $sosForm->addJFormPage($jFormPage1);
 $jFormPage2 = new JFormPage($sosForm->id . 'SourceData', array('title' => 'Origen'));
 $jFormSection2 = new JFormSection($sosForm->id . 'Source');
 $jFormSection2->addJFormComponentArray(array(
-	new JFormComponentSingleLineText('source', 'Origen:  ', array('initialValue' => $result['source'], 'disabled' => true)),
-	new JFormComponentSingleLineText('phone', 'Telefono:  ', array('initialValue' => $result['phone'], 'disabled' => true)),
-	new JFormComponentDate('collectDate', 'Fecha de Recogida:  ', array('initialValue' => $result['collectDate'], 'disabled' => true, 'tip' => '<p>Formato MM/DD/AAAA</p>')),
-	new JFormComponentSingleLineText('collectTime', 'Hora de Recogida:  ', array('initialValue' => $result['collectTime'], 'disabled' => true, 'tip' => '<p>Formato HH:MM</p>')),
+	new JFormComponentSingleLineText('source', 'Origen:  ', array('initialValue' => $result['source'], 'disabled' => false)),
+	new JFormComponentDate('collectDate', 'Fecha de Recogida:  ', array('initialValue' => $result['collectDate'], 'disabled' => false, 'tip' => '<p>Formato MM/DD/AAAA</p>')),
+	new JFormComponentSingleLineText('collectTime', 'Hora de Recogida:  ', array('initialValue' => $result['collectTime'], 'disabled' => false, 'tip' => '<p>Formato HH:MM</p>')),
 ));
 $jFormPage2->addJFormSection($jFormSection2);
 $sosForm->addJFormPage($jFormPage2);
@@ -42,10 +41,10 @@ $sosForm->addJFormPage($jFormPage2);
 $jFormPage3 = new JFormPage($sosForm->id . 'Destination1Data', array('title' => 'Destino 1'));
 $jFormSection3 = new JFormSection($sosForm->id . 'Destination1');
 $jFormSection3->addJFormComponentArray(array(
-    new JFormComponentSingleLineText('destination1', 'Destino 1:  ', array('initialValue' => $result['destination1'], 'disabled' => true)),
-	new JFormComponentDate('outputDate1', 'Fecha de Salida 1:  ', array('initialValue' => $result['outputDate1'], 'disabled' => true, 'tip' => '<p>Formato MM/DD/AAAA</p>')),
-	new JFormComponentSingleLineText('time1', 'Hora 1:  ', array('initialValue' => $result['time1'], 'disabled' => true, 'tip' => '<p>Formato HH:MM</p>')),
-	new JFormComponentSingleLineText('cost1', 'Costo de Servicio 1:  ', array('initialValue' => $result['cost1'], 'disabled' => true)),
+    new JFormComponentSingleLineText('destination1', 'Destino 1:  ', array('initialValue' => $result['destination1'], 'disabled' => false)),
+	new JFormComponentDate('outputDate1', 'Fecha de Salida 1:  ', array('initialValue' => $result['outputDate1'], 'disabled' => false, 'tip' => '<p>Formato MM/DD/AAAA</p>')),
+	new JFormComponentSingleLineText('time1', 'Hora 1:  ', array('initialValue' => $result['time1'], 'disabled' => false, 'tip' => '<p>Formato HH:MM</p>')),
+	new JFormComponentSingleLineText('cost1', 'Costo de Servicio 1:  ', array('initialValue' => $result['cost1'], 'disabled' => false)),
 ));
 $jFormPage3->addJFormSection($jFormSection3);
 $sosForm->addJFormPage($jFormPage3);
@@ -53,29 +52,58 @@ $sosForm->addJFormPage($jFormPage3);
 $jFormPage4 = new JFormPage($sosForm->id . 'Destination2Data', array('title' => 'Destino 2'));
 $jFormSection4 = new JFormSection($sosForm->id . 'Destination2');
 $jFormSection4->addJFormComponentArray(array(
-	new JFormComponentSingleLineText('destination2', 'Destino 2:  ', array('initialValue' => $result['destination2'], 'disabled' => true)),
-	new JFormComponentDate('outputDate2', 'Fecha de Salida 2:  ', array('initialValue' => $result['outputDate2'], 'disabled' => true, 'tip' => '<p>Formato MM/DD/AAAA</p>')),
-	new JFormComponentSingleLineText('time2', 'Hora 2:  ', array('initialValue' => $result['time2'], 'disabled' => true, 'tip' => '<p>Formato HH:MM</p>')),
-	new JFormComponentSingleLineText('cost2', 'Costo de Servicio 2:  ', array('initialValue' => $result['cost2'], 'disabled' => true)),
+	new JFormComponentSingleLineText('destination2', 'Destino 2:  ', array('initialValue' => $result['destination2'], 'disabled' => false)),
+	new JFormComponentDate('outputDate2', 'Fecha de Salida 2:  ', array('initialValue' => $result['outputDate2'], 'disabled' => false, 'tip' => '<p>Formato MM/DD/AAAA</p>')),
+	new JFormComponentSingleLineText('time2', 'Hora 2:  ', array('initialValue' => $result['time2'], 'disabled' => false, 'tip' => '<p>Formato HH:MM</p>')),
+	new JFormComponentSingleLineText('cost2', 'Costo de Servicio 2:  ', array('initialValue' => $result['cost2'], 'disabled' => false)),
 ));
 $jFormPage4->addJFormSection($jFormSection4);
 $sosForm->addJFormPage($jFormPage4);
 
-$jFormPage5 = new JFormPage($sosForm->id . 'DriverVehicleData', array('title' => 'Conductor/Vehiculo'));
-$jFormSection5 = new JFormSection($sosForm->id . 'DriverVehicle');
+$jFormPage5 = new JFormPage($sosForm->id . 'Destination3Data', array('title' => 'Destino 3'));
+$jFormSection5 = new JFormSection($sosForm->id . 'Destination3');
 $jFormSection5->addJFormComponentArray(array(
-	new JFormComponentSingleLineText('plate', 'Placa:  ', array('initialValue' => $result['plate'], 'disabled' => true)),
-    new JFormComponentDropDown('docTypeDriver', 'Tipo de documento:  ', $util->fillDropDownVew('cc_tipo_doc_fld', $result['docTypeDriver']), array('disabled' => true,)),
-    new JFormComponentSingleLineText('docNumDriver', 'Numero documento:  ', array('initialValue' => $result['docNumDriver'], 'disabled' => true,)),
+	new JFormComponentSingleLineText('destination3', 'Destino 3:  ', array('initialValue' => $result['destination3'], 'disabled' => false)),
+	new JFormComponentDate('outputDate3', 'Fecha de Salida 3:  ', array('initialValue' => $result['outputDate3'], 'disabled' => false, 'tip' => '<p>Formato MM/DD/AAAA</p>')),
+	new JFormComponentSingleLineText('time3', 'Hora 3:  ', array('initialValue' => $result['time3'], 'disabled' => false, 'tip' => '<p>Formato HH:MM</p>')),
+	new JFormComponentSingleLineText('cost3', 'Costo de Servicio 3:  ', array('initialValue' => $result['cost3'], 'disabled' => false)),
 ));
 $jFormPage5->addJFormSection($jFormSection5);
 $sosForm->addJFormPage($jFormPage5);
 
+$jFormPage6 = new JFormPage($sosForm->id . 'DriverVehicleData', array('title' => 'Conductor/Vehiculo'));
+$jFormSection6 = new JFormSection($sosForm->id . 'DriverVehicle');
+$jFormSection6->addJFormComponentArray(array(
+	new JFormComponentSingleLineText('plate', 'Placa:  ', array('initialValue' => $result['plate'], 'disabled' => false)),
+    new JFormComponentDropDown('docTypeDriver', 'Tipo de documento:  ', $util->fillDropDownVew('cc_tipo_doc_fld', $result['docTypeDriver']), array('disabled' => false,)),
+    new JFormComponentSingleLineText('docNumDriver', 'Numero documento:  ', array('initialValue' => $result['docNumDriver'], 'disabled' => false,)),
+));
+$jFormPage6->addJFormSection($jFormSection6);
+$sosForm->addJFormPage($jFormPage6);
+
 function onSubmit($formValues) {
 	$sosOrder = new SosOrder();
-	$respCode = $sosOrder->copySosOrder($_SESSION['number']);
+	$respCode = $sosOrder->addSosOrder($formValues);
 	if($respCode != 0) {
-		$response = array('failureNoticeHtml' => 'Inconvenientes tecnicos al procesar la copia de la orden de servicio.');
+		switch ($respCode) {
+			case 1:
+				$response = array('failureNoticeHtml' => 'El vehiculo ingresado no existe.');
+				break;
+			case 2:
+				$response = array('failureNoticeHtml' => 'El paciente ingresado no existe.');
+				break;
+			case 3:
+				$response = array('failureNoticeHtml' => 'El acompañante ingresado no existe.');
+				break;
+			case 4:
+				$response = array('failureNoticeHtml' => 'El parentezco debe ingresarse.');
+				break;
+			case 5:
+				$response = array('failureNoticeHtml' => 'El conductor ingresado no existe.');
+				break;
+			default:
+				$response = array('failureNoticeHtml' => 'Inconvenientes tecnicos al procesar la orden de servicio.');
+		}
 	}
 	else {
 		$response = array('successPageHtml' => '<meta http-equiv="refresh" content="0; url=PrintSos.php">');

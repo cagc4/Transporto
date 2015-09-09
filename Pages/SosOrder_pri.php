@@ -34,16 +34,21 @@ $regreso = $result['outputDate1'];
 $direcD2 = $result['destination2'];
 $regreso2 = $result['outputDate2'];
 
+$direcD3 = $result['destination3'];
+$regreso3 = $result['outputDate3'];
+
 $servicio1 = $result['cost1'];
 $servicio2 = $result['cost2'];
-$totalserv = $servicio1 +$servicio2;
+$servicio3 = $result['cost3'];
+$totalserv = $servicio1 + $servicio2 + $servicio3;
 $servicio1 = ''.$servicio1;
 $servicio2 = ''.$servicio2;
+$servicio3 = ''.$servicio3;
 
 $conductor = $result['driver'];
 $placa = $result['plate'];
 
-$objTemplate->reportSos($numAuto,$persona,$tipoid,$identi,$personaA,$tipoidA,$identiA,$direcO,$teleO,$direcD,$salida,$regreso,$direcD2,$regreso2,$servicio1,$servicio2,$totalserv,$conductor,$placa,$consecutivo);
+$objTemplate->reportSos($numAuto,$persona,$tipoid,$identi,$personaA,$tipoidA,$identiA,$direcO,$teleO,$direcD,$salida,$regreso,$direcD2,$regreso2,$direcD3,$regreso3,$servicio1,$servicio2,$servicio3,$totalserv,$conductor,$placa,$consecutivo);
 $objTemplate->exportarPdf($consecutivo);
 
 ?>

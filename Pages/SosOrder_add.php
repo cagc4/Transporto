@@ -30,7 +30,6 @@ $jFormPage2 = new JFormPage($sosForm->id . 'SourceData', array('title' => 'Orige
 $jFormSection2 = new JFormSection($sosForm->id . 'Source');
 $jFormSection2->addJFormComponentArray(array(
 	new JFormComponentSingleLineText('source', 'Origen:  ', array('initialValue' => '', 'disabled' => false)),
-	new JFormComponentSingleLineText('phone', 'Telefono:  ', array('initialValue' => '', 'disabled' => false)),
 	new JFormComponentDate('collectDate', 'Fecha de Recogida:  ', array('initialValue' => '', 'disabled' => false, 'tip' => '<p>Formato MM/DD/AAAA</p>')),
 	new JFormComponentSingleLineText('collectTime', 'Hora de Recogida:  ', array('initialValue' => '', 'disabled' => false, 'tip' => '<p>Formato HH:MM</p>')),
 ));
@@ -59,15 +58,26 @@ $jFormSection4->addJFormComponentArray(array(
 $jFormPage4->addJFormSection($jFormSection4);
 $sosForm->addJFormPage($jFormPage4);
 
-$jFormPage5 = new JFormPage($sosForm->id . 'DriverVehicleData', array('title' => 'Conductor/Vehiculo'));
-$jFormSection5 = new JFormSection($sosForm->id . 'DriverVehicle');
+$jFormPage5 = new JFormPage($sosForm->id . 'Destination3Data', array('title' => 'Destino 3'));
+$jFormSection5 = new JFormSection($sosForm->id . 'Destination3');
 $jFormSection5->addJFormComponentArray(array(
+	new JFormComponentSingleLineText('destination3', 'Destino 3:  ', array('initialValue' => '', 'disabled' => false)),
+	new JFormComponentDate('outputDate3', 'Fecha de Salida 2:  ', array('initialValue' => '', 'disabled' => false, 'tip' => '<p>Formato MM/DD/AAAA</p>')),
+	new JFormComponentSingleLineText('time3', 'Hora 3:  ', array('initialValue' => '', 'disabled' => false, 'tip' => '<p>Formato HH:MM</p>')),
+	new JFormComponentSingleLineText('cost3', 'Costo de Servicio 3:  ', array('initialValue' => '', 'disabled' => false)),
+));
+$jFormPage5->addJFormSection($jFormSection5);
+$sosForm->addJFormPage($jFormPage5);
+
+$jFormPage6 = new JFormPage($sosForm->id . 'DriverVehicleData', array('title' => 'Conductor/Vehiculo'));
+$jFormSection6 = new JFormSection($sosForm->id . 'DriverVehicle');
+$jFormSection6->addJFormComponentArray(array(
 	new JFormComponentSingleLineText('plate', 'Placa:  ', array('initialValue' => '', 'disabled' => false)),
     new JFormComponentDropDown('docTypeDriver', 'Tipo de documento:  ', $util->fillDropDown('cc_tipo_doc_fld'), array('disabled' => false,)),
     new JFormComponentSingleLineText('docNumDriver', 'Numero documento:  ', array('initialValue' => '', 'disabled' => false,)),
 ));
-$jFormPage5->addJFormSection($jFormSection5);
-$sosForm->addJFormPage($jFormPage5);
+$jFormPage6->addJFormSection($jFormSection6);
+$sosForm->addJFormPage($jFormPage6);
 
 function onSubmit($formValues) {
 	$sosOrder = new SosOrder();

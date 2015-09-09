@@ -112,13 +112,14 @@ class TemplateReport
 		$this->pdf->Output($id, 'I');
 	}
 
-    function reportSos($numAuto,$persona,$tipoid,$identi,$personaA,$tipoidA,$identiA,$direcO,$teleO,$direcD,$salida,$regreso,$direcD2,$regreso2,$servicio1,$servicio2,$totalserv,$conductor,$placa,$consecutivo)
+    function reportSos($numAuto,$persona,$tipoid,$identi,$personaA,$tipoidA,$identiA,$direcO,$teleO,$direcD,$salida,$regreso,$direcD2,$regreso2,$direcD3,$regreso3,$servicio1,$servicio2,$servicio3,$totalserv,$conductor,$placa,$consecutivo)
     {
 
         $tamanoFuenteForm=8;
 		$salida=$this->util->timestampATexto($salida,'c');
 		$regreso=$this->util->timestampATexto($regreso,'c');
         $regreso2=$this->util->timestampATexto($regreso2,'c');
+        $regreso3=$this->util->timestampATexto($regreso3,'c');
 
 
 		$this->pdf->Ln(20);
@@ -149,26 +150,35 @@ class TemplateReport
         
         $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm); $this->pdf->Cell(26,5, 'Lugar de origen:',1); 
         $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(60,5, $direcO,1);
-        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm); $this->pdf->Cell(21,5, 'Teléfono:',1); 
-        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(18,5, $teleO,1);
-        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm); $this->pdf->Cell(20,5, 'Fecha y Hora:',1);
+        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm); $this->pdf->Cell(17,5, 'Teléfono:',1); 
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(20,5, $teleO,1);
+        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm); $this->pdf->Cell(21,5, 'Fecha y Hora:',1);
         $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0,5, $salida,1);
         $this->pdf->Ln(5);
         
-        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(26,10, 'Primer destino:',1); 
-        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(60,10, $direcD,1);
-        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(21,10, 'Fecha y Hora:',1);
-        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(51,10, $regreso,1);
-        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0,10, 'Sello IPS',1,0,'C');
-        $this->pdf->Ln(10);
+        $ydestinos=7;
         
-        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(26,10, 'Segundo destino:',1); 
-        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(60,10, $direcD2,1);
-        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(21,10, 'Fecha y Hora:',1);
-        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(51,10, $regreso2,1);
-        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0,10, 'Sello IPS',1,0,'C');
+        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(26,$ydestinos, 'Primer destino:',1); 
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(60,$ydestinos, $direcD,1);
+        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(21,$ydestinos, 'Fecha y Hora:',1);
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(51,$ydestinos, $regreso,1);
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0,$ydestinos, 'Sello IPS',1,0,'C');
+        $this->pdf->Ln($ydestinos);
         
-        $this->pdf->Ln(12);
+        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(26,$ydestinos, 'Segundo destino:',1); 
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(60,$ydestinos, $direcD2,1);
+        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(21,$ydestinos, 'Fecha y Hora:',1);
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(51,$ydestinos, $regreso2,1);
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0,$ydestinos, 'Sello IPS',1,0,'C');
+        $this->pdf->Ln($ydestinos);
+        
+        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(26,$ydestinos, 'Tercer destino:',1); 
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(60,$ydestinos, $direcD3,1);
+        $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm);  $this->pdf->Cell(21,$ydestinos, 'Fecha y Hora:',1);
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(51,$ydestinos, $regreso3,1);
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0,$ydestinos, 'Sello IPS',1,0,'C');
+        
+        $this->pdf->Ln(8);
         $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm+3);  $this->pdf->Cell(28,10, 'Firma Usuario');
         $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm+3);  $this->pdf->Cell(85,8, '','B'); 
         $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm+3);  $this->pdf->Cell(15,10, 'CC. No.');
@@ -185,8 +195,9 @@ class TemplateReport
         $this->pdf->SetFont('helvetica', 'B', $tamanoFuenteForm+4);  $this->pdf->Cell(0,6,$texto2,1,0,'C',true);
         $this->pdf->Ln(6);
         $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(42,5, 'Liquidacion de los Servicios',1);
-        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(53,5, 'Servicio 1: $'.$servicio1,1);
-        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(53,5, 'Servicio 2: $'.$servicio2,1);
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(40,5, 'Servicio 1: $'.$servicio1,1);
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(40,5, 'Servicio 2: $'.$servicio2,1);
+        $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(40,5, 'Servicio 3: $'.$servicio3,1);
         $this->pdf->SetFont('helvetica', '', $tamanoFuenteForm);  $this->pdf->Cell(0,5, 'Valor Total : $'.$totalserv,1);
         $this->pdf->Ln(8);
         
